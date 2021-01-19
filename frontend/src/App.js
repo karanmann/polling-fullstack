@@ -8,6 +8,7 @@ import { CreatePoll } from './pages/CreatePoll'
 import { PollingLink } from './pages/PollingLink'
 import { Voting } from './pages/Voting'
 import { VotingResults } from './pages/VotingResults'
+import { Footer } from './components/Footer'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <VotingResults />
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   )
 }
