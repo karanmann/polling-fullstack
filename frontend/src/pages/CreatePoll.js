@@ -29,6 +29,7 @@ export const CreatePoll= () => {
         <button>Go back</button>
         <button>Finish and create link</button>
       </section>
+      <p>Henrikes change</p>
     </>
   )
 }
