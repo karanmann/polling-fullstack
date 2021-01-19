@@ -1,12 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-function App() {
+import './App.css'
+import { Navbar } from './components/Navbar'
+import { LandingPage } from './pages/LandingPage'
+import { CreatePoll } from './pages/CreatePoll'
+import { PollingLink } from './pages/PollingLink'
+import { Voting } from './pages/Voting'
+import { VotingResults } from './pages/VotingResults'
+
+const App = () => {
   return (
-    <div className="App">
-     
-    </div>
-  );
+    <BrowserRouter className='App'>
+      <Navbar />
+      <Switch>
+        <Route path='/' exact>
+          <LandingPage />
+        </Route>
+        <Route path='/createpoll' exact>
+          <CreatePoll />
+        </Route>
+        <Route path='/pollinglink' exact>
+          <PollingLink/>
+        </Route>
+        <Route path='/voting/:id' exact>
+          <Voting />
+        </Route>
+        <Route path='/voting/:id/results' exact> 
+          <VotingResults />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
