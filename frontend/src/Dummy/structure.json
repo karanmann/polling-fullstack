@@ -1,0 +1,22 @@
+{
+  pollId: 12,
+  pollTopic: Str,
+  pollOptions: [
+    {
+      optionA: Str,
+      optionId: number
+    },
+
+  ]
+}
+
+{
+  name: Str,
+  pollId: 12,
+  votings: [
+    {
+      optionId: number,
+      objectionsPoints: 3
+    }
+  ]
+}
