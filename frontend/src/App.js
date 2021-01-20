@@ -9,6 +9,7 @@ import { PollingLink } from './pages/PollingLink'
 import { Voting } from './pages/Voting'
 import { VotingResults } from './pages/VotingResults'
 import { Footer } from './components/Footer'
+import { About } from './pages/About'
 
 const App = () => {
   return (
@@ -18,10 +19,10 @@ const App = () => {
         <Route path='/' exact>
           <LandingPage />
         </Route>
-        <Route path='/createpoll' exact>
+        <Route path='/createpoll'>
           <CreatePoll />
         </Route>
-        <Route path='/pollinglink' exact>
+        <Route path='/pollinglink'>
           <PollingLink/>
         </Route>
         <Route path='/voting/:id' exact>
@@ -29,6 +30,9 @@ const App = () => {
         </Route>
         <Route path='/voting/:id/results' exact> 
           <VotingResults />
+        </Route>
+        <Route path='/about'> 
+          <About />
         </Route>
       </Switch>
       <Footer />

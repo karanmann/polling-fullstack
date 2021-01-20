@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, useParams } from 'react-router-dom'
 
 export const PollingLink= () => {
   return (
@@ -7,7 +8,9 @@ export const PollingLink= () => {
       <p>www.example.com/yourlink</p>
        {/* <a href="#">www.example.com/yourlink</a> */}
       <button>Copy Link</button>
-      <button>Back to Start Page</button>
+      <Link to='/'>
+        <button>Back to Start Page</button>
+      </Link>
     </>
   )
 }

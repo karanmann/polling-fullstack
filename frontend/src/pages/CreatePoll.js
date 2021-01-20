@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { Table } from '../components/Table'
 
@@ -57,7 +58,9 @@ export const CreatePoll= () => {
           <h1>Summary</h1>
           <Table />
           <button onClick={handleBackToOptions}>Back</button>
-          <button>Finish and create link</button>
+          <Link to='/pollinglink'>
+            <button>Finish and create link</button>
+          </Link>
         </section>
       }
     </>

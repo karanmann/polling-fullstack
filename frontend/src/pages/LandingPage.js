@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const LandingPage= () => {
   return (
@@ -6,7 +7,9 @@ export const LandingPage= () => {
       <section>
         <h1>Welcome</h1>
         <p>some text here</p>
-        <button>Create new poll</button>
+        <Link to='/createpoll'>
+          <button>Create new poll</button>
+        </Link>
       </section>
       <section>
         <h2>How it works</h2> 
