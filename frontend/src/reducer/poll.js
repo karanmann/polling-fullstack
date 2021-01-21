@@ -33,6 +33,11 @@ export const poll = createSlice({
         const optionId = action.payload
         const filteredOptions = store.options.filter(option => option.id !== optionId)
         store.options = filteredOptions
-      } 
+      },
+      changeOneOption: (store, action) => {
+        const updatedOption = action.payload
+        const currentOption = store.options.find(option => updatedOption.id === option.id)
+        currentOption.text = updatedOption.text
+      }
     }
 })
