@@ -28,6 +28,11 @@ export const poll = createSlice({
         }
         const newOptionList = [...store.options, newOption]
         store.options = newOptionList
+      },
+      deleteOneOption: (store, action) => {
+        const optionId = action.payload
+        const filteredOptions = store.options.filter(option => option.id !== optionId)
+        store.options = filteredOptions
       } 
     }
 })

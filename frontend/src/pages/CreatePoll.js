@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { poll } from '../reducer/poll'
+import { Option } from '../components/Option'
 
 import { Table } from '../components/Table'
 
@@ -12,8 +13,10 @@ export const CreatePoll= () => {
   const [showSummary, setShowSummary] = useState(false)
   const dispatch = useDispatch()
 
-  const [ option, setOption ] = useState('')
+  const [ newOption, setNewOption ] = useState('')
+  const allOptions = useSelector((store) => store.poll.options)
 
+  //Functions to handle conditional rendering
   const handleShowOptions = () => {
     setShowTopic(false)
     setShowOptions(true)
@@ -34,12 +37,12 @@ export const CreatePoll= () => {
     setShowOptions(false)
   }
 
+  // Functions to handle user input
   const onAdd = event => {
     event.preventDefault()
-    dispatch(poll.actions.addOneOption(option))
-    setOption('')
+    dispatch(poll.actions.addOneOption(newOption))
+    setNewOption('')
   }
-
 
   return (
     <>
@@ -63,13 +66,18 @@ export const CreatePoll= () => {
           <form onSubmit={onAdd}>
             <input 
             type='text' 
-            value={option}
-            onChange={event => setOption(event.target.value)}
+            value={newOption}
+            onChange={event => setNewOption(event.target.value)}
             />
             <button type='submit'>Add</button>
+          </form>
+            {allOptions.map((option) => (
+              <Option 
+                key={option.id}
+                option={option} />
+            ))}
             <button onClick={handleBackToTopic}>Back</button>
             <button onClick={handleShowSummary}>Create poll and see summary</button>
-          </form>
         </section>
       }
       { showSummary && 
