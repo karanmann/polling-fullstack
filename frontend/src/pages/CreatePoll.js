@@ -8,37 +8,43 @@ import { Option } from '../components/Option'
 import { Table } from '../components/Table'
 
 export const CreatePoll= () => {
+  const dispatch = useDispatch()
+
+  // States to handle conditional rendering
   const [showTopic, setShowTopic] = useState(true)
   const [showOptions, setShowOptions] = useState(false)
   const [showSummary, setShowSummary] = useState(false)
-  const dispatch = useDispatch()
 
-  const [ newOption, setNewOption ] = useState('')
+  // States & variable to handle user input
+  const [newOption, setNewOption] = useState('')
+  const [newTopic, setNewTopic] = useState('')
   const allOptions = useSelector((store) => store.poll.options)
 
-  //Functions to handle conditional rendering
+  // Function to handle conditional rendering and add a topic on first view
   const handleShowOptions = () => {
+    dispatch(poll.actions.addTopic(newTopic))
     setShowTopic(false)
     setShowOptions(true)
   }
 
+  // Function to only handle conditional rendering
   const handleBackToTopic = () => {
     setShowTopic(true)
     setShowOptions(false)
-  }
-
-  const handleBackToOptions = () => {
-    setShowOptions(true)
-    setShowSummary(false)
   }
 
   const handleShowSummary = () => {
     setShowSummary(true)
     setShowOptions(false)
   }
+  
+  const handleBackToOptions = () => {
+    setShowOptions(true)
+    setShowSummary(false)
+  }
 
-  // Functions to handle user input
-  const onAdd = event => {
+  // Function to handle adding an option
+  const onAddOption = event => {
     event.preventDefault()
     dispatch(poll.actions.addOneOption(newOption))
     setNewOption('')
@@ -49,21 +55,23 @@ export const CreatePoll= () => {
       { showTopic && 
         <section>
           <h1>Create poll</h1>
-          <form>
+          <form onSubmit={handleShowOptions}>
             <label>
             <input 
             type='text'
+            value={newTopic}
+            onChange={event => setNewTopic(event.target.value)}
             />
             Topic
             </label>
-            <button onClick={handleShowOptions}>Next step</button>
+            <button type='submit'>Next step</button>
           </form>
         </section>
       }
       { showOptions && 
         <section>
           <h1>Add options</h1>
-          <form onSubmit={onAdd}>
+          <form onSubmit={onAddOption}>
             <input 
             type='text' 
             value={newOption}
@@ -77,7 +85,7 @@ export const CreatePoll= () => {
                 option={option} />
             ))}
             <button onClick={handleBackToTopic}>Back</button>
-            <button onClick={handleShowSummary}>Create poll and see summary</button>
+            <button onClick={handleShowSummary}>Create poll and see summary</button> {/* maybe only 'next step' here */}
         </section>
       }
       { showSummary && 

@@ -34,7 +34,7 @@ export const Option = ({ option }) => {
           <button onClick={onOptionDelete}>Delete</button>
         </>
       }
-       {!textOkay && 
+      {!textOkay && 
         <>
           <input 
             type="text"
