@@ -1,75 +1,91 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { poll } from '../reducer/poll'
+import { Option } from '../components/Option'
 
 import { Table } from '../components/Table'
 
 export const CreatePoll= () => {
+  const dispatch = useDispatch()
+
+  // States to handle conditional rendering
   const [showTopic, setShowTopic] = useState(true)
   const [showOptions, setShowOptions] = useState(false)
   const [showSummary, setShowSummary] = useState(false)
-  const dispatch = useDispatch()
 
-  const [ option, setOption ] = useState('')
+  // States & variable to handle user input
+  const [newOption, setNewOption] = useState('')
+  const [newTopic, setNewTopic] = useState('')
+  const allOptions = useSelector((store) => store.poll.options)
 
+  // Function to handle conditional rendering and add a topic on first view
   const handleShowOptions = () => {
+    dispatch(poll.actions.addTopic(newTopic))
     setShowTopic(false)
     setShowOptions(true)
   }
 
+  // Function to only handle conditional rendering
   const handleBackToTopic = () => {
     setShowTopic(true)
     setShowOptions(false)
-  }
-
-  const handleBackToOptions = () => {
-    setShowOptions(true)
-    setShowSummary(false)
   }
 
   const handleShowSummary = () => {
     setShowSummary(true)
     setShowOptions(false)
   }
-
-  const onAdd = event => {
-    event.preventDefault()
-    dispatch(poll.actions.addOneOption(option))
-    setOption('')
+  
+  const handleBackToOptions = () => {
+    setShowOptions(true)
+    setShowSummary(false)
   }
 
+  // Function to handle adding an option
+  const onAddOption = event => {
+    event.preventDefault()
+    dispatch(poll.actions.addOneOption(newOption))
+    setNewOption('')
+  }
 
   return (
     <>
       { showTopic && 
         <section>
           <h1>Create poll</h1>
-          <form>
+          <form onSubmit={handleShowOptions}>
             <label>
             <input 
             type='text'
+            value={newTopic}
+            onChange={event => setNewTopic(event.target.value)}
             />
             Topic
             </label>
-            <button onClick={handleShowOptions}>Next step</button>
+            <button type='submit'>Next step</button>
           </form>
         </section>
       }
       { showOptions && 
         <section>
           <h1>Add options</h1>
-          <form onSubmit={onAdd}>
+          <form onSubmit={onAddOption}>
             <input 
             type='text' 
-            value={option}
-            onChange={event => setOption(event.target.value)}
+            value={newOption}
+            onChange={event => setNewOption(event.target.value)}
             />
             <button type='submit'>Add</button>
-            <button onClick={handleBackToTopic}>Back</button>
-            <button onClick={handleShowSummary}>Create poll and see summary</button>
           </form>
+            {allOptions.map((option) => (
+              <Option 
+                key={option.id}
+                option={option} />
+            ))}
+            <button onClick={handleBackToTopic}>Back</button>
+            <button onClick={handleShowSummary}>Create poll and see summary</button> {/* maybe only 'next step' here */}
         </section>
       }
       { showSummary && 
