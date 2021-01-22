@@ -6,7 +6,6 @@
       optionA: Str,
       optionId: number
     },
-
   ]
 }
 
