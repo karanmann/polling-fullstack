@@ -1,11 +1,12 @@
 import styled from 'styled-components/macro'
 
-//Landing page
+//LANDING PAGE
 
 export const Container = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+min-height: 78vh;
 `
 
 export const InfoText = styled.div`
@@ -14,5 +15,3 @@ background-color: #87cdb3;
 text-align: center;
 margin-bottom: 30px;
 `
-
-

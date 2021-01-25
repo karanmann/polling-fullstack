@@ -19,6 +19,7 @@ const store = configureStore ({ reducer })
 
 const App = () => {
   return (
+    <>
     <BrowserRouter className='App'>
       <Provider store={store}>
         <Navbar />
@@ -45,6 +46,7 @@ const App = () => {
         <Footer />
       </Provider>
     </BrowserRouter>
+    </>
   )
 }
 
