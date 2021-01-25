@@ -3,12 +3,12 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import mongoose from 'mongoose'
 
-const mongoURL = process.env.MONGO_URL || 'mongodb://localhost/polling'
+const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/polling'
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 
 const Polling = mongoose.model('Polling', {
-  pollId: {type: String, required: [true, 'ID could not be generated']},
+  // pollId: {type: String, required: [true, 'ID could not be generated']},
   pollTopic: {type: String, required: true},
   pollOptions: [{
     option: {type: String, required: true},
@@ -49,7 +49,17 @@ app.get('/', (req, res) => {
   res.send('Polling Database')
 })
 
+app.post('/poll', async (req, res) => {
+  try {
+  const { pollTopic, pollOptions } = req.body
+  const poll = await new Polling({ pollTopic, pollOptions }).save()
+    res.status(201).json({ pollId: polling._id})
+  } catch (err) {
+    res.status(400).json({ message: 'Could not create poll', error: err.errors })
+  }
+})
 
+app.get('/summary/:id')
 
 
 // Start the server
