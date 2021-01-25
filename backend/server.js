@@ -49,20 +49,42 @@ app.get('/', (req, res) => {
   res.send('Polling Database')
 })
 
+
 app.post('/poll', async (req, res) => {
   try {
-  const { pollTopic, pollOptions } = req.body
-  const poll = await new Polling({ pollTopic, pollOptions }).save()
-    res.status(201).json({ pollId: polling._id})
+    const { pollTopic, pollOptions } = req.body
+    const poll = await new Polling({ 
+      pollTopic, 
+      pollOptions 
+      }).save()
+    res.status(201).json({ pollId: poll._id})
   } catch (err) {
     res.status(400).json({ message: 'Could not create poll', error: err.errors })
   }
 })
 
-app.get('/summary/:id')
+app.get('/alldata', async (req,res) => {
+  const alldata = await Polling.find().exec()
+  res.json(alldata)
+})
 
+app.get('/summary/:id', async(req, res) => {
+  const summary = await Polling.findOne({pollId: req.params._id})
+  res.json(summary)
+})
+
+var obj = {
+  name: 'myObj'
+};
+
+JSON.stringify(obj);
 
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
 })
+
+
+//Model Working
+//connecting ID
+//Do we need to make more endpoints
