@@ -17,6 +17,7 @@ import { poll } from './reducer/poll'
 const reducer = combineReducers ({poll: poll.reducer})
 const store = configureStore ({ reducer })
 
+
 const App = () => {
   return (
     <>
