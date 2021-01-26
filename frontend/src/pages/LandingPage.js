@@ -1,16 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components/macro'
 import { Button } from '@material-ui/core'
 
 
-import { Container, InfoText } from '../lib/Styling'
+import { Container, InfoText, Image } from '../lib/Styling'
 import hands from '../assets/hands.jpg'
 
-const Image = styled.img`
-  width: 100%;
-  height: auto;
-`
 
 export const LandingPage= () => {
   return (

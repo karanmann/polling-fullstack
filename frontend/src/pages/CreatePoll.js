@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { Button } from '@material-ui/core'
 
 import { poll } from '../reducer/poll'
+import { Container, Form } from '../lib/Styling'
 
 import { Table } from '../components/Table'
 
@@ -43,18 +45,19 @@ export const CreatePoll= () => {
 
   return (
     <>
+    <Container>
       { showTopic && 
         <section>
           <h1>Create poll</h1>
-          <form>
+          <Form>
             <label>
+            Topic
             <input 
             type='text'
             />
-            Topic
             </label>
-            <button onClick={handleShowOptions}>Next step</button>
-          </form>
+            <Button onClick={handleShowOptions} variant='contained' color='primary'>Next step</Button>
+          </Form>
         </section>
       }
       { showOptions && 
@@ -68,7 +71,7 @@ export const CreatePoll= () => {
             />
             <button type='submit'>Add</button>
             <button onClick={handleBackToTopic}>Back</button>
-            <button onClick={handleShowSummary}>Create poll and see summary</button>
+            <Button onClick={handleShowSummary} variant='contained' color='primary'>Create poll and see summary</Button>
           </form>
         </section>
       }
@@ -82,6 +85,7 @@ export const CreatePoll= () => {
           </Link>
         </section>
       }
+    </Container>
     </>
   )
 }
