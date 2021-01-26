@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { poll } from '../reducer/poll'
@@ -9,6 +9,9 @@ import { Table } from '../components/Table'
 
 export const CreatePoll= () => {
   const dispatch = useDispatch()
+  const history = useHistory()
+  const pollId = useSelector((store) => store.poll.pollId)
+  const POLL_URL = 'http://localhost:8080/poll'
 
   // States to handle conditional rendering
   const [showTopic, setShowTopic] = useState(true)
@@ -49,6 +52,34 @@ export const CreatePoll= () => {
     dispatch(poll.actions.addOneOption(newOption))
     setNewOption('')
   }
+
+  // Function to send poll data to the backend
+  const handleFinishPoll = event => {
+    event.preventDefault()
+    const pollTopic = newTopic
+    const pollOptions = allOptions
+    fetch(POLL_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({ pollTopic, pollOptions })
+    })
+      .then((res) => res.json())
+
+      .then((json) => {
+        console.log(json)
+        // if(json.error) {
+        //   throw new Error('Could not create poll')
+        // } else {
+          dispatch(poll.actions.setPollId({pollId: json.pollId}))     
+        // }
+      })
+  }
+
+useEffect(() => {
+  if(pollId) {
+    history.push('/pollinglink')
+  }
+}, [pollId, history])
 
   return (
     <>
@@ -94,7 +125,7 @@ export const CreatePoll= () => {
           <Table />
           <button onClick={handleBackToOptions}>Back</button>
           <Link to='/pollinglink'>
-            <button>Finish and create link</button>
+            <button onClick={handleFinishPoll}>Finish and create link</button>
           </Link>
         </section>
       }

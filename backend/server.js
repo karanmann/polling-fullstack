@@ -12,7 +12,7 @@ const Polling = mongoose.model('Polling', {
   pollTopic: {type: String, required: true},
   pollOptions: [{
     option: {type: String, required: true},
-    optionId: {type: String, unique: true}
+    optionId: {type: Number}
   }]
 }) 
 
@@ -21,7 +21,7 @@ const PollingUsers = mongoose.model('PollingUsers', {
   responseId: {type: String, unique: true, required: true},
   pollId: {type: Number, required: true, unique: true},
   voting: [{
-    optionId: {type: Number, required: true, unique: true},
+    optionId: {type: Number, required: true, unique: true}, //We also get one from the backend
     objectionsPoints: {
       type: Number, 
       range: {
@@ -72,12 +72,6 @@ app.get('/summary/:id', async(req, res) => {
   const summary = await Polling.findOne({pollId: req.params._id})
   res.json(summary)
 })
-
-var obj = {
-  name: 'myObj'
-};
-
-JSON.stringify(obj);
 
 // Start the server
 app.listen(port, () => {
