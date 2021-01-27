@@ -5,16 +5,17 @@ import styled from 'styled-components/macro'
 const NavContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  `
+  margin-bottom: 10px;
+  margin-top: 10px;
+`
 
-  const Logo = styled.h1`
+const Logo = styled.h1`
     font-size: 20px;
-  `
+`
 
-  const NavText = styled.h2`
+const NavText = styled.h2`
     font-size: 16px;
-    
-  `
+`
 
 
 export const Navbar = () => {

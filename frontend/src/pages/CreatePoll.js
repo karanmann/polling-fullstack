@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { Button } from '@material-ui/core'
 
 import { poll } from '../reducer/poll'
-import { Container, Form, InputTopic, InputOptions, AddButton, HeaderPoll } from '../lib/Styling'
+import { Form, InputTopic, InputOptions, AddButton, HeaderPoll, PollContainer } from '../lib/Styling'
 
 import { Table } from '../components/Table'
 
@@ -45,7 +45,7 @@ export const CreatePoll= () => {
 
   return (
     <>
-    <Container>
+    <PollContainer>
       { showTopic && 
         <section>
           <HeaderPoll>Create poll</HeaderPoll>
@@ -86,7 +86,7 @@ export const CreatePoll= () => {
           </Link>
         </section>
       }
-    </Container>
+    </PollContainer>
     </>
   )
 }

@@ -13,6 +13,7 @@ export const InfoText = styled.div`
     background-color: #E5F6F1;
     text-align: center;
     margin-bottom: 50px;
+    padding-bottom: 30px;
 `
 
 export const Image = styled.img`
@@ -38,6 +39,7 @@ export const InputTopic = styled.input`
    margin-bottom: 60px;
    margin-top: 10px;
    display: block;
+   padding: 10px 15px;
 `
 
 export const AddButton = styled.button`
@@ -47,4 +49,10 @@ export const AddButton = styled.button`
 
 export const InputOptions = styled.input`
     margin-bottom: 60px;
+    padding: 10px 15px;
+`
+
+export const PollContainer = styled(Container)`
+    background-color: #E5F6F1;
+    padding-bottom: 30px;
 `
