@@ -1,8 +1,12 @@
+import { Button } from '@material-ui/core'
+
+import { poll } from '../reducer/poll'
+import { Form, InputTopic, InputOptions, AddButton, HeaderPoll, PollContainer } from '../lib/Styling'
+
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { poll } from '../reducer/poll'
 import { Option } from '../components/Option'
 
 import { Table } from '../components/Table'
@@ -83,52 +87,55 @@ useEffect(() => {
 
   return (
     <>
+    <PollContainer>
       { showTopic && 
         <section>
-          <h1>Create poll</h1>
-          <form onSubmit={handleShowOptions}>
-            <label>
-            <input 
-            type='text'
-            value={newTopic}
-            onChange={event => setNewTopic(event.target.value)}
-            />
-            Topic
+          <HeaderPoll>Create poll</HeaderPoll>
+          <Form>
+            <label>Topic of your poll:
+              <InputTopic
+                type='text'
+                value={newTopic}
+                onChange={event => setNewTopic(event.target.value)}
+                required
+              />
             </label>
-            <button type='submit'>Next step</button>
-          </form>
+            <Button onClick={handleShowOptions} variant='contained' color='primary'>Next step</Button>
+          </Form>
         </section>
       }
       { showOptions && 
         <section>
-          <h1>Add options</h1>
-          <form onSubmit={onAddOption}>
-            <input 
-            type='text' 
-            value={newOption}
-            onChange={event => setNewOption(event.target.value)}
+          <HeaderPoll>Add options</HeaderPoll>
+          <Form onSubmit={onAdd}>
+          <div>
+            <InputOptions 
+              type='text' 
+              value={option}
+              onChange={event => setOption(event.target.value)}
             />
-            <button type='submit'>Add</button>
-          </form>
-            {allOptions.map((option) => (
+            <AddButton type='submit'>Add</AddButton></div>
+            <div><Button onClick={handleBackToTopic} variant='contained' color='primary' >Back</Button>
+            <Button onClick={handleShowSummary} variant='contained' color='primary'>Create poll</Button></div>
+          </Form>
+          {allOptions.map((option) => (
               <Option 
                 key={option.id}
                 option={option} />
             ))}
-            <button onClick={handleBackToTopic}>Back</button>
-            <button onClick={handleShowSummary}>Create poll and see summary</button> {/* maybe only 'next step' here */}
         </section>
       }
       { showSummary && 
         <section>
-          <h1>Summary</h1>
+          <HeaderPoll>Summary</HeaderPoll>
           <Table />
-          <button onClick={handleBackToOptions}>Back</button>
+          <Button onClick={handleBackToOptions} variant='contained' color='primary'>Back</Button>
           <Link to='/pollinglink'>
-            <button onClick={handleFinishPoll}>Finish and create link</button>
+            <Button onClick={handleFinishPoll} variant='contained' color='primary'>Finish and create link</Button>
           </Link>
         </section>
       }
+    </PollContainer>
     </>
   )
 }
