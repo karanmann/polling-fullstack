@@ -7,15 +7,15 @@ export const poll = createSlice({
         pollId: null,
         options: [
         { 
-          option: 'Greece',
+          text: 'Greece',
           optionId: 1
         },
         { 
-          option: 'Thailand', 
+          text: 'Thailand', 
           optionId: 2,
         },
         { 
-          option: 'India',
+          text: 'India',
           optionId: 3,
         },
       ]
@@ -26,7 +26,7 @@ export const poll = createSlice({
       },
       addOneOption: (store, action) => {
         const newOption = {
-          option: action.payload,
+          text: action.payload,
           optionId: store.options.length === 0 ? 0 : Math.max(...store.options.map(item => item.optionId)) + 1
         }
         const newOptionList = [...store.options, newOption]
@@ -34,12 +34,12 @@ export const poll = createSlice({
       },
       deleteOneOption: (store, action) => {
         const optionId = action.payload
-        const filteredOptions = store.options.filter(option => option.id !== optionId)
+        const filteredOptions = store.options.filter(option => option.optionId !== optionId)
         store.options = filteredOptions
       },
       changeOneOption: (store, action) => {
         const updatedOption = action.payload
-        const currentOption = store.options.find(option => updatedOption.id === option.id)
+        const currentOption = store.options.find(option => updatedOption.optionId === option.optionId)
         currentOption.text = updatedOption.text
       },
       setPollId: (store, action) => {
@@ -49,3 +49,4 @@ export const poll = createSlice({
       }
     }
 })
+

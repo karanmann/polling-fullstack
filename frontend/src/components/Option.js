@@ -9,7 +9,7 @@ export const Option = ({ option }) => {
   const [changedOption, setChangedOption] = useState(option.text)
 
   const onOptionDelete = () => {
-    dispatch(poll.actions.deleteOneOption(option.id))
+    dispatch(poll.actions.deleteOneOption(option.optionId))
   }
 
   const handleEditOption = () => {
@@ -18,7 +18,7 @@ export const Option = ({ option }) => {
 
   const onOptionChange = () => {
     const updatedOption = {
-      id: option.id,
+      optionId: option.optionId,
       text: changedOption
     }
     dispatch(poll.actions.changeOneOption(updatedOption))

@@ -7,7 +7,7 @@ const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/polling'
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 
-const Polling = mongoose.model('Polling', {
+const Polling = mongoose.model('Polling', {    //Recommended to change to Poll
   // pollId: {type: String, required: [true, 'ID could not be generated']},
   pollTopic: {type: String, required: true},
   pollOptions: [{
@@ -16,9 +16,9 @@ const Polling = mongoose.model('Polling', {
   }]
 }) 
 
-const PollingUsers = mongoose.model('PollingUsers', {
+const PollingUsers = mongoose.model('PollingUsers', {   // Changed to FinishedPoll
   name: {type: String, required: true},
-  responseId: {type: String, unique: true, required: true},
+  responseId: {type: String, unique: true, required: true}, 
   pollId: {type: Number, required: true, unique: true},
   voting: [{
     optionId: {type: Number, required: true, unique: true}, //We also get one from the backend

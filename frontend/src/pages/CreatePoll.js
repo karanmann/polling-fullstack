@@ -1,15 +1,12 @@
-import { Button } from '@material-ui/core'
-
-import { poll } from '../reducer/poll'
-import { Form, InputTopic, InputOptions, AddButton, HeaderPoll, PollContainer } from '../lib/Styling'
-
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { Button } from '@material-ui/core'
 
 import { Option } from '../components/Option'
-
 import { Table } from '../components/Table'
+import { poll } from '../reducer/poll'
+import { Form, InputTopic, InputOptions, AddButton, HeaderPoll, PollContainer } from '../lib/Styling'
 
 export const CreatePoll= () => {
   const dispatch = useDispatch()
@@ -74,7 +71,7 @@ export const CreatePoll= () => {
         // if(json.error) {
         //   throw new Error('Could not create poll')
         // } else {
-          dispatch(poll.actions.setPollId({pollId: json.pollId}))     
+          dispatch(poll.actions.setPollId(json.pollId))     
         // }
       })
   }
@@ -107,21 +104,23 @@ useEffect(() => {
       { showOptions && 
         <section>
           <HeaderPoll>Add options</HeaderPoll>
-          <Form onSubmit={onAdd}>
+          <Form onSubmit={onAddOption}>
           <div>
             <InputOptions 
               type='text' 
-              value={option}
-              onChange={event => setOption(event.target.value)}
+              value={newOption}
+              onChange={event => setNewOption(event.target.value)}
             />
-            <AddButton type='submit'>Add</AddButton></div>
-            <div><Button onClick={handleBackToTopic} variant='contained' color='primary' >Back</Button>
-            <Button onClick={handleShowSummary} variant='contained' color='primary'>Create poll</Button></div>
+            <input type='submit' value='Add'/></div>
           </Form>
-          {allOptions.map((option) => (
+          <div>
+            <Button onClick={handleBackToTopic} variant='contained' color='primary' >Back</Button>
+            <Button onClick={handleShowSummary} variant='contained' color='primary'>Create poll</Button>
+          </div>
+          {allOptions.map((item) => (
               <Option 
-                key={option.id}
-                option={option} />
+                key={item.optionId}
+                option={item} />
             ))}
         </section>
       }

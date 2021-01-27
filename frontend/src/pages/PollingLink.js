@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { poll } from '../reducer/poll'
 
 export const PollingLink= () => {
-  const pollId = useSelector((store) => store.poll.pollId.pollId) // change if we solve the nesting problem
+  const pollId = useSelector((store) => store.poll.pollId) // change if we solve the nesting problem
   const url = `http://localhost:3000/voting/${pollId}`
   return (
     <Container>
