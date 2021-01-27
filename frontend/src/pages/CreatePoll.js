@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { Button } from '@material-ui/core'
 
 import { poll } from '../reducer/poll'
-import { Container, Form } from '../lib/Styling'
+import { Container, Form, InputTopic, InputOptions, AddButton, HeaderPoll } from '../lib/Styling'
 
 import { Table } from '../components/Table'
 
@@ -48,13 +48,13 @@ export const CreatePoll= () => {
     <Container>
       { showTopic && 
         <section>
-          <h1>Create poll</h1>
+          <HeaderPoll>Create poll</HeaderPoll>
           <Form>
-            <label>
-            Topic
-            <input 
-            type='text'
-            />
+            <label>Topic of your poll:
+              <InputTopic
+                type='text'
+                required
+              />
             </label>
             <Button onClick={handleShowOptions} variant='contained' color='primary'>Next step</Button>
           </Form>
@@ -62,26 +62,27 @@ export const CreatePoll= () => {
       }
       { showOptions && 
         <section>
-          <h1>Add options</h1>
-          <form onSubmit={onAdd}>
-            <input 
-            type='text' 
-            value={option}
-            onChange={event => setOption(event.target.value)}
+          <HeaderPoll>Add options</HeaderPoll>
+          <Form onSubmit={onAdd}>
+          <div>
+            <InputOptions 
+              type='text' 
+              value={option}
+              onChange={event => setOption(event.target.value)}
             />
-            <button type='submit'>Add</button>
-            <button onClick={handleBackToTopic}>Back</button>
-            <Button onClick={handleShowSummary} variant='contained' color='primary'>Create poll and see summary</Button>
-          </form>
+            <AddButton type='submit'>Add</AddButton></div>
+            <div><Button onClick={handleBackToTopic} variant='contained' color='primary' >Back</Button>
+            <Button onClick={handleShowSummary} variant='contained' color='primary'>Create poll</Button></div>
+          </Form>
         </section>
       }
       { showSummary && 
         <section>
-          <h1>Summary</h1>
+          <HeaderPoll>Summary</HeaderPoll>
           <Table />
-          <button onClick={handleBackToOptions}>Back</button>
+          <Button onClick={handleBackToOptions} variant='contained' color='primary'>Back</Button>
           <Link to='/pollinglink'>
-            <button>Finish and create link</button>
+            <Button variant='contained' color='primary'>Finish and create link</Button>
           </Link>
         </section>
       }

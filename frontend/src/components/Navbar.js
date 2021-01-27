@@ -7,18 +7,27 @@ const NavContainer = styled.div`
   justify-content: space-around;
   `
 
+  const Logo = styled.h1`
+    font-size: 20px;
+  `
+
+  const NavText = styled.h2`
+    font-size: 16px;
+    
+  `
+
 
 export const Navbar = () => {
   return (
     <NavContainer>
       <NavLink to='/'>
-        <h1>Logo</h1>
+        <Logo>Logo</Logo>
       </NavLink>
       <NavLink to='/about'>
-        <h1>About</h1>
+        <NavText>About</NavText>
       </NavLink>
       <NavLink to='/systemicconsensing'>
-        <h1>Systemic consensing</h1>
+        <NavText>Systemic consensing</NavText>
       </NavLink>
     </NavContainer>
   )

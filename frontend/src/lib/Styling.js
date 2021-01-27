@@ -6,14 +6,13 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
 `
 
 export const InfoText = styled.div`
     width: 100%;
-    background-color: #d6efc7;
+    background-color: #E5F6F1;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 `
 
 export const Image = styled.img`
@@ -25,7 +24,27 @@ export const Image = styled.img`
 
 //CREATE POLL
 
+export const HeaderPoll = styled.h1`
+    text-align: center;
+`
+
 export const Form = styled.div`
     display: flex;  
     flex-direction: column;
+    text-align: center;
+`
+
+export const InputTopic = styled.input`
+   margin-bottom: 60px;
+   margin-top: 10px;
+   display: block;
+`
+
+export const AddButton = styled.button`
+    display: inline-block;
+    margin-left: 10px;
+`
+
+export const InputOptions = styled.input`
+    margin-bottom: 60px;
 `
