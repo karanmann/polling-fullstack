@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button } from '@material-ui/core'
 
 import { Option } from '../components/Option'
-import { Table } from '../components/Table'
+import { Summary } from '../components/Summary'
 import { poll } from '../reducer/poll'
 import { Form, InputTopic, InputOptions, AddButton, HeaderPoll, PollContainer } from '../lib/Styling'
 
@@ -127,7 +127,9 @@ useEffect(() => {
       { showSummary && 
         <section>
           <HeaderPoll>Summary</HeaderPoll>
-          <Table />
+          <Summary 
+            allOptions={allOptions}
+            pollTopic={newTopic}/>
           <Button onClick={handleBackToOptions} variant='contained' color='primary'>Back</Button>
           <Link to='/pollinglink'>
             <Button onClick={handleFinishPoll} variant='contained' color='primary'>Finish and create link</Button>
