@@ -16,13 +16,17 @@ export const PollingLink= () => {
     dispatch(poll.actions.setPollTopic({ topic: ''}))
     dispatch(poll.actions.setPollId(null))
     dispatch(poll.actions.setPollOptions({ options: [] }))
+    
+  const copyLink = () => {
+    document.getElementById('linkUrl').select()
+    document.execCommand('copy')
   }
 
   return (
     <Container>
       <HeaderPoll>Tadaa your link</HeaderPoll>
-      <p>{url}</p>
-      <Button variant='contained' color='secondary'>Copy Link</Button>
+      <input id="linkUrl" defaultValue={url}></input>
+      <Button variant='contained' color='secondary' onClick={() => copyLink()}>Copy Link</Button>
       <Link to='/'>
         <Button onClick={resetState} variant='contained' color='primary'>Back to Start Page</Button>
       </Link>

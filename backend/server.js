@@ -31,7 +31,6 @@ const FinishedPoll= mongoose.model('FinishedPoll', {
   }]
 })
 
-
 // generating the same pollID and OptionID on both dBases
 
 const port = process.env.PORT || 9000
@@ -46,7 +45,6 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => {
   res.send('Polling Database')
 })
-
 
 app.post('/poll', async (req, res) => {
   try {
@@ -69,6 +67,15 @@ app.get('/alldata', async (req,res) => {
 app.get('/summary/:id', async(req, res) => {
   const summary = await Poll.findOne({pollId: req.params._id})
   res.json(summary)
+})
+
+app.get('/poll/:id', async (req, res) => {
+  const currentPoll = await Poll.findById(req.params.id)
+  if (currentPoll) {
+    res.status(201).json(currentPoll)
+  } else {
+    res.status(404).json({ message: 'poll not found', error: err.error })
+  }
 })
 
 // Start the server
