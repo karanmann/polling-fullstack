@@ -7,8 +7,7 @@ const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/polling'
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 
-const Polling = mongoose.model('Polling', {    //Recommended to change to Poll
-  // pollId: {type: String, required: [true, 'ID could not be generated']},
+const Poll = mongoose.model('Poll', {
   pollTopic: {type: String, required: true},
   pollOptions: [{
     option: {type: String, required: true},
@@ -16,7 +15,7 @@ const Polling = mongoose.model('Polling', {    //Recommended to change to Poll
   }]
 }) 
 
-const PollingUsers = mongoose.model('PollingUsers', {   // Changed to FinishedPoll
+const FinishedPoll= mongoose.model('FinishedPoll', {
   name: {type: String, required: true},
   responseId: {type: String, unique: true, required: true}, 
   pollId: {type: Number, required: true, unique: true},
@@ -36,7 +35,7 @@ const PollingUsers = mongoose.model('PollingUsers', {   // Changed to FinishedPo
 
 // generating the same pollID and OptionID on both dBases
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 9000
 const app = express()
 
 // Add middlewares to enable cors and json body parsing
@@ -53,7 +52,7 @@ app.get('/', (req, res) => {
 app.post('/poll', async (req, res) => {
   try {
     const { pollTopic, pollOptions } = req.body
-    const poll = await new Polling({ 
+    const poll = await new Poll({ 
       pollTopic, 
       pollOptions 
       }).save()
@@ -64,12 +63,12 @@ app.post('/poll', async (req, res) => {
 })
 
 app.get('/alldata', async (req,res) => {
-  const alldata = await Polling.find().exec()
+  const alldata = await Poll.find().exec()
   res.json(alldata)
 })
 
 app.get('/summary/:id', async(req, res) => {
-  const summary = await Polling.findOne({pollId: req.params._id})
+  const summary = await Poll.findOne({pollId: req.params._id})
   res.json(summary)
 })
 
@@ -77,8 +76,3 @@ app.get('/summary/:id', async(req, res) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
 })
-
-
-//Model Working
-//connecting ID
-//Do we need to make more endpoints
