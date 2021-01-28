@@ -10,7 +10,7 @@ mongoose.Promise = Promise
 const Poll = mongoose.model('Poll', {
   pollTopic: {type: String, required: true},
   pollOptions: [{
-    option: {type: String, required: true},
+    text: {type: String, required: true},
     optionId: {type: Number}
   }]
 }) 
@@ -56,7 +56,7 @@ app.post('/poll', async (req, res) => {
       pollTopic, 
       pollOptions 
       }).save()
-    res.status(201).json({ pollId: poll._id})
+    res.status(201).json(poll._id)
   } catch (err) {
     res.status(400).json({ message: 'Could not create poll', error: err.errors })
   }
