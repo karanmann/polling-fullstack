@@ -17,7 +17,6 @@ const Poll = mongoose.model('Poll', {
 
 const FinishedPoll= mongoose.model('FinishedPoll', {
   name: {type: String, required: true},
-  responseId: {type: String, unique: true, required: true}, 
   pollId: {type: Number, required: true, unique: true},
   voting: [{
     optionId: {type: Number, required: true, unique: true}, //We also get one from the backend
@@ -56,7 +55,7 @@ app.post('/poll', async (req, res) => {
       pollTopic, 
       pollOptions 
       }).save()
-    res.status(201).json(poll._id)
+    res.status(201).json({pollId: poll._id})
   } catch (err) {
     res.status(400).json({ message: 'Could not create poll', error: err.errors })
   }
