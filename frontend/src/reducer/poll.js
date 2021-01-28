@@ -46,7 +46,15 @@ export const poll = createSlice({
         console.log(action.payload)
         const newId = action.payload
         store.pollId = newId
-      }
+      },
+      setPollTopic: (store, action) => {
+        const { topic } = action.payload
+        store.topic = topic
+      }, 
+      setPollOptions: (store, action) => {
+        const { options } = action.payload
+        store.options = options
+      },
     }
 })
 
