@@ -13,3 +13,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+#linkUrl {
+  font-size: 15px;
+  border-radius: 8px;
+  width: 50%;
+  
+}

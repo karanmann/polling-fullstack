@@ -31,7 +31,6 @@ const FinishedPoll= mongoose.model('FinishedPoll', {
   }]
 })
 
-
 // generating the same pollID and OptionID on both dBases
 
 const port = process.env.PORT || 9000
@@ -46,7 +45,6 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => {
   res.send('Polling Database')
 })
-
 
 app.post('/poll', async (req, res) => {
   try {
