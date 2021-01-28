@@ -13,9 +13,9 @@ export const PollingLink= () => {
   const url = `http://localhost:3000/voting/${pollId}`
 
   const resetState = () => {
-    dispatch(poll.actions.setPollTopic({ topic: ''} ))
+    dispatch(poll.actions.setPollTopic({ topic: ''}))
     dispatch(poll.actions.setPollId(null))
-    dispatch(poll.actions.setPollOptions({options: '' }))
+    dispatch(poll.actions.setPollOptions({ options: [] }))
   }
 
   return (
