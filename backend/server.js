@@ -69,6 +69,15 @@ app.get('/summary/:id', async(req, res) => {
   res.json(summary)
 })
 
+app.get('/poll/:id', async (req, res) => {
+  const currentPoll = await Poll.findById(req.params.id)
+  if (currentPoll) {
+    res.status(201).json(currentPoll)
+  } else {
+    res.status(404).json({ message: 'poll not found', error: err.error })
+  }
+})
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
