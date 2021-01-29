@@ -1,18 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
+import { voting } from '../reducer/voting'
 
 export const Voting= () => {
+  const dispatch = useDispatch()
   const { id } = useParams()
   const [ pollDetails, setPollDetails ] = useState({})
+  const [ name, setName ] = useState('')
   const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
   const points = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+  const storePollId = () => {
+    dispatch(voting.actions.addPollId(id))
+  }
+
+
+  const handleSubmit = () => {
+    dispatch(voting.actions.addName(name))
+  }
 
   useEffect(() => {
     fetch(POLLDETAILS_URL)
     .then(res => res.json())
     .then((json) => {
       setPollDetails(json)
+      storePollId()
     })
   }, [POLLDETAILS_URL])
 
@@ -22,7 +36,7 @@ export const Voting= () => {
   return (
     <>
       <h1>{pollDetails.pollTopic}</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         {pollDetails.pollOptions?.map((item) => (
           <label>{item.text}
               <select>
@@ -32,8 +46,18 @@ export const Voting= () => {
               </select>
             </label>
         ))}
+        <label>
+          Your name: 
+          <input 
+            type='text'
+            value={name}
+            onChange={event => setName(event.target.value)} 
+            placeholder='name'
+            required>
+          </input>
+        </label>
+        <input type='submit' value='Submit your answer and see results'/>
       </form>
-      <button>Submit your answer and see results</button>
       <button>Only see results</button>
     </>
   )
