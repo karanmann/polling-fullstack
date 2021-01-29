@@ -20,6 +20,7 @@ export const Image = styled.img`
     width: 100%;
     height: auto;
     margin-top: 100px;
+    margin-bottom: 0
 `
 
 
@@ -55,4 +56,28 @@ export const InputOptions = styled.input`
 export const PollContainer = styled(Container)`
     background-color: #E5F6F1;
     padding-bottom: 30px;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+`
+
+// component OPTION
+export const OptionsContainer = styled.div`
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center
+`
+export const AddOption = styled.div`
+  display: flex;
+  flex-direction:row;
+  justify-content: space-evenly;
+  align-items: center
+`
+
+export const OptionText = styled.div`
+width: 300px
+`
+
+export const OptionButton = styled.div`
 `

@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core'
 import { Option } from '../components/Option'
 import { Summary } from '../components/Summary'
 import { poll } from '../reducer/poll'
-import { Form, InputTopic, InputOptions, AddButton, HeaderPoll, PollContainer } from '../lib/Styling'
+import { Form, InputTopic, InputOptions, HeaderPoll, PollContainer } from '../lib/Styling'
 
 export const CreatePoll= () => {
   const dispatch = useDispatch()
