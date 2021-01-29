@@ -2,6 +2,12 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { poll } from '../reducer/poll'
+import { 
+  AddOption, 
+  OptionText, 
+  OptionButton, 
+  OptionsContainer 
+  } from '../lib/Styling'
 
 export const Option = ({ option }) => {
   const dispatch = useDispatch()
@@ -26,25 +32,33 @@ export const Option = ({ option }) => {
   }
 
   return (
-    <>
+    <OptionsContainer>
       {textOkay && 
-        <>
-          <p>{option.text}</p>
-          <button onClick={handleEditOption}>Edit</button>
-          <button onClick={onOptionDelete}>Delete</button>
-        </>
+        <AddOption>
+          <OptionText>
+            <p>{option.text}</p>
+          </OptionText>
+          <OptionButton>
+            <button onClick={handleEditOption}>✍️ Edit</button>
+            <button onClick={onOptionDelete}>🗑️ Delete</button>
+          </OptionButton>
+        </AddOption>
       }
       {!textOkay && 
-        <>
-          <input 
+        <AddOption>
+          <OptionText>
+            <input 
             type="text"
             value={changedOption}
             onChange={event => setChangedOption(event.target.value)}
           />
-          <button onClick={onOptionChange}>Done</button>
-          <button onClick={onOptionDelete}>Delete</button>
-        </>
+          </OptionText>
+          <OptionButton>
+            <button onClick={onOptionChange}>✔️ Done</button>
+            <button onClick={onOptionDelete}>🗑️ Delete</button>
+          </OptionButton>
+        </AddOption>
       }
-    </>
+    </OptionsContainer>
   )
 }

@@ -7,11 +7,10 @@ const FooterContainer = styled.footer`
   align-items: center;
   background-color: black;
   color: white;
-  position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;
-  padding-top: 30px;
+  height: 60px;
+  padding: 30px 0;
   text-align: center;
 `
 
@@ -19,7 +18,7 @@ const FooterContainer = styled.footer`
 export const Footer= () => {
   return (
     <FooterContainer>
-      <p>Made by Karan Mann, Ingela Löfgren, Henrike Wiemker</p>
+      <p>🦊 © Made by Karan Mann, Ingela Löfgren, Henrike Wiemker 🦊</p>
     </FooterContainer>
   )
 }
