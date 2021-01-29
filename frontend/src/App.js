@@ -13,8 +13,12 @@ import { VotingResults } from './pages/VotingResults'
 import { Footer } from './components/Footer'
 import { About } from './pages/About'
 import { poll } from './reducer/poll'
+import { voting } from './reducer/voting'
 
-const reducer = combineReducers ({poll: poll.reducer})
+const reducer = combineReducers ({
+  poll: poll.reducer, 
+  voting: voting.reducer
+})
 const store = configureStore ({ reducer })
 
 

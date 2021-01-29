@@ -64,10 +64,10 @@ app.get('/alldata', async (req,res) => {
   res.json(alldata)
 })
 
-app.get('/summary/:id', async(req, res) => {
-  const summary = await Poll.findOne({pollId: req.params._id})
-  res.json(summary)
-})
+// app.get('/summary/:id', async(req, res) => {
+//   const summary = await Poll.findOne({pollId: req.params._id})
+//   res.json(summary)
+// })
 
 app.get('/poll/:id', async (req, res) => {
   const currentPoll = await Poll.findById(req.params.id)
