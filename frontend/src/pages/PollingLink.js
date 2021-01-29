@@ -17,7 +17,7 @@ export const PollingLink= () => {
     dispatch(poll.actions.setPollId(null))
     dispatch(poll.actions.setPollOptions({ options: [] }))
   }
-  
+    
   const copyLink = () => {
     document.getElementById('linkUrl').select()
     document.execCommand('copy')
