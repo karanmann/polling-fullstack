@@ -17,16 +17,11 @@ const Poll = mongoose.model('Poll', {
 
 const FinishedPoll= mongoose.model('FinishedPoll', {
   name: {type: String, required: true},
-  pollId: {type: Number, required: true, unique: true},
+  pollId: {type: String, required: true, unique: true},
   voting: [{
-    optionId: {type: Number, required: true, unique: true}, //We also get one from the backend
+    optionId: {type: String, required: true, unique: true}, //We also get one from the backend
     objectionsPoints: {
-      type: Number, 
-      range: {
-        type: Number,
-        min: {type: Number, min: 1},
-        max: {type: Number, max: 10}
-      }
+      type: Number
     }
   }]
 })

@@ -12,6 +12,7 @@ export const Voting= () => {
   // const [ name, setName ] = useState('')
   const [ state, setState ] = useState({ voting: [] })
   const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
+  const FINISHED_POLL_URL = `http://localhost:9000/finishedPoll`
   const points = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   const storePollId = () => {
@@ -23,6 +24,15 @@ export const Voting= () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    fetch(FINISHED_POLL_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(state)
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json)
+    })
     console.log(state)
   }
 
@@ -79,7 +89,6 @@ export const Voting= () => {
             value={state.example}
             onChange={handleNameInput} 
             placeholder='Enter your name ...'
-
             required>
           </input>
         </YourName>
