@@ -3,7 +3,6 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 
-import './App.css'
 import { Navbar } from './components/Navbar'
 import { LandingPage } from './pages/LandingPage'
 import { CreatePoll } from './pages/CreatePoll'

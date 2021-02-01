@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button } from '@material-ui/core'
 
 import { Option } from '../components/Option'
 import { Summary } from '../components/Summary'
 import { poll } from '../reducer/poll'
-import { Form, InputTopic, InputOptions, HeaderPoll, PollContainer } from '../lib/Styling'
+import { 
+  Form, 
+  InputTopic, 
+  InputOptions, 
+  HeaderPoll, 
+  PollContainer, 
+  NavigationButton, 
+  NavigationButtonBack, 
+  SummaryButtons,
+  NavigationInput
+  } from '../lib/Styling'
 
 export const CreatePoll= () => {
   const dispatch = useDispatch()
@@ -97,7 +106,7 @@ useEffect(() => {
                 required
               />
             </label>
-            <Button onClick={handleShowOptions} variant='contained' color='primary'>Next step</Button>
+            <NavigationButton onClick={handleShowOptions}>Next step</NavigationButton>
           </Form>
         </section>
       }
@@ -111,17 +120,18 @@ useEffect(() => {
               value={newOption}
               onChange={event => setNewOption(event.target.value)}
             />
-            <input type='submit' value='Add'/></div>
-          </Form>
-          <div>
-            <Button onClick={handleBackToTopic} variant='contained' color='primary' >Back</Button>
-            <Button onClick={handleShowSummary} variant='contained' color='primary'>Create poll</Button>
+            <NavigationInput type='submit' value='Add'/>
           </div>
+          </Form>
           {allOptions.map((item) => (
               <Option 
                 key={item.optionId}
                 option={item} />
             ))}
+          <SummaryButtons>
+            <NavigationButtonBack onClick={handleBackToTopic}>Back</NavigationButtonBack>
+            <NavigationButton onClick={handleShowSummary}>Create poll</NavigationButton>
+          </SummaryButtons>
         </section>
       }
       { showSummary && 
@@ -130,10 +140,12 @@ useEffect(() => {
           <Summary 
             allOptions={allOptions}
             pollTopic={newTopic}/>
-          <Button onClick={handleBackToOptions} variant='contained' color='primary'>Back</Button>
-          <Link to='/pollinglink'>
-            <Button onClick={handleFinishPoll} variant='contained' color='primary'>Finish and create link</Button>
-          </Link>
+          <SummaryButtons>
+            <NavigationButtonBack onClick={handleBackToOptions}>Back</NavigationButtonBack>
+            <Link to='/pollinglink'>
+              <NavigationButton onClick={handleFinishPoll}>Finish and create link</NavigationButton>
+            </Link>
+          </SummaryButtons>
         </section>
       }
     </PollContainer>

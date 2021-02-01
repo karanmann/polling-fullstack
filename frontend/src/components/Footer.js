@@ -1,19 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-
-const FooterContainer = styled.footer`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  color: white;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  padding: 30px 0;
-  text-align: center;
-`
-
+import { FooterContainer } from '../lib/Styling'
 
 export const Footer= () => {
   return (
