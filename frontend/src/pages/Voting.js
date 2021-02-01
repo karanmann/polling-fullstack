@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import { voting } from '../reducer/voting'
@@ -7,6 +7,7 @@ import { VotingContainer, VotingForm, NavigationButton, NavigationInput, YourNam
 
 export const Voting= () => {
   const dispatch = useDispatch()
+   const history = useHistory()
   const { id } = useParams()
   const [ pollDetails, setPollDetails ] = useState({})
   // const [ name, setName ] = useState('')
@@ -24,6 +25,7 @@ export const Voting= () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    
     fetch(FINISHED_POLL_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
@@ -31,7 +33,7 @@ export const Voting= () => {
     })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json)
+      history.push(`/voting/${id}/results`)
     })
     console.log(state)
   }

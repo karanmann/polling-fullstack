@@ -17,9 +17,9 @@ const Poll = mongoose.model('Poll', {
 
 const FinishedPoll= mongoose.model('FinishedPoll', {
   name: {type: String, required: true},
-  pollId: {type: String, required: true, unique: true},
+  pollId: {type: String, required: true },
   voting: [{
-    optionId: {type: String, required: true, unique: true}, //We also get one from the backend
+    optionId: {type: String, required: true }, //We also get one from the backend
     objectionsPoints: {
       type: Number
     }
@@ -85,6 +85,23 @@ app.post('/finishedpoll', async (req, res) => {
   } catch(err) { 
     res.status(400).json({message: 'Could not send voting', error: err.errors})}
 })
+
+app.get('/finishedpoll/:pollId', async( req, res) => {
+  const pollId = req.params.pollId
+  const allFinishedPolls = await FinishedPoll.find()
+  const finishedPolls = allFinishedPolls.filter((item) => item.pollId === pollId)
+
+  res.status(201).json({finishedPolls})
+})
+
+
+
+
+
+
+
+
+
 
 // Start the server
 app.listen(port, () => {
