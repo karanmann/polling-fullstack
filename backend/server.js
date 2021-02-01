@@ -78,6 +78,19 @@ app.get('/poll/:id', async (req, res) => {
   }
 })
 
+app.post('/finishedpoll', async (req, res) => {
+  try {
+  const { name, pollId, voting } = req.body
+  const finishedpoll = await new FinishedPoll({
+    name,
+    pollId,
+    voting
+  }).save()
+    res.status(201).json({message: 'Voting successful'})
+  } catch(err) { 
+    res.status(400).json({message: 'Could not send voting', error: err.errors})}
+})
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)

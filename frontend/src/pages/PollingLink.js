@@ -30,7 +30,7 @@ export const PollingLink= () => {
   return (
     <LinkContainer>
       <HeaderPoll>Tadaa your link</HeaderPoll>
-      <LinkInput defaultValue={url}></LinkInput>
+      <LinkInput id='linkUrl' defaultValue={url}></LinkInput>
       <NavigationButton onClick={() => copyLink()}>Copy Link</NavigationButton>
       <Link to='/'>
         <NavigationButtonBack>Back to Start Page</NavigationButtonBack>
