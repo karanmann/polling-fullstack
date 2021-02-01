@@ -9,16 +9,38 @@ export const Voting= () => {
   const dispatch = useDispatch()
   const { id } = useParams()
   const [ pollDetails, setPollDetails ] = useState({})
-  const [ name, setName ] = useState('')
+  // const [ name, setName ] = useState('')
+  const [ state, setState ] = useState({ voting: [] })
   const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
   const points = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   const storePollId = () => {
-    dispatch(voting.actions.addPollId(id))
+    setState({
+      ...state,
+      pollId: id
+    })
   }
 
-  const handleSubmit = () => {
-    dispatch(voting.actions.addName(name))
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log(state)
+  }
+
+  const handleSelect = (event) => {
+    setState({
+      ...state,
+      ...state.voting.push({
+        optionId: event.target.name,
+        objectionPoints: event.target.value
+      })
+    })
+  }
+
+  const handleNameInput = (event) => {
+    setState({
+      ...state,
+      [event.target.name]: event.target.value
+    })
   }
 
   useEffect(() => {
@@ -39,7 +61,10 @@ export const Voting= () => {
       <VotingForm onSubmit={handleSubmit}>
         {pollDetails.pollOptions?.map((item) => (
           <label>{item.text}
-              <select>
+              <select 
+                onChange={handleSelect} 
+                name={item._id}
+              >
                 {points.map((point) => (
                   <option value={point}>{point}</option>
                 ))}
@@ -50,9 +75,11 @@ export const Voting= () => {
           <p>Your name:</p>
           <input
             type='text'
-            value={name}
-            onChange={event => setName(event.target.value)} 
+            name='name'
+            value={state.example}
+            onChange={handleNameInput} 
             placeholder='Enter your name ...'
+
             required>
           </input>
         </YourName>
