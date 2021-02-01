@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import { voting } from '../reducer/voting'
+import { VotingContainer, VotingForm, NavigationButton, NavigationInput, YourName, InputOptions } from '../lib/Styling'
 
 export const Voting= () => {
   const dispatch = useDispatch()
@@ -55,9 +56,9 @@ export const Voting= () => {
   console.log("polldetails", pollDetails)
 
   return (
-    <>
+    <VotingContainer>
       <h1>{pollDetails.pollTopic}</h1>
-      <form onSubmit={handleSubmit}>
+      <VotingForm onSubmit={handleSubmit}>
         {pollDetails.pollOptions?.map((item) => (
           <label>{item.text}
               <select 
@@ -70,20 +71,21 @@ export const Voting= () => {
               </select>
             </label>
         ))}
-        <label>
-          Your name: 
-          <input 
+        <YourName>
+          <p>Your name:</p>
+          <input
             type='text'
             name='name'
             value={state.example}
             onChange={handleNameInput} 
-            placeholder='name'
+            placeholder='Enter your name ...'
+
             required>
           </input>
-        </label>
-        <input type='submit' value='Submit your answer and see results'/>
-      </form>
-      <button>Only see results</button>
-    </>
+        </YourName>
+        <NavigationInput type='submit' value='Submit your answer and see results'/>
+      </VotingForm>
+      <NavigationButton>Only see results</NavigationButton>
+    </VotingContainer>
   )
 }

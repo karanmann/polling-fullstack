@@ -1,11 +1,15 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Button } from '@material-ui/core'
-
-import {  HeaderPoll, Container } from '../lib/Styling'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { poll } from '../reducer/poll'
+
+import {
+  LinkInput,
+  HeaderPoll, 
+  LinkContainer, 
+  NavigationButton,
+  NavigationButtonBack } from '../lib/Styling'
 
 export const PollingLink= () => {
   const dispatch = useDispatch()
@@ -24,13 +28,13 @@ export const PollingLink= () => {
   }
 
   return (
-    <Container>
+    <LinkContainer>
       <HeaderPoll>Tadaa your link</HeaderPoll>
-      <input id="linkUrl" defaultValue={url}></input>
-      <Button variant='contained' color='secondary' onClick={() => copyLink()}>Copy Link</Button>
+      <LinkInput defaultValue={url}></LinkInput>
+      <NavigationButton onClick={() => copyLink()}>Copy Link</NavigationButton>
       <Link to='/'>
-        <Button onClick={resetState} variant='contained' color='primary'>Back to Start Page</Button>
+        <NavigationButtonBack>Back to Start Page</NavigationButtonBack>
       </Link>
-    </Container>
+      </LinkContainer>
   )
 }
