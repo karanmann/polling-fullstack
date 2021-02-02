@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-import { voting } from '../reducer/voting'
-import { VotingContainer, VotingForm, NavigationButton, NavigationInput, YourName, InputOptions } from '../lib/Styling'
+import { VotingContainer, VotingForm, NavigationButton, NavigationInput, YourName } from '../lib/Styling'
 
 export const Voting= () => {
-  const dispatch = useDispatch()
   const history = useHistory()
   const { id } = useParams()
   const [ pollDetails, setPollDetails ] = useState({})

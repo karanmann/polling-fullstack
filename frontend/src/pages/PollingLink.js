@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { poll } from '../reducer/poll'
@@ -33,7 +33,7 @@ export const PollingLink= () => {
       <LinkInput id='linkUrl' defaultValue={url}></LinkInput>
       <NavigationButton onClick={() => copyLink()}>Copy Link</NavigationButton>
       <Link to='/'>
-        <NavigationButtonBack>Back to Start Page</NavigationButtonBack>
+        <NavigationButtonBack onClick={resetState} >Back to Start Page</NavigationButtonBack>
       </Link>
       </LinkContainer>
   )

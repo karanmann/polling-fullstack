@@ -1,7 +1,5 @@
-import React from 'react'
-
 export const VotingDummy = () => {
-    const poll = { 
+ /*    const poll = { 
         _id: '123',
         pollTopic: 'Example Poll',
         pollOptions: [{
@@ -17,7 +15,7 @@ export const VotingDummy = () => {
             text: 'Third option'
         }
     ]
-    }
+    } */
     const finishedPolls = [
         {
            name: 'Bob',
@@ -105,5 +103,5 @@ export const VotingDummy = () => {
     //   523: [7,3,2]
     // }
 
-    return null
+    // return null
 }

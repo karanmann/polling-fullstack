@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
-import { Table } from '../components/Table'
 
 import { VotingDummy } from '../components/VotingDummy'
 
