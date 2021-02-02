@@ -276,7 +276,7 @@ export const FooterContainer = styled.footer`
 
 export const IconImage = styled.img`
   height: 30px;
-  width: 30px
+  width: 30px,
 `
 
 export const IconButton = styled.button`

@@ -97,6 +97,11 @@ export const VotingDummy = () => {
     };
     console.log(result)
 
+
+    const result = {}; xAsValuesArray.map(item => { result[item[0]] = item[1].reduce((a, b) => a + b); });
+
+    const xAsValuesArray = Object.entries(x);
+
     // {
     //   456: [2,5,8],
     //   789: [8,5,1],
