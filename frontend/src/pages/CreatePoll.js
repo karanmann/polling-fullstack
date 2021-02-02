@@ -14,7 +14,8 @@ import {
   NavigationButton, 
   NavigationButtonBack, 
   SummaryButtons,
-  NavigationInput
+  NavigationInput,
+  OptionButtons,
   } from '../lib/Styling'
 
 export const CreatePoll= () => {
@@ -120,14 +121,16 @@ useEffect(() => {
               value={newOption}
               onChange={event => setNewOption(event.target.value)}
             />
-            <NavigationInput type='submit' value='Add'/>
+            <NavigationInput type='submit' value='➕'/>
           </div>
           </Form>
-          {allOptions.map((item) => (
-              <Option 
-                key={item.optionId}
-                option={item} />
-            ))}
+          <OptionButtons>
+            {allOptions.map((item) => (
+                <Option 
+                  key={item.optionId}
+                  option={item} />
+              ))}
+          </OptionButtons>
           <SummaryButtons>
             <NavigationButtonBack onClick={handleBackToTopic}>Back</NavigationButtonBack>
             <NavigationButton onClick={handleShowSummary}>Create poll</NavigationButton>

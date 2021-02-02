@@ -7,8 +7,6 @@ export const NavContainer = styled.div`
   justify-content: space-around;
   margin-bottom: 10px;
   margin-top: 10px;
-  background: #304ffe;
-  color: white;
   margin:0;
   padding: 20px
 `
@@ -22,12 +20,12 @@ export const LogoContainer = styled.div `
 
 export const Logo = styled.h1`
   font-size: 20px;
+  text-decoration: none;
 `
 
 export const NavText = styled.h2`
   font-size: 20px;
-  color: white;
-  text-decoration: none
+  color: #364177;
 `
 
 export const NavbarLinks = styled.div`
@@ -35,46 +33,72 @@ export const NavbarLinks = styled.div`
   flex-direction: row;
   align-items:center;
   justify-content: space-around;
-  width:50%;
+  width: 50%;
 `
+
+
 export const LinkButton = styled.div`
   padding: 5px 15px;
   border-radius: 30px;
   &:hover {
-    background-color:#6200ea
+    text-decoration: underline;
   }
 
 `
-
 
 //LANDING PAGE
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 550px
+  height: auto;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    height: 550px;
+  }
 `
 export const InfoImage = styled.div`
-  padding:0 30px;
-  width: 30%;
+  width: 90%;
+
+  @media (min-width: 1200px) {
+    width: 30%;
+  }
   `
 export const InfoText = styled.div`
-  width: 50%;
+  width: 100%;
   background-color: #E5F6F1;
   text-align: center;
+  font-size: 14px;
+
+@media (min-width: 1200px) {
+  width: 50%;
   padding: 30px 50px;
   font-size: 20px;
   border-radius: 40px;
   margin-right: 30px;
+}
+`
+
+export const InfoTextH1 = styled.h1`
+  margin-bottom: 0;
+`
+
+export const InfoTextP = styled.p`
+  margin-top: 0;
+  padding: 0px 10%
 `
 
 export const Image = styled.img`
   width: 100%;
-  height: auto;
+  
+  @media (min-width: 1200px) {
+  width: 100%;
   margin-top: 100px;
   margin-bottom: 0;
+  }
 `
 
 export const NavigationButton = styled.button `
@@ -84,7 +108,7 @@ export const NavigationButton = styled.button `
   border: none;
   padding: 15px 25px;
   opacity: 0.8;
-  font-size: 20px;
+  font-size: 18px;
   &:hover {
       opacity: 1
     }
@@ -102,6 +126,7 @@ export const NavigationButtonBack = styled.button `
       opacity: 1
     }
 `
+
 
 //CREATE POLL
 
@@ -137,7 +162,7 @@ export const InputOptions = styled.input`
 export const PollContainer = styled(Container)`
   background-color: #E5F6F1;
   padding-bottom: 30px;
-  height: 550px;
+  height: fit-content;
   display: flex;
   justify-content: center;
 `
@@ -150,15 +175,20 @@ export const SummaryButtons = styled.div`
 `
 
 export const NavigationInput = styled.input `
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   background-color: #fdd835;
   border: none;
-  padding: 15px 25px;
   opacity: 0.8;
-  font-size: 20px;
+  font-size: 12px;
+  width: 35px;
+  height: 35px;
   &:hover {
       opacity: 1
     }
+`
+
+export const OptionButtons = styled.div`
+  padding: 0 50px
 `
 
 
@@ -173,14 +203,24 @@ export const AddOption = styled.div`
   display: flex;
   flex-direction:row;
   justify-content: space-evenly;
-  align-items: center
+  align-items: center;
+  margin-bottom: 10px
 `
-
+export const AddOptionInput = styled.input`
+  border: none;
+  margin-right: 20px;
+  width: 50%;
+  padding: 10px 15px;
+  font-size: 12px
+`
 export const OptionText = styled.div`
-  width: 300px
+  width: 200px;
 `
 
 export const OptionButton = styled.div`
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly
 `
 
 //LINK PAGE
@@ -225,11 +265,21 @@ export const FooterContainer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: #364177;
   color: white;
   bottom: 0;
   width: 100%;
   height: 60px;
   padding: 30px 0;
   text-align: center;
+`
+
+export const IconImage = styled.img`
+  height: 30px;
+  width: 30px
+`
+
+export const IconButton = styled.button`
+  border: none;
+  margin: 0 10px
 `

@@ -12,21 +12,21 @@ export const Navbar = () => {
   return (
     <NavContainer>
       <LogoContainer>
-        <NavLink to='/'>
+        <NavLink to='/' style={{ textDecoration: 'none' }}>
           <LinkButton>
             <NavText>HOME</NavText>
           </LinkButton>
         </NavLink>
       </LogoContainer>
       <NavbarLinks>
-        <NavLink to='/about'>
+        <NavLink to='/about' style={{ textDecoration: 'none' }}>
           <LinkButton>
             <NavText>ABOUT</NavText>
           </LinkButton>
         </NavLink>
-        <NavLink to='/systemicconsensing'>
+        <NavLink to='/systemicconsensing' style={{ textDecoration: 'none' }}>
             <LinkButton>
-              <NavText>SYSTEMIC CONCENSING</NavText>
+              <NavText>SYSTEMIC CONSENSING</NavText>
             </LinkButton>
         </NavLink>
       </NavbarLinks>

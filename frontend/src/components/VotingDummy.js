@@ -22,7 +22,8 @@ export const VotingDummy = () => {
         {
            name: 'Bob',
            pollId: '123',
-           voting: [
+           voting: 
+           [
                {
                    optionId: '456',
                    objectionsPoints: 2,
@@ -42,7 +43,8 @@ export const VotingDummy = () => {
         {
             name: 'Ann',
             pollId: '123',
-            voting: [
+            voting: 
+            [
                 {
                     optionId: '456',
                     objectionsPoints: 5,
@@ -61,7 +63,8 @@ export const VotingDummy = () => {
          {
             name: 'Kim',
             pollId: '123',
-            voting: [
+            voting: 
+            [
                 {
                     optionId: '456',
                     objectionsPoints: 8,
@@ -78,13 +81,14 @@ export const VotingDummy = () => {
          }
     ]
 
-    const finalData = [
+   /*  const finalData = [
         finishedPoll.map((item) => item.voting.map((vote) => vote.optionId))
     ]
-
+ */
     const result = {}
-    finishedPolls.forEach(arr => {
-      arr.forEach(obj => {
+    // finishedPolls.forEach(arr => {
+    for (let i = 0; i < finishedPolls.length; i++) {
+      finishedPolls[i].voting.forEach(obj => {
         const {optionId, objectionsPoints} = obj
         if (result[optionId]) {
           result[optionId].push(objectionsPoints)
@@ -92,11 +96,14 @@ export const VotingDummy = () => {
           result[optionId] = [objectionsPoints]
        }
       })
-    });
+    };
+    console.log(result)
 
     // {
     //   456: [2,5,8],
     //   789: [8,5,1],
     //   523: [7,3,2]
     // }
+
+    return null
 }

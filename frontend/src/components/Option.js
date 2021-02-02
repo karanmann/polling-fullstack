@@ -6,8 +6,15 @@ import {
   AddOption, 
   OptionText, 
   OptionButton, 
-  OptionsContainer 
+  OptionsContainer,
+  IconImage,
+  IconButton,
+  AddOptionInput
   } from '../lib/Styling'
+
+  import editicon from '../assets/pencil.svg'
+  import deleteicon from '../assets/delete.svg'
+  import confirmicon from '../assets/check.svg'
 
 export const Option = ({ option }) => {
   const dispatch = useDispatch()
@@ -39,23 +46,31 @@ export const Option = ({ option }) => {
             <p>{option.text}</p>
           </OptionText>
           <OptionButton>
-            <button onClick={handleEditOption}>✍️ Edit</button>
-            <button onClick={onOptionDelete}>🗑️ Delete</button>
+            <IconButton onClick={handleEditOption}>
+              <IconImage src={editicon} alt='edit'/>
+            </IconButton>
+            <IconButton onClick={onOptionDelete}>
+              <IconImage src={deleteicon} alt='edit'/>
+            </IconButton>
           </OptionButton>
         </AddOption>
       }
       {!textOkay && 
         <AddOption>
           <OptionText>
-            <input 
+            <AddOptionInput
             type="text"
             value={changedOption}
             onChange={event => setChangedOption(event.target.value)}
           />
           </OptionText>
           <OptionButton>
-            <button onClick={onOptionChange}>✔️ Done</button>
-            <button onClick={onOptionDelete}>🗑️ Delete</button>
+            <IconButton onClick={onOptionChange}>
+              <IconImage src={confirmicon} alt='edit'/>
+            </IconButton>
+            <IconButton onClick={onOptionDelete}>
+              <IconImage src={deleteicon} alt='edit'/>
+            </IconButton>
           </OptionButton>
         </AddOption>
       }
