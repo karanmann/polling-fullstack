@@ -14,6 +14,8 @@ import { About } from './pages/About'
 import { poll } from './reducer/poll'
 import { voting } from './reducer/voting'
 
+import {VotingDummy} from './components/VotingDummy'
+
 const reducer = combineReducers ({
   poll: poll.reducer, 
   voting: voting.reducer
@@ -45,6 +47,10 @@ const App = () => {
           </Route>
           <Route path='/about'> 
             <About />
+          </Route>
+          {/* this next route only during development process for the voting dummy */}
+          <Route path='/dummy'>
+            <VotingDummy />
           </Route>
         </Switch>
         <Footer />
