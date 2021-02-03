@@ -8,7 +8,6 @@ export const NavContainer = styled.div`
   margin-bottom: 10px;
   margin-top: 10px;
   margin:0;
-  padding: 20px
 `
 
 export const LogoContainer = styled.div `
@@ -24,7 +23,7 @@ export const Logo = styled.h1`
 `
 
 export const NavText = styled.h2`
-  font-size: 20px;
+  font-size: 14px;
   color: #364177;
 `
 
@@ -83,7 +82,8 @@ export const InfoText = styled.div`
 `
 
 export const InfoTextH1 = styled.h1`
-  margin-bottom: 0;
+  margin-bottom: 20px;
+
 `
 
 export const InfoTextP = styled.p`
@@ -121,7 +121,7 @@ export const NavigationButtonBack = styled.button `
   border: none;
   padding: 15px 25px;
   opacity: 0.8;
-  font-size: 20px;
+  font-size: 18px;
   &:hover {
       opacity: 1
     }
@@ -162,11 +162,15 @@ export const InputOptions = styled.input`
 export const PollContainer = styled(Container)`
   background-color: #E5F6F1;
   padding-bottom: 30px;
-  height: fit-content;
   display: flex;
   justify-content: center;
+  min-height: 100%;
+  position: relative
 `
 
+export const CreatePollContainer = styled.section`
+  height: fit-content
+`
 export const SummaryButtons = styled.div`
   margin-top: 50px;
   display: flex;
@@ -270,8 +274,10 @@ export const FooterContainer = styled.footer`
   bottom: 0;
   width: 100%;
   height: 60px;
-  padding: 30px 0;
+  padding: 10px 0;
   text-align: center;
+  position: absolute;
+  bottom: 0
 `
 
 export const IconImage = styled.img`

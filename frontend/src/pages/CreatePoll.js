@@ -16,6 +16,7 @@ import {
   SummaryButtons,
   NavigationInput,
   OptionButtons,
+  CreatePollContainer
   } from '../lib/Styling'
 
 export const CreatePoll= () => {
@@ -112,7 +113,7 @@ useEffect(() => {
         </section>
       }
       { showOptions && 
-        <section>
+        <CreatePollContainer>
           <HeaderPoll>Add options</HeaderPoll>
           <Form onSubmit={onAddOption}>
           <div>
@@ -135,7 +136,7 @@ useEffect(() => {
             <NavigationButtonBack onClick={handleBackToTopic}>Back</NavigationButtonBack>
             <NavigationButton onClick={handleShowSummary}>Create poll</NavigationButton>
           </SummaryButtons>
-        </section>
+        </CreatePollContainer>
       }
       { showSummary && 
         <section>
