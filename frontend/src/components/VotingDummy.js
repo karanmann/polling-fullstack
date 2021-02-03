@@ -123,7 +123,7 @@ export const VotingDummy = () => {
 
     const result = {}
     prelAsValuesArray.map(item => {
-      result[item[0]] = item[1].reduce((a,b) => a + b)
+     return result[item[0]] = item[1].reduce((a,b) => a + b)
     })
     console.log(result)
 
