@@ -9,7 +9,9 @@ import {
   HeaderPoll, 
   LinkContainer, 
   NavigationButton,
-  NavigationButtonBack } from '../lib/Styling'
+  NavigationButtonBack,
+  LinkButtonContainer,
+  LinkBorderContainer } from '../lib/Styling'
 
 export const PollingLink= () => {
   const dispatch = useDispatch()
@@ -29,12 +31,16 @@ export const PollingLink= () => {
 
   return (
     <LinkContainer>
-      <HeaderPoll>Tadaa your link</HeaderPoll>
-      <LinkInput id='linkUrl' defaultValue={url}></LinkInput>
-      <NavigationButton onClick={() => copyLink()}>Copy Link</NavigationButton>
-      <Link to='/'>
-        <NavigationButtonBack onClick={resetState} >Back to Start Page</NavigationButtonBack>
-      </Link>
-      </LinkContainer>
+      <LinkBorderContainer>
+        <HeaderPoll>Here's the link to your poll...</HeaderPoll>
+        <LinkInput id='linkUrl' defaultValue={url}></LinkInput>
+        <LinkButtonContainer>
+          <NavigationButton onClick={() => copyLink()}>Copy Link</NavigationButton>
+          <Link to='/'>
+            <NavigationButtonBack onClick={resetState} >Back to Start Page</NavigationButtonBack>
+          </Link>
+        </LinkButtonContainer>
+      </LinkBorderContainer>
+    </LinkContainer>
   )
 }

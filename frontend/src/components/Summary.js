@@ -1,24 +1,29 @@
 import React from 'react'
 /* import { useSelector } from 'react-redux' */
+import { 
+  SummaryContainer, 
+  SummaryForm,
+  SummaryFormLabel 
+  } from '../lib/Styling'
 
 export const Summary = ({allOptions, pollTopic}) => {
   const points = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   return (
-    <>
-      <h1>This is how your poll will look like</h1>
-      <p>{pollTopic}</p>
-      <form>
+    <SummaryContainer>
+      <p><i>This is what your poll will look like :</i></p>
+      <h3>{pollTopic}</h3>
+      <SummaryForm>
         {allOptions.map((item) => (
-          <label>{item.text}
+          <SummaryFormLabel>{item.text}
             <select disabled>
               {points.map((point) => (
                 <option value={point}>{point}</option>
               ))}
             </select>
-          </label>
+          </SummaryFormLabel>
         ))}
-      </form>
-    </>
+      </SummaryForm>
+    </SummaryContainer>
   )
 }

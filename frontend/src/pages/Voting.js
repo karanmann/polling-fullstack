@@ -68,6 +68,9 @@ export const Voting= () => {
   return (
     <VotingContainer>
       <h1>{pollDetails.pollTopic}</h1>
+      <p>
+        <i>This is how you vote..</i>
+      </p>
       <VotingForm onSubmit={handleSubmit}>
         {pollDetails.pollOptions?.map((item) => (
           <label>{item.text}

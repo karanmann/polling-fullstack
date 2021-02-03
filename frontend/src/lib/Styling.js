@@ -25,6 +25,10 @@ export const Logo = styled.h1`
 export const NavText = styled.h2`
   font-size: 14px;
   color: #364177;
+
+  @media (min-width: 1200px) {
+    font-size: 20px;
+  }
 `
 
 export const NavbarLinks = styled.div`
@@ -195,6 +199,24 @@ export const OptionButtons = styled.div`
   padding: 0 50px
 `
 
+// SUMMARY
+export const SummaryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center
+`
+
+export const SummaryForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px
+`
+
+export const SummaryFormLabel = styled.label`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px
+`
 
 // component OPTION
 export const OptionsContainer = styled.div`
@@ -232,15 +254,40 @@ export const LinkContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  background-color: #E5F6F1;
   height:550px;
 `
 export const LinkInput = styled.input`
+  display:none;
+  background-color: #E5F6F1;
   width: 80%;
   border: none;
   text-align: center;
-  font-size: 30px
+  font-size: 20px;
+  @media (min-width: 1200px) {
+    display: inline;
+    background-color: whitesmoke;
+  }
 `
+export const LinkButtonContainer = styled.div`
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+`
+export const LinkBorderContainer = styled.div `
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: 1200px) {
+    border: 1px solid grey;
+    box-shadow: 2px 3px #888888;
+    width:50%;
+    background-color: whitesmoke
+  }
+`
+
 //VOTING CONTAINER
 
 export const VotingContainer = styled.div`
@@ -289,3 +336,4 @@ export const IconButton = styled.button`
   border: none;
   margin: 0 10px
 `
+
