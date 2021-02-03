@@ -307,7 +307,6 @@ export const YourName = styled.label`
   flex-direction: row;
   margin: 30px;
   justify-content: space-evenly;
-  align-items:
 `
 
 //FOOTER
@@ -334,6 +333,7 @@ export const IconImage = styled.img`
 
 export const IconButton = styled.button`
   border: none;
-  margin: 0 10px
+  margin: 0 10px;
+  background-color: #E5F6F1;
 `
 
