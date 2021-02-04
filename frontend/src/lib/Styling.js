@@ -60,6 +60,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+ /*  height: 80vh; */
 
   @media (min-width: 1200px) {
     flex-direction: row;
@@ -228,7 +229,6 @@ export const Select = styled.select`
   border: none;
   line-height: 1.5em;
   padding: 0.5em 3.5em 0.5em 1em;
-
   margin: 0;      
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
