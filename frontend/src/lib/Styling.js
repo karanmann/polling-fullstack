@@ -17,6 +17,12 @@ export const LogoContainer = styled.div `
   width: 10%
 `
 
+export const LogoImage = styled.img`
+  height: 60px;
+  width: 60px;
+  margin-top: 30px
+`
+
 export const Logo = styled.h1`
   font-size: 20px;
   text-decoration: none;
@@ -39,14 +45,12 @@ export const NavbarLinks = styled.div`
   width: 50%;
 `
 
-
 export const LinkButton = styled.div`
   padding: 5px 15px;
   border-radius: 30px;
   &:hover {
     text-decoration: underline;
   }
-
 `
 
 //LANDING PAGE
@@ -56,18 +60,20 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: auto;
 
   @media (min-width: 1200px) {
     flex-direction: row;
-    height: 550px;
   }
 `
 export const InfoImage = styled.div`
   width: 90%;
 
+  @media (min-width: 668px) {
+    width: 60%;
+  }
+
   @media (min-width: 1200px) {
-    width: 30%;
+    width: 40%;
   }
   `
 export const InfoText = styled.div`
@@ -78,16 +84,15 @@ export const InfoText = styled.div`
 
 @media (min-width: 1200px) {
   width: 50%;
-  padding: 30px 50px;
+  padding:  60px;
   font-size: 20px;
-  border-radius: 40px;
-  margin-right: 30px;
+  border-radius: 10px;
+  height: 500px;
 }
 `
 
 export const InfoTextH1 = styled.h1`
   margin-bottom: 20px;
-
 `
 
 export const InfoTextP = styled.p`
@@ -168,8 +173,6 @@ export const PollContainer = styled(Container)`
   padding-bottom: 30px;
   display: flex;
   justify-content: center;
-  min-height: 100%;
-  position: relative
 `
 
 export const CreatePollContainer = styled.section`
@@ -303,7 +306,7 @@ export const LinkContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #E5F6F1;
-  height:550px;
+  height: 550px;
 `
 export const LinkInput = styled.input`
   background-color: #E5F6F1;
@@ -340,7 +343,7 @@ export const VotingContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height:550px;
+  height: 550px;
 `
 export const VotingForm = styled.form`
 display: flex;
@@ -367,8 +370,8 @@ export const FooterContainer = styled.footer`
   height: 60px;
   padding: 10px 0;
   text-align: center;
-  position: absolute;
-  bottom: 0
+/*   position: absolute;
+  bottom: 0, */
 `
 
 export const IconImage = styled.img`

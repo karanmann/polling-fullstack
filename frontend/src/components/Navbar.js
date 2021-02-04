@@ -1,12 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import logo from '../assets/logo.svg'
+import pollhik from '../assets/Pollhik_text.png'
+import pollhiklogo from '../assets/Pollhik_logo.png'
 
 import { 
   NavContainer,
   LogoContainer,
   NavText,
   NavbarLinks,
-  LinkButton} from '../lib/Styling'
+  LinkButton,
+  LogoImage} from '../lib/Styling'
 
 export const Navbar = () => {
   return (
@@ -14,7 +18,8 @@ export const Navbar = () => {
       <LogoContainer>
         <NavLink to='/' style={{ textDecoration: 'none' }}>
           <LinkButton>
-            <NavText>HOME</NavText>
+            <LogoImage src={logo} alt='logo' />
+           {/*  <LogoImage src={pollhiklogo} alt='logo' /> */}
           </LinkButton>
         </NavLink>
       </LogoContainer>
