@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-import { VotingContainer, VotingForm, NavigationButton, NavigationInput, YourName } from '../lib/Styling'
+import { 
+  VotingContainer, 
+  VotingForm, 
+  NavigationButton, 
+  NavigationInput, 
+  YourName,
+  Select } from '../lib/Styling'
 
 export const Voting= () => {
   const history = useHistory()
@@ -77,14 +83,14 @@ export const Voting= () => {
       <VotingForm onSubmit={handleSubmit}>
         {pollDetails.pollOptions?.map((item) => (
           <label>{item.text}
-              <select 
+              <Select 
                 onChange={handleSelect} 
                 name={item._id}
               >
                 {points.map((point) => (
                   <option value={point}>{point}</option>
                 ))}
-              </select>
+              </Select>
             </label>
         ))}
         <YourName>
