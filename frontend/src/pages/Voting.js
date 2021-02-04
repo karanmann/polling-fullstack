@@ -2,8 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
+
 import { TextField } from '@material-ui/core'
-import { VotingContainer, VotingForm, NavigationButton, NavigationInput, YourName } from '../lib/Styling'
+import { 
+  VotingContainer, 
+  VotingForm, 
+  NavigationButton, 
+  NavigationInput, 
+  YourName,
+  Select } from '../lib/Styling'
+
 
 export const Voting= () => {
   const history = useHistory()
@@ -70,19 +78,22 @@ export const Voting= () => {
     <VotingContainer>
       <h1>{pollDetails.pollTopic}</h1>
       <p>
-        <i>This is how you vote..</i>
+        <i>This is how you vote:</i>
       </p>
+      <p>You will vote for every option in the list. "0" means absolutely no resistance — "I have no objection, I support this proposal strongly."
+      "10" means maximum resistance — "I have huge objections, I refuse this proposal heavily."</p>
+      <a href="http://localhost:3000/systemicconsensing" >Read more about the principle behind Systemic consensing.</a>
       <VotingForm onSubmit={handleSubmit}>
         {pollDetails.pollOptions?.map((item) => (
           <label>{item.text}
-              <select 
+              <Select 
                 onChange={handleSelect} 
                 name={item._id}
               >
                 {points.map((point) => (
                   <option value={point}>{point}</option>
                 ))}
-              </select>
+              </Select>
             </label>
         ))}
         <YourName>
