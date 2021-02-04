@@ -48,6 +48,7 @@ export const VotingResults= () => {
        }
       })
     };
+    
     console.log(prel)
   
     // console.log(prel)
