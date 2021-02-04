@@ -209,14 +209,61 @@ export const SummaryContainer = styled.div`
 export const SummaryForm = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 0 10px
+  margin: 0 10px;
 `
 
 export const SummaryFormLabel = styled.label`
   display: flex;
   justify-content: space-between;
-  margin-top: 10px
+  margin-top: 10px;
 `
+
+export const Select = styled.select`
+  border-radius: 4px;
+  font-size: 14px;
+  width: 80px;
+  border: none;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+
+  margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, blue 50%),
+    linear-gradient(135deg, blue 50%, transparent 50%),
+    linear-gradient(to right, skyblue, skyblue);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    100% 0;
+  background-size:
+    5px 5px,
+    5px 5px,
+    2.5em 2.5em;
+  background-repeat: no-repeat;
+  
+  &:focus  {
+  background-image:
+    linear-gradient(45deg, white 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, white 50%),
+    linear-gradient(to right, gray, gray);
+  background-position:
+    calc(100% - 15px) 1em,
+    calc(100% - 20px) 1em,
+    100% 0;
+  background-size:
+    5px 5px,
+    5px 5px,
+    2.5em 2.5em;
+  background-repeat: no-repeat;
+  border-color: grey;
+  outline: 0;
+}
+  `
 
 // component OPTION
 export const OptionsContainer = styled.div`

@@ -3,7 +3,8 @@ import React from 'react'
 import { 
   SummaryContainer, 
   SummaryForm,
-  SummaryFormLabel 
+  SummaryFormLabel,
+  Select 
   } from '../lib/Styling'
 
 export const Summary = ({allOptions, pollTopic}) => {
@@ -16,11 +17,11 @@ export const Summary = ({allOptions, pollTopic}) => {
       <SummaryForm>
         {allOptions.map((item) => (
           <SummaryFormLabel>{item.text}
-            <select disabled>
+            <Select>
               {points.map((point) => (
                 <option value={point}>{point}</option>
               ))}
-            </select>
+            </Select>
           </SummaryFormLabel>
         ))}
       </SummaryForm>
