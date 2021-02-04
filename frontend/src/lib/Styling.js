@@ -259,14 +259,12 @@ export const LinkContainer = styled.div`
   height:550px;
 `
 export const LinkInput = styled.input`
-  display:none;
   background-color: #E5F6F1;
   width: 80%;
   border: none;
   text-align: center;
   font-size: 20px;
   @media (min-width: 1200px) {
-    display: inline;
     background-color: whitesmoke;
   }
 `

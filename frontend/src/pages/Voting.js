@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
+import { TextField } from '@material-ui/core'
 import { VotingContainer, VotingForm, NavigationButton, NavigationInput, YourName } from '../lib/Styling'
 
 export const Voting= () => {
@@ -86,14 +87,17 @@ export const Voting= () => {
         ))}
         <YourName>
           <p>Your name:</p>
-          <input
+          <TextField
+            variant='filled'
+            color='primary'
+            style={{ margin: 10, maxWidth: 300 }}
             type='text'
             name='name'
             value={state.example}
             onChange={handleNameInput} 
             placeholder='Enter your name ...'
             required>
-          </input>
+          </TextField>
         </YourName>
         <NavigationInput type='submit' value='Submit your answer and see results'/>
       </VotingForm>
