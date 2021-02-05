@@ -65,11 +65,13 @@ app.get('/alldata', async (req,res) => {
 // })
 
 app.get('/poll/:id', async (req, res) => {
-  const currentPoll = await Poll.findById(req.params.id)
-  if (currentPoll) {
-    res.status(201).json(currentPoll)
-  } else {
-    res.status(404).json({ message: 'poll not found', error: err.error })
+  try {
+    const currentPoll = await Poll.findById(req.params.id)
+    if (currentPoll) {
+      res.status(201).json(currentPoll)
+    } 
+  } catch (err) {
+    res.status(404).json({ message: 'Sorry! We couldn\'t find the poll you were looking for!', error: err.error })
   }
 })
 

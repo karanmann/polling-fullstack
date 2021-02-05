@@ -88,8 +88,9 @@ export const CreatePoll= () => {
         }
         return res.json()
           .then((res) => {
-            throw new Error(res.message)})
+            throw new Error(res.message) // Why does res.error not work? How can we access the mongoose error-object?
           })
+        })
       .then((json) => {
         console.log(json)
         dispatch(poll.actions.setPollId(json.pollId))     

@@ -17,7 +17,6 @@ export const Voting= () => {
   const history = useHistory()
   const { id } = useParams()
   const [ pollDetails, setPollDetails ] = useState({})
-  // const [ name, setName ] = useState('')
   const [ state, setState ] = useState({ voting: [] })
 
   // const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
@@ -32,6 +31,14 @@ export const Voting= () => {
       pollId: id
     })
   }
+  
+  const handleFailedFetch = err => {
+    alert(err)
+  }
+
+  const handleFailedPost = err => {
+    alert(err)
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -41,10 +48,20 @@ export const Voting= () => {
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify(state)
     })
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        return res.json()
+          .then((res) => {
+            throw new Error(res.message)
+          })
+      } 
+    })
     .then((json) => {
       history.push(`/voting/${id}/results`)
     })
+    .catch((err) => handleFailedPost(err))
     console.log(state)
   }
 
@@ -67,11 +84,21 @@ export const Voting= () => {
 
   useEffect(() => {
     fetch(POLLDETAILS_URL)
-    .then(res => res.json())
+    .then(res => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        return res.json()
+          .then((res) => {
+            throw new Error(res.message)
+          })
+      }
+    })
     .then((json) => {
       setPollDetails(json)
       storePollId()
     })
+    .catch((err) => handleFailedFetch(err))
   }, [POLLDETAILS_URL])
 
   console.log('current poll id', id)
