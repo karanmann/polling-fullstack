@@ -5,10 +5,10 @@ import { VotingDummy } from '../components/VotingDummy'
 
 export const VotingResults= () => {
   const { id } = useParams()
-  const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
-  const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
-  // const FINISHED_POLLS_URL = `http://localhost:9000/finishedpoll/${id}`
-  // const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
+  // const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
+  // const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
+  const FINISHED_POLLS_URL = `http://localhost:9000/finishedpoll/${id}`
+  const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
   const [finishedPolls, setFinishedPolls] = useState([])
   const [pollDetails, setPollDetails] = useState ({})
 

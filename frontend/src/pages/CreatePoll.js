@@ -23,8 +23,8 @@ export const CreatePoll= () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const pollId = useSelector((store) => store.poll.pollId)
-  const POLL_URL = 'https://systemic-poll-app.herokuapp.com/poll'
-  // const POLL_URL = 'http://localhost:9000/poll'
+  // const POLL_URL = 'https://systemic-poll-app.herokuapp.com/poll'
+  const POLL_URL = 'http://localhost:9000/poll'
 
   // States to handle conditional rendering
   const [showTopic, setShowTopic] = useState(true)
@@ -66,6 +66,12 @@ export const CreatePoll= () => {
     setNewOption('')
   }
 
+  // Function to handle a failed POST request
+  const handleFail = err => {
+    console.log(err)
+    alert('Something went wrong. Make sure to add a topic and options to your poll and try again.')
+  }
+
   // Function to send poll data to the backend
   const handleFinishPoll = event => {
     event.preventDefault()
@@ -76,16 +82,19 @@ export const CreatePoll= () => {
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({ pollTopic, pollOptions })
     })
-      .then((res) => res.json())
-
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        }
+        return res.json()
+          .then((res) => {
+            throw new Error(res.message)})
+          })
       .then((json) => {
         console.log(json)
-        // if(json.error) {
-        //   throw new Error('Could not create poll')
-        // } else {
-          dispatch(poll.actions.setPollId(json.pollId))     
-        // }
+        dispatch(poll.actions.setPollId(json.pollId))     
       })
+      .catch((err) => handleFail(err))
   }
 
 useEffect(() => {

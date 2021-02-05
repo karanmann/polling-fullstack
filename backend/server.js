@@ -81,17 +81,21 @@ app.post('/finishedpoll', async (req, res) => {
     pollId,
     voting
   }).save()
-    res.status(201).json({message: 'Voting successful'})
+    res.status(201).json({ message: 'Voting successful' })
   } catch(err) { 
-    res.status(400).json({message: 'Could not send voting', error: err.errors})}
+    res.status(400).json({ message: 'Could not send voting', error: err.errors })}
 })
 
 app.get('/finishedpoll/:pollId', async( req, res) => {
-  const pollId = req.params.pollId
-  const allFinishedPolls = await FinishedPoll.find()
-  const finishedPolls = allFinishedPolls.filter((item) => item.pollId === pollId)
-
-  res.status(201).json({finishedPolls})
+  try {
+    const pollId = req.params.pollId
+    const allFinishedPolls = await FinishedPoll.find()
+    const finishedPolls = allFinishedPolls.filter((item) => item.pollId === pollId)
+  
+    res.status(201).json({finishedPolls})
+  } catch (err) {
+    res.status(404).json({ message: 'Poll not found', error: err.errors })
+  }
 })
 
 
