@@ -15,6 +15,14 @@ import { poll } from './reducer/poll'
 import { voting } from './reducer/voting'
 
 import {VotingDummy} from './components/VotingDummy'
+import styled from 'styled-components/macro'
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh;
+`
 
 const reducer = combineReducers ({
   poll: poll.reducer, 
@@ -22,10 +30,9 @@ const reducer = combineReducers ({
 })
 const store = configureStore ({ reducer })
 
-
 const App = () => {
   return (
-  <>
+  <AppContainer>
     <BrowserRouter className='App'>
       <Provider store={store}>
         <Navbar />
@@ -56,7 +63,7 @@ const App = () => {
         <Footer />
       </Provider>
     </BrowserRouter>
-  </>
+  </AppContainer>
   )
 }
 

@@ -97,7 +97,7 @@ useEffect(() => {
     <>
     <PollContainer>
       { showTopic && 
-        <section>
+        <CreatePollContainer>
           <HeaderPoll>Create poll</HeaderPoll>
           <Form>
             <label>Topic of your poll:
@@ -110,7 +110,7 @@ useEffect(() => {
             </label>
             <NavigationButton onClick={handleShowOptions}>Next step</NavigationButton>
           </Form>
-        </section>
+        </CreatePollContainer>
       }
       { showOptions && 
         <CreatePollContainer>
@@ -139,7 +139,7 @@ useEffect(() => {
         </CreatePollContainer>
       }
       { showSummary && 
-        <section>
+        <CreatePollContainer>
           <HeaderPoll>Summary</HeaderPoll>
           <Summary 
             allOptions={allOptions}
@@ -150,7 +150,7 @@ useEffect(() => {
               <NavigationButton onClick={handleFinishPoll}>Finish and create link</NavigationButton>
             </Link>
           </SummaryButtons>
-        </section>
+        </CreatePollContainer>
       }
     </PollContainer>
     </>

@@ -177,7 +177,7 @@ export const PollContainer = styled(Container)`
 `
 
 export const CreatePollContainer = styled.section`
-  height: fit-content
+  padding-bottom: 2.5rem;   
 `
 export const SummaryButtons = styled.div`
   margin-top: 50px;
@@ -365,13 +365,14 @@ export const FooterContainer = styled.footer`
   align-items: center;
   background-color: #364177;
   color: white;
-  bottom: 0;
   width: 100%;
   height: 60px;
   padding: 10px 0;
   text-align: center;
-/*   position: absolute;
-  bottom: 0, */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem; 
 `
 
 export const IconImage = styled.img`
