@@ -23,7 +23,8 @@ export const CreatePoll= () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const pollId = useSelector((store) => store.poll.pollId)
-  const POLL_URL = 'http://localhost:9000/poll'
+  const POLL_URL = 'https://systemic-poll-app.herokuapp.com/poll'
+  // const POLL_URL = 'http://localhost:9000/poll'
 
   // States to handle conditional rendering
   const [showTopic, setShowTopic] = useState(true)

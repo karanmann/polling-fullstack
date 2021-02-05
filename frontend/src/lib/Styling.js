@@ -48,7 +48,6 @@ export const LinkButton = styled.div`
   }
 
 `
-
 //LANDING PAGE
 
 export const Container = styled.div`
