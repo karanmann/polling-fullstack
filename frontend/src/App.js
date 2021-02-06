@@ -39,10 +39,10 @@ const App = () => {
           <Route path='/pollinglink'>
             <PollingLink/>
           </Route>
-          <Route path='/voting/:id' exact>
+          <Route path='/voting/:id'>
             <Voting />
           </Route>
-          <Route path='/voting/:id/results' exact> 
+          <Route path='/voting/:id/results'> 
             <VotingResults />
           </Route>
           <Route path='/about'> 

@@ -8,9 +8,13 @@ import {
   VotingContainer, 
   VotingForm, 
   NavigationButton, 
-  NavigationInput, 
+  VotingButton,
   YourName,
-  Select } from '../lib/Styling'
+  Select,
+  LinkBorderContainer,
+  SummaryFormLabel, 
+  ButtonContainer,
+  VotingTextContainer} from '../lib/Styling'
 
 
 export const Voting= () => {
@@ -79,16 +83,25 @@ export const Voting= () => {
 
   return (
     <VotingContainer>
-      <h1>{pollDetails.pollTopic}</h1>
-      <p>
-        <i>This is how you vote:</i>
-      </p>
-      <p>You will vote for every option in the list. "0" means absolutely no resistance — "I have no objection, I support this proposal strongly."
-      "10" means maximum resistance — "I have huge objections, I refuse this proposal heavily."</p>
-      <a href="http://localhost:3000/systemicconsensing" >Read more about the principle behind Systemic consensing.</a>
-      <VotingForm onSubmit={handleSubmit}>
-        {pollDetails.pollOptions?.map((item) => (
-          <label>{item.text}
+      <LinkBorderContainer>
+        <h1>{pollDetails.pollTopic}</h1>
+        <VotingTextContainer>
+          <p>
+            <i><b>This is how you vote:</b></i>
+          </p>
+          <ul>
+            <p>
+              <li>You will vote for every option in the list. "0" means absolutely no resistance — "I have no objection, I support this proposal strongly."</li>
+            </p>
+            <p>
+              <li>"10" means maximum resistance — "I have huge objections, I refuse this proposal heavily."</li>
+            </p>
+          </ul>
+        </VotingTextContainer>
+        <a href="http://localhost:3000/systemicconsensing" >Read more about the principle behind Systemic consensing.</a>
+        <VotingForm onSubmit={handleSubmit}>
+          {pollDetails.pollOptions?.map((item) => (
+            <SummaryFormLabel>{item.text}
               <Select 
                 onChange={handleSelect} 
                 name={item._id}
@@ -97,25 +110,29 @@ export const Voting= () => {
                   <option value={point}>{point}</option>
                 ))}
               </Select>
-            </label>
-        ))}
-        <YourName>
-          <p>Your name:</p>
-          <TextField
-            variant='filled'
-            color='primary'
-            style={{ margin: 10, maxWidth: 300 }}
-            type='text'
-            name='name'
-            value={state.example}
-            onChange={handleNameInput} 
-            placeholder='Enter your name ...'
-            required>
-          </TextField>
-        </YourName>
-        <NavigationInput type='submit' value='Submit your answer and see results'/>
-      </VotingForm>
-      <NavigationButton>Only see results</NavigationButton>
+            </SummaryFormLabel>
+          ))}
+          <YourName>
+            <p>Your name:</p>
+            <TextField
+              variant='filled'
+              color='primary'
+              style={{ margin: 10, maxWidth: 300 }}
+              type='text'
+              name='name'
+              value={state.example}
+              onChange={handleNameInput} 
+              placeholder='Enter your name ...'
+              required>
+            </TextField>
+          </YourName>
+          <ButtonContainer>
+            <VotingButton type='submit' value='Submit your answer and see results'/>
+            <NavigationButton>Only see results</NavigationButton>
+          </ButtonContainer>
+        </VotingForm>
+        
+      </LinkBorderContainer>
     </VotingContainer>
   )
 }

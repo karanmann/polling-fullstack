@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { TextField } from '@material-ui/core'
 
 import { Option } from '../components/Option'
 import { Summary } from '../components/Summary'
 import { poll } from '../reducer/poll'
 import { 
   Form, 
-  InputTopic, 
-  InputOptions, 
+  // InputTopic, 
+  // InputOptions, 
   HeaderPoll, 
   PollContainer, 
+  PollTopicInput,
   NavigationButton, 
   NavigationButtonBack, 
   SummaryButtons,
   NavigationInput,
   OptionButtons,
-  CreatePollContainer
+  CreatePollContainer,
+  LinkBorderContainer,
   } from '../lib/Styling'
 
 export const CreatePoll= () => {
@@ -98,49 +101,62 @@ useEffect(() => {
     <>
     <PollContainer>
       { showTopic && 
-        <section>
+        <LinkBorderContainer>
           <HeaderPoll>Create poll</HeaderPoll>
-          <Form>
-            <label>Topic of your poll:
-              <InputTopic
+          <Form onSubmit={handleShowOptions}>
+            <PollTopicInput>
+              Topic of your poll:
+              <TextField
+                variant='filled'
+                color='primary'
+                style={{ margin: 10, maxWidth: 300 }}
                 type='text'
+                name='topic'
                 value={newTopic}
                 onChange={event => setNewTopic(event.target.value)}
-                required
+                placeholder='Enter the topic...'
+                required='required'
               />
-            </label>
+            </PollTopicInput>
             <NavigationButton onClick={handleShowOptions}>Next step</NavigationButton>
           </Form>
-        </section>
+        </LinkBorderContainer>
       }
       { showOptions && 
-        <CreatePollContainer>
-          <HeaderPoll>Add options</HeaderPoll>
-          <Form onSubmit={onAddOption}>
-          <div>
-            <InputOptions 
-              type='text' 
-              value={newOption}
-              onChange={event => setNewOption(event.target.value)}
-            />
-            <NavigationInput type='submit' value='➕'/>
-          </div>
-          </Form>
-          <OptionButtons>
-            {allOptions.map((item) => (
-                <Option 
-                  key={item.optionId}
-                  option={item} />
-              ))}
-          </OptionButtons>
-          <SummaryButtons>
-            <NavigationButtonBack onClick={handleBackToTopic}>Back</NavigationButtonBack>
-            <NavigationButton onClick={handleShowSummary}>Create poll</NavigationButton>
-          </SummaryButtons>
-        </CreatePollContainer>
+        <LinkBorderContainer>
+          <CreatePollContainer>
+              <HeaderPoll>Add options</HeaderPoll>
+              <Form onSubmit={onAddOption}>
+              <PollTopicInput>
+                <TextField 
+                  variant='filled'
+                  color='primary'
+                  style={{ margin: 10, maxWidth: 300 }}
+                  type='text'
+                  name='options'
+                  value={newOption}
+                  onChange={event => setNewOption(event.target.value)}
+                  placeholder='Add new option...'
+                />
+                <NavigationInput type='submit' value='➕'/>
+              </PollTopicInput>
+              </Form>
+              <OptionButtons>
+                {allOptions.map((item) => (
+                    <Option 
+                      key={item.optionId}
+                      option={item} />
+                  ))}
+              </OptionButtons>
+              <SummaryButtons>
+                <NavigationButtonBack onClick={handleBackToTopic}>Back</NavigationButtonBack>
+                <NavigationButton onClick={handleShowSummary}>Create poll</NavigationButton>
+              </SummaryButtons>
+          </CreatePollContainer>
+        </LinkBorderContainer>
       }
       { showSummary && 
-        <section>
+        <LinkBorderContainer>
           <HeaderPoll>Summary</HeaderPoll>
           <Summary 
             allOptions={allOptions}
@@ -151,7 +167,7 @@ useEffect(() => {
               <NavigationButton onClick={handleFinishPoll}>Finish and create link</NavigationButton>
             </Link>
           </SummaryButtons>
-        </section>
+        </LinkBorderContainer>
       }
     </PollContainer>
     </>
