@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 
 import { VotingDummy } from '../components/VotingDummy'
+import { LinkBorderContainer } from '../lib/Styling'
 
 export const VotingResults= () => {
   const { id } = useParams()
@@ -84,16 +85,20 @@ export const VotingResults= () => {
     // If you find a matching option / result-entry, display the option text and the second part (the points) of the result entry.
 
   return (
-    <>
+    <LinkBorderContainer>
       {pollDetails.pollOptions?.map((option) => {
           return (
             resultEntries.map((pair) => (
               option._id === pair[0] &&
-                <p>{option.text} {pair[1]}</p>
+                <div>
+                  <p>{option.text}</p> 
+                  <p>{pair[1]}</p>
+                </div>
+                
             ))
           )
         })}
-    </>
+    </LinkBorderContainer>
   )
   // return (
   //   <>
