@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 
 import { VotingDummy } from '../components/VotingDummy'
+import { Confettis} from '../components/Confettis'
 
 export const VotingResults= () => {
   const { id } = useParams()
@@ -83,6 +84,7 @@ export const VotingResults= () => {
 
   return (
     <>
+    <Confettis />
       {pollDetails.pollOptions?.map((option) => {
           return (
             resultEntries.map((pair) => (

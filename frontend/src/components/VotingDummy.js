@@ -1,4 +1,7 @@
+import { Divider } from '@material-ui/core'
 import React from 'react'
+
+import styled from 'styled-components/macro'
 
 export const VotingDummy = () => {
     const poll = { 
@@ -137,13 +140,32 @@ export const VotingDummy = () => {
     // At the same time, map through the item in resultEntries.
     // If you find a matching option / result-entry, display the option text and the second part (the points) of the result entry.
 
+ 
+/* const winnerColor = () => {
+          const isWinner = (Math.min(pair[1]))
+          if (isWinner.isCorrect) {
+      return '#28df99'
+    }
+      */
+const Points = styled.p `
+  border: ${props => props.true ? 'solid green 2px' : ''}
+`
+
+  
+
     return (
       <>
         {poll.pollOptions.map(option => {
           return (
             resultEntries.map((pair) => (
               option._id === pair[0] &&
-                <p>{option.text} {pair[1]}</p>
+              <div>
+                <p>{option.text}</p>
+                <Points 
+                true={true}
+                >{pair[1]}
+                </Points>
+              </div>
             ))
           )
         })}

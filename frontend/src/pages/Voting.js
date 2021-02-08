@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 
 
 import { TextField } from '@material-ui/core'
@@ -82,7 +83,7 @@ export const Voting= () => {
       </p>
       <p>You will vote for every option in the list. "0" means absolutely no resistance — "I have no objection, I support this proposal strongly."
       "10" means maximum resistance — "I have huge objections, I refuse this proposal heavily."</p>
-      <a href="http://localhost:3000/systemicconsensing" >Read more about the principle behind Systemic consensing.</a>
+      <NavLink to='/systemicconsensing' style={{ textDecoration: 'none' }}>Read more about the principle behind Systemic consensing.</NavLink>
       <VotingForm onSubmit={handleSubmit}>
         {pollDetails.pollOptions?.map((item) => (
           <label>{item.text}
