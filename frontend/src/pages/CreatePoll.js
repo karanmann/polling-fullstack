@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { TextField } from '@material-ui/core'
+import swal from 'sweetalert'
 
 import { Option } from '../components/Option'
 import { Summary } from '../components/Summary'
@@ -71,8 +72,12 @@ export const CreatePoll= () => {
 
   // Function to handle a failed POST request
   const handleFail = err => {
-    console.log(err)
-    alert('Something went wrong. Make sure to add a topic and options to your poll and try again.')
+    swal({
+      title: 'All complete?',
+      text: 'Make sure to add a topic and options to your poll and try again.',
+      icon: 'info',
+      closeOnClickOutside: false,
+    })
   }
 
   // Function to send poll data to the backend

@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
+import swal from 'sweetalert'
 
 import { Confettis} from '../components/Confettis'
 import { 
@@ -18,7 +19,12 @@ export const VotingResults= () => {
   const [pollDetails, setPollDetails] = useState ({})
 
   const handleFailedFetch = (err) => {
-    alert(err)
+    swal({
+      title: 'Oh no!',
+      text: 'Sorry! We couldn\'t find the poll you were looking for!',
+      icon: 'error',
+      closeOnClickOutside: 'false',
+    })
   }
 
   useEffect(() => {
@@ -35,7 +41,12 @@ export const VotingResults= () => {
     })
     .then((json) => {
       if (json.finishedPolls.length === 0) {
-        alert('Ooops, no one has voted on your poll yet')
+        swal({
+          title: 'Ooops!',
+          text: 'No one has voted on your poll yet.',
+          icon: 'info',
+          closeOnClickOutside: 'false',
+        })
       } else {
         setFinishedPolls(json.finishedPolls)
       }
