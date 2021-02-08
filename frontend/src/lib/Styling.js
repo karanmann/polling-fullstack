@@ -346,6 +346,7 @@ export const VotingContainer = styled.div`
   align-items: center;
   justify-content: space-evenly;
   height:550px;
+  background-color: #E5F6F1
 `
 export const VotingForm = styled.form`
 display: flex;
@@ -386,6 +387,27 @@ export const ButtonContainer = styled.div `
   display: flex;
   flex-direction: column;
 `
+
+//VOTING RESULTS 
+
+export const EachResult = styled.div `
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 400px;
+  padding: 30px 0;
+  font-size: 20px;
+`
+
+export const ResultContainer = styled.div `
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #E5F6F1
+`
+
 
 //FOOTER
 
