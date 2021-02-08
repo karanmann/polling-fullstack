@@ -65,11 +65,13 @@ app.get('/alldata', async (req,res) => {
 // })
 
 app.get('/poll/:id', async (req, res) => {
-  const currentPoll = await Poll.findById(req.params.id)
-  if (currentPoll) {
-    res.status(201).json(currentPoll)
-  } else {
-    res.status(404).json({ message: 'poll not found', error: err.error })
+  try {
+    const currentPoll = await Poll.findById(req.params.id)
+    if (currentPoll) {
+      res.status(201).json(currentPoll)
+    } 
+  } catch (err) {
+    res.status(404).json({ message: 'Sorry! We couldn\'t find the poll you were looking for!', error: err.error })
   }
 })
 
@@ -81,17 +83,21 @@ app.post('/finishedpoll', async (req, res) => {
     pollId,
     voting
   }).save()
-    res.status(201).json({message: 'Voting successful'})
+    res.status(201).json({ message: 'Voting successful' })
   } catch(err) { 
-    res.status(400).json({message: 'Could not send voting', error: err.errors})}
+    res.status(400).json({ message: 'Could not send voting', error: err.errors })}
 })
 
 app.get('/finishedpoll/:pollId', async( req, res) => {
-  const pollId = req.params.pollId
-  const allFinishedPolls = await FinishedPoll.find()
-  const finishedPolls = allFinishedPolls.filter((item) => item.pollId === pollId)
-
-  res.status(201).json({finishedPolls})
+  try {
+    const pollId = req.params.pollId
+    const allFinishedPolls = await FinishedPoll.find()
+    const finishedPolls = allFinishedPolls.filter((item) => item.pollId === pollId)
+  
+    res.status(201).json({finishedPolls})
+  } catch (err) {
+    res.status(404).json({ message: 'Poll not found', error: err.errors })
+  }
 })
 
 
