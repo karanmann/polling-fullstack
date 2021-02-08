@@ -1,41 +1,34 @@
-import React, { useState } from 'react'
-import CloseMenu from '../assets/x.svg'
-import MenuIcon from '../assets/menu.svg'
-import Logo from '../assets/logo.svg'
-import '../lib/navbar.css'
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom'
+
+import { Burger } from './Burger';
+
+const Nav = styled.nav`
+  width: 100%;
+  height: 55px;
+  border-bottom: 2px solid #f1f1f1;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #8db8db;
+  .logo {
+    padding: 15px 0;
+  }
+`
 
 export const Navbar = () => {
-  const [ click, setClick ] = useState(false)
-  const handleClick = () => setClick(!click)
-  const closeMobileMenu = () => setClick(false)
-
   return (
-    <div className="header">
-      <div className="logo-nav">
-        <div className="logo-container">
-          <a href="/">
-            <Logo className="logo"/>
-          </a>
-        </div>
-        <ul className={click ? "nav-options active" : "nav-options"}>
-          <li className="option" onClick={closeMobileMenu}>
-            <a href="/">ABOUT</a>
-          </li>
-          <li className="option" onClick={closeMobileMenu}>
-            <a href="/">SYSTEMIC POLLING</a>
-          </li>
-        </ul>
+    <Nav>
+      <div className='logo'>
+        <NavLink to='/' style={{ textDecoration: 'none' }}>
+          <h3>HOME</h3>
+        </NavLink>
       </div>
-      <div className="mobile-menu" onClick={handleClick}>
-        {click ? ( 
-          <CloseMenu className="menu-icon" />) : ( <MenuIcon className="menu-icon" />
-        )}
-      </div>
-    </div>
-
+      <Burger />
+    </Nav>
   )
 }
-
 
 
 // import React from 'react'
