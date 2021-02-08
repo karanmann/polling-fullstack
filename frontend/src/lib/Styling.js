@@ -401,6 +401,7 @@ export const EachResult = styled.div `
   width: 400px;
   padding: 30px 0;
   font-size: 20px;
+  border: ${props => props.true === 0 ? 'solid green 2px' : ''}
 `
 
 export const ResultContainer = styled.div `
@@ -441,4 +442,3 @@ export const IconButton = styled.button`
   margin: 0 10px;
   background-color: #E5F6F1;
 `
-

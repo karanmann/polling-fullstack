@@ -82,15 +82,20 @@ export const VotingResults= () => {
     // [[456,12], [789,14], [523,12]]
 
     const resultEntries = Object.entries(result)
+    resultEntries.sort((a,b) => {
+      return a[1] - b[1]
+    })
     console.log(resultEntries)
 
     // In the return statement, map through all the options in the original poll.
     // At the same time, map through the item in resultEntries.
     // If you find a matching option / result-entry, display the option text and the second part (the points) of the result entry.
 
-  return (
+   
+  
+  
+    return (
     <>
-    <Confettis />
     <ResultContainer>
     <LinkBorderContainer>
         <EachResult>
@@ -98,11 +103,12 @@ export const VotingResults= () => {
           <p><b>TOTAL</b></p>
         </EachResult>
         <br></br>
-        {pollDetails.pollOptions?.map((option) => {
+        {resultEntries.map((pair, index) => {
             return (
-              resultEntries.map((pair) => (
+              pollDetails.pollOptions?.map((option) => (
                 option._id === pair[0] &&
-                  <EachResult>
+                    <EachResult 
+                    true={index}>
                     <p>{option.text}</p> 
                     <p>{pair[1]}</p>
                   </EachResult>
@@ -112,6 +118,7 @@ export const VotingResults= () => {
         })}
     </LinkBorderContainer>  
    </ResultContainer>
+   <Confettis />
    </>
   )
 }

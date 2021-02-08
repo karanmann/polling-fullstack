@@ -134,6 +134,10 @@ export const VotingDummy = () => {
     // [[456,12], [789,14], [523,12]]
 
     const resultEntries = Object.entries(result)
+    resultEntries.sort((a,b) => {
+      return a[1] - b[1]
+    })
+    
     console.log(resultEntries)
    
     // In the return statement, map through all the options in the original poll.
@@ -148,21 +152,21 @@ export const VotingDummy = () => {
     }
       */
 const Points = styled.p `
-  border: ${props => props.true ? 'solid green 2px' : ''}
+  border: ${props => props.true === 0 ? 'solid green 2px' : ''}
 `
 
-  
+ 
 
     return (
       <>
-        {poll.pollOptions.map(option => {
+        {resultEntries.map((pair, index) => {
           return (
-            resultEntries.map((pair) => (
+            poll.pollOptions.map(option => (
               option._id === pair[0] &&
               <div>
                 <p>{option.text}</p>
                 <Points 
-                true={true}
+                true={index}
                 >{pair[1]}
                 </Points>
               </div>
