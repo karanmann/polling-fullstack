@@ -46,7 +46,7 @@ const App = () => {
           <Route path='/pollinglink'>
             <PollingLink/>
           </Route>
-          <Route path='/voting/:id' exact >
+          <Route path='/voting/:id' exact>
             <Voting />
           </Route>
           <Route path='/voting/:id/results' exact> 

@@ -23,20 +23,27 @@ export const Voting= () => {
   const history = useHistory()
   const { id } = useParams()
   const [ pollDetails, setPollDetails ] = useState({})
-  // const [ name, setName ] = useState('')
   const [ state, setState ] = useState({ voting: [] })
 
-  // const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
-  // const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll`
-  const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
-  const FINISHED_POLL_URL = `http://localhost:9000/finishedpoll`
-  const points = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
+  const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll`
+  // const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
+  // const FINISHED_POLL_URL = `http://localhost:9000/finishedpoll`
+  const points = [ "-", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   const storePollId = () => {
     setState({
       ...state,
       pollId: id
     })
+  }
+  
+  const handleFailedFetch = err => {
+    alert(err)
+  }
+
+  const handleFailedPost = err => {
+    alert(err)
   }
 
   const handleSubmit = (event) => {
@@ -47,21 +54,52 @@ export const Voting= () => {
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify(state)
     })
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        return res.json()
+          .then((res) => {
+            throw new Error(res.message)
+          })
+      } 
+    })
     .then((json) => {
       history.push(`/voting/${id}/results`)
     })
+    .catch((err) => handleFailedPost(err))
     console.log(state)
   }
 
   const handleSelect = (event) => {
-    setState({
-      ...state,
-      ...state.voting.push({
-        optionId: event.target.name,
-        objectionsPoints: event.target.value
-      })
+    let itemIndex = null
+
+    state.voting.map((item) => {
+      if (item.optionId === event.target.name) {
+        itemIndex = state.voting.indexOf(item)
+      }
+      return itemIndex
     })
+
+    if (itemIndex === null) {
+      setState({
+        ...state,
+        ...state.voting.push({
+          optionId: event.target.name,
+          objectionsPoints: event.target.value
+        })
+      })
+    } else {
+      setState({
+        ...state,
+        ...state.voting.splice(itemIndex, 1, {
+          optionId: event.target.name,
+          objectionsPoints: event.target.value
+        })
+      })
+    }
+
+    
   }
 
   const handleNameInput = (event) => {
@@ -73,11 +111,21 @@ export const Voting= () => {
 
   useEffect(() => {
     fetch(POLLDETAILS_URL)
-    .then(res => res.json())
+    .then(res => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        return res.json()
+          .then((res) => {
+            throw new Error(res.message)
+          })
+      }
+    })
     .then((json) => {
       setPollDetails(json)
       storePollId()
     })
+    .catch((err) => handleFailedFetch(err))
   }, [POLLDETAILS_URL])
 
   console.log('current poll id', id)
@@ -132,8 +180,7 @@ export const Voting= () => {
             <NavigationInput type='submit' value='Submit your answer and see results'/>
             <NavigationButton>Only see results</NavigationButton>
           </ButtonContainer>
-        </VotingForm>
-        
+        </VotingForm> 
       </LinkBorderContainer>
     </VotingContainer>
   )
