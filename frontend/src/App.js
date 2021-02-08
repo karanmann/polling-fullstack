@@ -21,7 +21,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
 `
 
 const reducer = combineReducers ({

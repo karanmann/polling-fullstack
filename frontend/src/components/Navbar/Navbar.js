@@ -6,14 +6,16 @@ import { Burger } from './Burger';
 
 const Nav = styled.nav`
   width: 100%;
-  height: 55px;
-  border-bottom: 2px solid #f1f1f1;
+  height: 60px;
+/*   border-bottom: 0.2px solid grey; */
+  /* box-shadow: 0 8px 6px -6px black; */
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
-  background-color: #8db8db;
+  background-color: white;
+  
   .logo {
-    padding: 15px 0;
+    padding: 20px 0;
   }
 `
 

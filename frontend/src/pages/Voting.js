@@ -11,6 +11,7 @@ import {
   NavigationButton, 
   NavigationInput,
   // VotingButton,
+  VotingP,
   YourName,
   Select,
   LinkBorderContainer,
@@ -25,10 +26,10 @@ export const Voting= () => {
   const [ pollDetails, setPollDetails ] = useState({})
   const [ state, setState ] = useState({ voting: [] })
 
-  const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
-  const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll`
-  // const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
-  // const FINISHED_POLL_URL = `http://localhost:9000/finishedpoll`
+  /* const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
+  const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll` */
+  const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
+  const FINISHED_POLL_URL = `http://localhost:9000/finishedpoll`
   const points = [ "-", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   const storePollId = () => {
@@ -134,7 +135,7 @@ export const Voting= () => {
   return (
     <VotingContainer>
       <LinkBorderContainer>
-        <h1>{pollDetails.pollTopic}</h1>
+        <VotingP><b>{pollDetails.pollTopic}</b></VotingP>
         <VotingTextContainer>
           <p>
             <i><b>This is how you vote:</b></i>
@@ -177,8 +178,8 @@ export const Voting= () => {
             </TextField>
           </YourName>
           <ButtonContainer>
-            <NavigationInput type='submit' value='Submit your answer and see results'/>
-            <NavigationButton>Only see results</NavigationButton>
+            <NavigationInput type='submit' value='Submit and see Result'/>
+            {/* <NavigationButton>Only see results</NavigationButton> */}
           </ButtonContainer>
         </VotingForm> 
       </LinkBorderContainer>
