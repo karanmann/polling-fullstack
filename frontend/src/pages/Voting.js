@@ -72,13 +72,34 @@ export const Voting= () => {
   }
 
   const handleSelect = (event) => {
-    setState({
-      ...state,
-      ...state.voting.push({
-        optionId: event.target.name,
-        objectionsPoints: event.target.value
-      })
+    let itemIndex = null
+
+    state.voting.map((item) => {
+      if (item.optionId === event.target.name) {
+        itemIndex = state.voting.indexOf(item)
+      }
+      return itemIndex
     })
+
+    if (itemIndex === null) {
+      setState({
+        ...state,
+        ...state.voting.push({
+          optionId: event.target.name,
+          objectionsPoints: event.target.value
+        })
+      })
+    } else {
+      setState({
+        ...state,
+        ...state.voting.splice(itemIndex, 1, {
+          optionId: event.target.name,
+          objectionsPoints: event.target.value
+        })
+      })
+    }
+
+    
   }
 
   const handleNameInput = (event) => {
