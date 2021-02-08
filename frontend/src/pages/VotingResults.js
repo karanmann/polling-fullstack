@@ -96,7 +96,6 @@ export const VotingResults= () => {
   
     return (
     <>
-<<<<<<< HEAD
     <ResultContainer>
     <LinkBorderContainer>
         <EachResult>
@@ -121,30 +120,5 @@ export const VotingResults= () => {
    </ResultContainer>
    <Confettis />
    </>
-=======
-      <ResultContainer>
-        <LinkBorderContainer>
-            <EachResult>
-              <p><b>OPTIONS</b></p> 
-              <p><b>TOTAL</b></p>
-            
-            </EachResult>
-            {pollDetails.pollOptions?.map((option) => {
-                return (
-                  resultEntries.map((pair) => (
-                    option._id === pair[0] &&
-                      <EachResult>
-                        <p>{option.text}</p> 
-                        <p>{pair[1]}</p>
-                      </EachResult>
-                      
-                  ))
-                )
-            })}
-        </LinkBorderContainer>  
-      </ResultContainer>
-      <Confettis />
-    </>
->>>>>>> e0bf04a3418c27170772145e5b35ea2c18aa074b
   )
 }
