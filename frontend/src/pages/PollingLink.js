@@ -1,6 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import {
+  FacebookShareButton, 
+  FacebookIcon, 
+  WhatsappShareButton, 
+  WhatsappIcon, 
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+  EmailShareButton,
+  EmailIcon
+} from "react-share";
 
 import { poll } from '../reducer/poll'
 
@@ -39,6 +49,18 @@ export const PollingLink= () => {
           <Link to='/'>
             <NavigationButtonBack onClick={resetState} >Back to Start Page</NavigationButtonBack>
           </Link>
+          <FacebookShareButton url={url} >
+            <FacebookIcon size={32} round />
+          </FacebookShareButton>
+          <WhatsappShareButton url={url} >
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton>
+          <FacebookMessengerShareButton url={url}>
+            <FacebookMessengerIcon size={32} round/>
+          </FacebookMessengerShareButton>
+          <EmailShareButton url={url}>
+            <EmailIcon size={32} round/>
+          </EmailShareButton>
         </LinkButtonContainer>
       </LinkBorderContainer>
     </LinkContainer>

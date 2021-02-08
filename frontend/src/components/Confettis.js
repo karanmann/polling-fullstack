@@ -18,22 +18,22 @@ export const Confettis = () => {
     setWidth(confettiRef.current.clientWidth);
   }, [])
 
-  const handleShow = toggle => {
-    setShow(toggle);
-  }
 
+/*  const handleShow = toggle => {
+    setShow(toggle);
+  } 
+ */
   return (
     <>
       <Div
-        onMouseEnter={() => handleShow(true)}
-        onMouseLeave={() => handleShow(false)}
-        className="confetti-wrap"
+/*         onMouseEnter={() => handleShow(true)}
+        onMouseLeave={() => handleShow(false)} */
         ref={confettiRef}>
           <Confetti
-          recycle={show}
-          numberOfPieces={500}
-          width={width}
-          height={height}
+            recycle={show}
+            numberOfPieces={800}
+            width={width}
+            height={height}
         />
       </Div>
     </>

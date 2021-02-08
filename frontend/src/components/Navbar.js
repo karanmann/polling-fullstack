@@ -18,8 +18,9 @@ export const Navbar = () => {
       <LogoContainer>
         <NavLink to='/' style={{ textDecoration: 'none' }}>
           <LinkButton>
+          <NavText>HOME</NavText>
         {/*     <LogoImage src={logo} alt='logo' /> */}
-            <LogoImage src={pollhik} alt='logo' />
+         {/*    <LogoImage src={pollhik} alt='logo' /> */}
           </LinkButton>
         </NavLink>
       </LogoContainer>
