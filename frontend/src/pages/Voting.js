@@ -25,10 +25,10 @@ export const Voting= () => {
   const [ pollDetails, setPollDetails ] = useState({})
   const [ state, setState ] = useState({ voting: [] })
 
-  const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
-  const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll`
-  // const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
-  // const FINISHED_POLL_URL = `http://localhost:9000/finishedpoll`
+  // const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
+  // const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll`
+  const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
+  const FINISHED_POLL_URL = `http://localhost:9000/finishedpoll`
   const points = [ "-", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   const storePollId = () => {
@@ -48,27 +48,31 @@ export const Voting= () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    
-    fetch(FINISHED_POLL_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify(state)
-    })
-    .then((res) => {
-      if (res.ok) {
-        return res.json()
-      } else {
-        return res.json()
-          .then((res) => {
-            throw new Error(res.message)
-          })
-      } 
-    })
-    .then((json) => {
-      history.push(`/voting/${id}/results`)
-    })
-    .catch((err) => handleFailedPost(err))
-    console.log(state)
+
+    if (state.voting.length < pollDetails.pollOptions.length) {
+      alert('Please add a number of objection points to each option.')
+    } else {
+      fetch(FINISHED_POLL_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(state)
+      })
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          return res.json()
+            .then((res) => {
+              throw new Error(res.message)
+            })
+        } 
+      })
+      .then((json) => {
+        history.push(`/voting/${id}/results`)
+      })
+      .catch((err) => handleFailedPost(err))
+      console.log(state)
+    }
   }
 
   const handleSelect = (event) => {

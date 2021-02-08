@@ -10,26 +10,54 @@ import {
 
 export const VotingResults= () => {
   const { id } = useParams()
-  const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
-  const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
-  // const FINISHED_POLLS_URL = `http://localhost:9000/finishedpoll/${id}`
-  // const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
+  // const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
+  // const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
+  const FINISHED_POLLS_URL = `http://localhost:9000/finishedpoll/${id}`
+  const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
   const [finishedPolls, setFinishedPolls] = useState([])
   const [pollDetails, setPollDetails] = useState ({})
 
+  const handleFailedFetch = (err) => {
+    alert(err)
+  }
+
   useEffect(() => {
     fetch(FINISHED_POLLS_URL)
-    .then(res => res.json())
-    .then((json) => {
-      setFinishedPolls(json.finishedPolls)
-      console.log(finishedPolls)
+    .then(res => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        return res.json()
+          .then((res) => {
+            throw new Error(res.message)
+          })
+      }
     })
+    .then((json) => {
+      if (json.finishedPolls.length === 0) {
+        alert('Ooops, no one has voted on your poll yet')
+      } else {
+        setFinishedPolls(json.finishedPolls)
+      }
+    })
+    .catch((err) => handleFailedFetch(err))
+
     fetch(POLLDETAILS_URL)
-    .then(res => res.json())
+    .then(res => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        return res.json()
+          .then((res) => {
+            throw new Error(res.message)
+          })
+      }
+    })
     .then((json) => {
       setPollDetails(json)
       console.log(pollDetails)
     })
+    .catch((err) => handleFailedFetch(err))
 
   }, [FINISHED_POLLS_URL, POLLDETAILS_URL])
 
