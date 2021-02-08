@@ -90,28 +90,27 @@ export const VotingResults= () => {
 
   return (
     <>
-    <Confettis />
-    <ResultContainer>
-    <LinkBorderContainer>
-        <EachResult>
-          <p><b>OPTIONS</b></p> 
-          <p><b>TOTAL</b></p>
-        </EachResult>
-        <br></br>
-        {pollDetails.pollOptions?.map((option) => {
-            return (
-              resultEntries.map((pair) => (
-                option._id === pair[0] &&
-                  <EachResult>
-                    <p>{option.text}</p> 
-                    <p>{pair[1]}</p>
-                  </EachResult>
-                  
-              ))
-            )
-        })}
-    </LinkBorderContainer>  
-   </ResultContainer>
-   </>
+      <ResultContainer>
+        <LinkBorderContainer>
+            <EachResult>
+              <p><b>OPTIONS</b></p> 
+              <p><b>TOTAL</b></p>
+            </EachResult>
+            {pollDetails.pollOptions?.map((option) => {
+                return (
+                  resultEntries.map((pair) => (
+                    option._id === pair[0] &&
+                      <EachResult>
+                        <p>{option.text}</p> 
+                        <p>{pair[1]}</p>
+                      </EachResult>
+                      
+                  ))
+                )
+            })}
+        </LinkBorderContainer>  
+      </ResultContainer>
+      <Confettis />
+    </>
   )
 }
