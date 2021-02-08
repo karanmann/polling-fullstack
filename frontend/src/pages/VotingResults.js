@@ -1,11 +1,17 @@
 import React, { useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 
-import { VotingDummy } from '../components/VotingDummy'
 import { Confettis} from '../components/Confettis'
+import { 
+  LinkBorderContainer, 
+  EachResult,
+  ResultContainer
+ } from '../lib/Styling'
 
 export const VotingResults= () => {
   const { id } = useParams()
+  // const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
+  // const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
   const FINISHED_POLLS_URL = `http://localhost:9000/finishedpoll/${id}`
   const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
   const [finishedPolls, setFinishedPolls] = useState([])
@@ -85,20 +91,27 @@ export const VotingResults= () => {
   return (
     <>
     <Confettis />
-      {pollDetails.pollOptions?.map((option) => {
-          return (
-            resultEntries.map((pair) => (
-              option._id === pair[0] &&
-                <p>{option.text} {pair[1]}</p>
-            ))
-          )
+    <ResultContainer>
+    <LinkBorderContainer>
+        <EachResult>
+          <p><b>OPTIONS</b></p> 
+          <p><b>TOTAL</b></p>
+        </EachResult>
+        <br></br>
+        {pollDetails.pollOptions?.map((option) => {
+            return (
+              resultEntries.map((pair) => (
+                option._id === pair[0] &&
+                  <EachResult>
+                    <p>{option.text}</p> 
+                    <p>{pair[1]}</p>
+                  </EachResult>
+                  
+              ))
+            )
         })}
-    </>
+    </LinkBorderContainer>  
+   </ResultContainer>
+   </>
   )
-  // return (
-  //   <>
-  //     <VotingDummy />
-  //     <p>Total</p>
-  //   </>
-  // )
 }

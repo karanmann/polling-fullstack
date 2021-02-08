@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 
-import { Navbar } from './components/Navbar'
+import { Navbar } from './components/Navbar/Navbar'
 import { LandingPage } from './pages/LandingPage'
 import { CreatePoll } from './pages/CreatePoll'
 import { PollingLink } from './pages/PollingLink'
@@ -46,7 +46,7 @@ const App = () => {
           <Route path='/pollinglink'>
             <PollingLink/>
           </Route>
-          <Route path='/voting/:id' exact>
+          <Route path='/voting/:id' exact >
             <Voting />
           </Route>
           <Route path='/voting/:id/results' exact> 
