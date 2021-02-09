@@ -96,7 +96,7 @@ app.get('/finishedpoll/:pollId', async( req, res) => {
   
     res.status(201).json({finishedPolls})
   } catch (err) {
-    res.status(404).json({ message: 'Poll not found', error: err.errors })
+    res.status(404).json({ message: 'Sorry! We couldn\'t find the poll you were looking for!', error: err.errors })
   }
 })
 

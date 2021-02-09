@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import swal from 'sweetalert'
 
 
 import { TextField } from '@material-ui/core'
@@ -25,8 +26,9 @@ export const Voting= () => {
   const [ pollDetails, setPollDetails ] = useState({})
   const [ state, setState ] = useState({ voting: [] })
 
-  /* const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
-  const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll` */
+
+  // const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
+  // const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll`
   const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
   const FINISHED_POLL_URL = `http://localhost:9000/finishedpoll`
   const points = [ "-", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -39,36 +41,56 @@ export const Voting= () => {
   }
   
   const handleFailedFetch = err => {
-    alert(err)
+    swal({
+      title: 'Oh no!',
+      text: 'Sorry! We couldn\'t find the poll you were looking for!',
+      icon: 'error',
+      closeOnClickOutside: 'false',
+    })
   }
 
   const handleFailedPost = err => {
-    alert(err)
+    swal({
+      title: 'Oh no!',
+      text: 'We couldn\'t send your voting. Make sure to add your name and a number of objection points to each option.',
+      icon: 'error',
+      closeOnClickOutside: false,
+    })
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    
-    fetch(FINISHED_POLL_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify(state)
-    })
-    .then((res) => {
-      if (res.ok) {
-        return res.json()
-      } else {
-        return res.json()
-          .then((res) => {
-            throw new Error(res.message)
-          })
-      } 
-    })
-    .then((json) => {
-      history.push(`/voting/${id}/results`)
-    })
-    .catch((err) => handleFailedPost(err))
-    console.log(state)
+
+    if (state.voting.length < pollDetails.pollOptions.length) {
+      swal({
+        title: 'All complete?',
+        text: 'Please make sure to add a number of objection points to each option.',
+        icon: 'info',
+        closeOnClickOutside: 'false',
+      })
+    } else {
+
+      fetch(FINISHED_POLL_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(state)
+      })
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          return res.json()
+            .then((res) => {
+              throw new Error(res.message)
+            })
+        } 
+      })
+      .then((json) => {
+        history.push(`/voting/${id}/results`)
+      })
+      .catch((err) => handleFailedPost(err))
+      console.log(state)
+    }
   }
 
 const handleResults = () => {

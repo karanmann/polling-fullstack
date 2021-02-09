@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
+import swal from 'sweetalert'
 
 import { Confettis} from '../components/Confettis'
 import { 
@@ -10,26 +11,65 @@ import {
 
 export const VotingResults= () => {
   const { id } = useParams()
-/*   const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
-  const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}` */
+
+  // const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
+  // const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
   const FINISHED_POLLS_URL = `http://localhost:9000/finishedpoll/${id}`
   const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
   const [finishedPolls, setFinishedPolls] = useState([])
   const [pollDetails, setPollDetails] = useState ({})
 
+  const handleFailedFetch = (err) => {
+    swal({
+      title: 'Oh no!',
+      text: 'Sorry! We couldn\'t find the poll you were looking for!',
+      icon: 'error',
+      closeOnClickOutside: 'false',
+    })
+  }
+
   useEffect(() => {
     fetch(FINISHED_POLLS_URL)
-    .then(res => res.json())
-    .then((json) => {
-      setFinishedPolls(json.finishedPolls)
-      console.log(finishedPolls)
+    .then(res => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        return res.json()
+          .then((res) => {
+            throw new Error(res.message)
+          })
+      }
     })
+    .then((json) => {
+      if (json.finishedPolls.length === 0) {
+        swal({
+          title: 'Ooops!',
+          text: 'No one has voted on your poll yet.',
+          icon: 'info',
+          closeOnClickOutside: 'false',
+        })
+      } else {
+        setFinishedPolls(json.finishedPolls)
+      }
+    })
+    .catch((err) => handleFailedFetch(err))
+
     fetch(POLLDETAILS_URL)
-    .then(res => res.json())
+    .then(res => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        return res.json()
+          .then((res) => {
+            throw new Error(res.message)
+          })
+      }
+    })
     .then((json) => {
       setPollDetails(json)
       console.log(pollDetails)
     })
+    .catch((err) => handleFailedFetch(err))
 
   }, [FINISHED_POLLS_URL, POLLDETAILS_URL])
 
