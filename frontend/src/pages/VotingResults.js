@@ -11,6 +11,7 @@ import {
 
 export const VotingResults= () => {
   const { id } = useParams()
+
   // const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
   // const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
   const FINISHED_POLLS_URL = `http://localhost:9000/finishedpoll/${id}`
@@ -121,36 +122,46 @@ export const VotingResults= () => {
     // [[456,12], [789,14], [523,12]]
 
     const resultEntries = Object.entries(result)
+    resultEntries.sort((a,b) => {
+      return a[1] - b[1]
+    })
     console.log(resultEntries)
 
     // In the return statement, map through all the options in the original poll.
     // At the same time, map through the item in resultEntries.
     // If you find a matching option / result-entry, display the option text and the second part (the points) of the result entry.
 
-  return (
+   
+  
+  
+    return (
     <>
-      <ResultContainer>
-        <LinkBorderContainer>
-            <EachResult>
-              <p><b>OPTIONS</b></p> 
-              <p><b>TOTAL</b></p>
-            
-            </EachResult>
-            {pollDetails.pollOptions?.map((option) => {
-                return (
-                  resultEntries.map((pair) => (
-                    option._id === pair[0] &&
-                      <EachResult>
-                        <p>{option.text}</p> 
-                        <p>{pair[1]}</p>
-                      </EachResult>
-                      
-                  ))
-                )
-            })}
-        </LinkBorderContainer>  
-      </ResultContainer>
-      <Confettis />
-    </>
+    <ResultContainer>
+    <LinkBorderContainer>
+        <EachResult>
+          <p><b>OPTIONS</b></p> 
+          <div className='objectionPoints'>
+            <p><b>OBJECTION</b></p>
+            <p><b>POINTS</b></p>
+          </div>
+        </EachResult>
+        <br></br>
+        {resultEntries.map((pair, index) => {
+            return (
+              pollDetails.pollOptions?.map((option) => (
+                option._id === pair[0] &&
+                    <EachResult 
+                    true={index}>
+                    <p>{option.text}</p> 
+                    <p>{pair[1]}</p>
+                  </EachResult>
+                  
+              ))
+            )
+        })}
+    </LinkBorderContainer>  
+   </ResultContainer>
+   <Confettis />
+   </>
   )
 }

@@ -59,7 +59,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
- /*  height: 80vh; */
+  margin-top: 30px;
 
   @media (min-width: 1200px) {
     flex-direction: row;
@@ -80,7 +80,7 @@ export const InfoText = styled.div`
   width: 100%;
   background-color: #E5F6F1;
   text-align: center;
-  font-size: 14px;
+  margin-top: 10px;
 
 @media (min-width: 1200px) {
   width: 50%;
@@ -92,11 +92,12 @@ export const InfoText = styled.div`
 `
 
 export const InfoTextH1 = styled.h1`
-  margin-bottom: 20px;
+  margin: 20px 0;
+  word-wrap: break-word;
 `
 
 export const InfoTextP = styled.p`
-  margin-top: 0;
+  margin-bottom: 20px;
   padding: 0px 10%
 `
 
@@ -136,10 +137,23 @@ export const NavigationButtonBack = styled.button `
     }
 `
 
+export const AddInput = styled.input `
+  margin-top: 10px;
+  margin-bottom: 40px;
+  background-color: #fdd835;
+  border: none;
+  padding: 10px 10px;
+  opacity: 0.8;
+  &:hover {
+      opacity: 1
+    }
+`
+
 //CREATE POLL
 
 export const HeaderPoll = styled.h1`
   text-align: center;
+  padding: 30px;
 `
 
 export const Form = styled.form`
@@ -172,17 +186,24 @@ export const PollContainer = styled(Container)`
   padding-bottom: 30px;
   display: flex;
   justify-content: center;
+  align-items: center
 `
 
 export const PollTopicInput = styled.label`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px
 `
 
 export const CreatePollContainer = styled.section`
-  padding-bottom: 2.5rem;   
+  /* padding: 2.5rem; */
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;   
 `
 export const SummaryButtons = styled.div`
   margin-top: 50px;
@@ -192,20 +213,23 @@ export const SummaryButtons = styled.div`
 `
 
 export const NavigationInput = styled.input `
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   background-color: #fdd835;
   border: none;
   opacity: 0.8;
-  font-size: 12px;
-  width: 35px;
-  height: 35px;
+  font-size: 18px;
+  margin: 5px 10px;
+  padding: 15px 15px;
+  /* height: 35px; */
+  word-wrap: break-word;
   &:hover {
       opacity: 1
     }
 `
 
 export const OptionButtons = styled.div`
-  padding: 0 50px
+  margin: 0 50px;
+
 `
 
 // SUMMARY
@@ -279,13 +303,14 @@ export const OptionsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center
+  align-items: center;
 `
 export const AddOption = styled.div`
   display: flex;
   flex-direction:row;
   justify-content: space-evenly;
   align-items: center;
+  padding: 0 20px;
   margin-bottom: 10px
 `
 export const AddOptionInput = styled.input`
@@ -313,6 +338,7 @@ export const LinkContainer = styled.div`
   justify-content: center;
   background-color: #E5F6F1;
   height: 550px;
+  margin-top: 40px;
 `
 export const LinkInput = styled.input`
   background-color: #E5F6F1;
@@ -334,11 +360,23 @@ export const LinkBorderContainer = styled.div `
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (min-width: 667px) {
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    width: 40%;
+    background-color: whitesmoke;
+    margin: 50px;
+    padding: 40px;
+  }
+  
   @media (min-width: 1200px) {
-    border: 1px solid grey;
-    box-shadow: 2px 3px #888888;
-    width:50%;
-    background-color: whitesmoke
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    width: 30%;
+    background-color: whitesmoke;
+    margin: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-bottom: 20px;
   }
 `
 
@@ -349,8 +387,9 @@ export const VotingContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height:550px;
-  background-color: #E5F6F1
+  background-color: #E5F6F1;
+  padding-bottom: 60px;
+  margin-top: 40px;
 `
 export const VotingForm = styled.form`
 display: flex;
@@ -360,8 +399,19 @@ margin-top: 30px
 
 export const VotingTextContainer = styled.div`
   margin: 30px;
+  text-align: left;
   align-items: center;
   justify-content: center;
+  line-height: 1.5;
+  font-size: 14px
+`
+
+export const VotingP = styled.p`
+  margin-top : 20px;
+  font-size: 20px;
+`
+export const VotingPI = styled.p`
+  font-size: 14px
 `
 
 export const YourName = styled.label`
@@ -370,7 +420,7 @@ export const YourName = styled.label`
   margin: 30px;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 20px
+  font-size: 16px
 `
 
 export const VotingButton = styled.input `
@@ -390,6 +440,7 @@ export const VotingButton = styled.input `
 export const ButtonContainer = styled.div `
   display: flex;
   flex-direction: column;
+  align-items: center;
 `
 
 //VOTING RESULTS 
@@ -398,9 +449,14 @@ export const EachResult = styled.div `
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 400px;
-  padding: 30px 0;
+  width: 80%;
+  padding: 30px 20px;
   font-size: 20px;
+  background-color: ${props => props.true === 0 ? '#8db596' : ''};
+  border-radius: ${props => props.true === 0 ? '20px' : ''};
+  .objectionPoints {
+    text-align: center;
+  }
 `
 
 export const ResultContainer = styled.div `
@@ -409,7 +465,8 @@ export const ResultContainer = styled.div `
   justify-content: center;
   align-items: center;
   padding: 20px 0;
-  background-color: #E5F6F1
+  background-color: #E5F6F1;
+  width: 100%
 `
 
 
@@ -428,7 +485,8 @@ export const FooterContainer = styled.footer`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem; 
+  height: 2.5rem;
+  font-size: 10px
 `
 
 export const IconImage = styled.img`
@@ -442,3 +500,10 @@ export const IconButton = styled.button`
   background-color: #E5F6F1;
 `
 
+export const SocialLinks = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-bottom: 25px
+`

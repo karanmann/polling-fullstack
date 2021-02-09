@@ -9,7 +9,7 @@ import {
   FacebookMessengerShareButton,
   FacebookMessengerIcon,
   EmailShareButton,
-  EmailIcon
+  EmailIcon,
 } from "react-share";
 
 import { poll } from '../reducer/poll'
@@ -21,11 +21,13 @@ import {
   NavigationButton,
   NavigationButtonBack,
   LinkButtonContainer,
-  LinkBorderContainer } from '../lib/Styling'
+  LinkBorderContainer,
+  SocialLinks} from '../lib/Styling'
 
 export const PollingLink= () => {
   const dispatch = useDispatch()
   const pollId = useSelector((store) => store.poll.pollId) // change if we solve the nesting problem
+
   // const url = `https://romantic-tesla.netlify.app/voting/${pollId}`
   const url = `http://localhost:3000/voting/${pollId}`
 
@@ -50,18 +52,20 @@ export const PollingLink= () => {
           <Link to='/'>
             <NavigationButtonBack onClick={resetState} >Back to Start Page</NavigationButtonBack>
           </Link>
-          <FacebookShareButton url={url} >
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
-          <WhatsappShareButton url={url} >
-            <WhatsappIcon size={32} round />
-          </WhatsappShareButton>
-          <FacebookMessengerShareButton url={url}>
-            <FacebookMessengerIcon size={32} round/>
-          </FacebookMessengerShareButton>
-          <EmailShareButton url={url}>
-            <EmailIcon size={32} round/>
-          </EmailShareButton>
+          <SocialLinks>
+            <FacebookShareButton url={url} >
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <WhatsappShareButton url={url} >
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+            <FacebookMessengerShareButton url={url}>
+              <FacebookMessengerIcon size={32} round/>
+            </FacebookMessengerShareButton>
+            <EmailShareButton url={url}>
+              <EmailIcon size={32} round/>
+            </EmailShareButton>
+          </SocialLinks>
         </LinkButtonContainer>
       </LinkBorderContainer>
     </LinkContainer>

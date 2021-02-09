@@ -10,11 +10,11 @@ const Ul = styled.ul`
   font-size: 20px;
   justify-content: space-evenly;
   li {
-    padding: 10px 10px;
+    padding: 10px 40px;
   }
   @media (max-width: 768px) {
     flex-flow: column nowrap;
-    background-color: #478cc5;
+    background-color: #364177;
     position: fixed;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
     top: 0;
