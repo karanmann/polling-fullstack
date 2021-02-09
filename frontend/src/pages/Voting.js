@@ -10,7 +10,6 @@ import {
   VotingForm, 
   NavigationButton, 
   NavigationInput,
-  // VotingButton,
   VotingP,
   YourName,
   Select,
@@ -182,7 +181,7 @@ const handleResults = () => {
             </TextField>
           </YourName>
           <ButtonContainer>
-            <NavigationInput type='submit' value='Submit and see Result'/>
+            <NavigationInput type='submit' value='Submit and see results'/>
           </ButtonContainer>
         </VotingForm>
         <NavigationButton onClick={handleResults}>Only see results</NavigationButton> 

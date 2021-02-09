@@ -60,7 +60,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-around;
   margin-top: 30px;
-  /* max-height: 80vh; */
 
   @media (min-width: 1200px) {
     flex-direction: row;
@@ -339,6 +338,7 @@ export const LinkContainer = styled.div`
   justify-content: center;
   background-color: #E5F6F1;
   height: 550px;
+  margin-top: 40px;
 `
 export const LinkInput = styled.input`
   background-color: #E5F6F1;
@@ -360,11 +360,23 @@ export const LinkBorderContainer = styled.div `
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (min-width: 667px) {
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    width: 40%;
+    background-color: whitesmoke;
+    margin: 50px;
+    padding: 40px;
+  }
+  
   @media (min-width: 1200px) {
-    border: 1px solid grey;
-    box-shadow: 2px 3px #888888;
-    width:50%;
-    background-color: whitesmoke
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    width: 30%;
+    background-color: whitesmoke;
+    margin: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-bottom: 20px;
   }
 `
 
@@ -377,6 +389,7 @@ export const VotingContainer = styled.div`
   justify-content: space-evenly;
   background-color: #E5F6F1;
   padding-bottom: 60px;
+  margin-top: 40px;
 `
 export const VotingForm = styled.form`
 display: flex;
@@ -454,7 +467,6 @@ export const ResultContainer = styled.div `
   padding: 20px 0;
   background-color: #E5F6F1;
   width: 100%
-
 `
 
 

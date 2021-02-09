@@ -10,7 +10,7 @@ const Ul = styled.ul`
   font-size: 20px;
   justify-content: space-evenly;
   li {
-    padding: 10px 10px;
+    padding: 10px 40px;
   }
   @media (max-width: 768px) {
     flex-flow: column nowrap;
