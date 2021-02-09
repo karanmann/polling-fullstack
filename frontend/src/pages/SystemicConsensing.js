@@ -1,19 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react'
-import styled from 'styled-components/macro'
+import React from 'react'
 
-import { VotingDummy } from '../components/VotingDummy'
-
-/* const array = [7, 6, 2, 9]
-
-const LowestNumber = Math.min(...array)
-
-console.log(LowestNumber)
-
- */
-export const About= () => {
+export const SystemicConsensing = () => {
   return (
     <>
-    {/* <VotingDummy /> */}
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
       Dolorum tempora veritatis delectus quas eum. Dignissimos illo aspernatur 
       assumenda porro saepe iste voluptate molestiae hic sint similique, 

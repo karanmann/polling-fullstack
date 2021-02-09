@@ -87,7 +87,7 @@ export const CreatePoll= () => {
     const pollOptions = allOptions
     fetch(POLL_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ pollTopic, pollOptions })
     })
       .then((res) => {
@@ -100,7 +100,6 @@ export const CreatePoll= () => {
           })
         })
       .then((json) => {
-        console.log(json)
         dispatch(poll.actions.setPollId(json.pollId))     
       })
       .catch((err) => handleFail(err))

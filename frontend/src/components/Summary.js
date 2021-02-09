@@ -1,5 +1,5 @@
 import React from 'react'
-/* import { useSelector } from 'react-redux' */
+
 import { 
   SummaryContainer, 
   SummaryForm,
@@ -8,7 +8,7 @@ import {
   } from '../lib/Styling'
 
 export const Summary = ({allOptions, pollTopic}) => {
-  const points = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  const points = ["-", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   return (
     <SummaryContainer>
@@ -16,10 +16,15 @@ export const Summary = ({allOptions, pollTopic}) => {
       <h3>{pollTopic}</h3>
       <SummaryForm>
         {allOptions.map((item) => (
-          <SummaryFormLabel>{item.text}
+          <SummaryFormLabel key={item.optionId}>
+            {item.text}
             <Select>
               {points.map((point) => (
-                <option value={point}>{point}</option>
+                <option 
+                  value={point}
+                  key={point}>
+                  {point}
+                </option>
               ))}
             </Select>
           </SummaryFormLabel>
