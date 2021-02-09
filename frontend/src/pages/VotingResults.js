@@ -67,45 +67,37 @@ export const VotingResults= () => {
     })
     .then((json) => {
       setPollDetails(json)
-      console.log(pollDetails)
     })
     .catch((err) => handleFailedFetch(err))
 
   }, [FINISHED_POLLS_URL, POLLDETAILS_URL])
 
-  console.log(finishedPolls)
-  console.log(pollDetails)
   
-  // // First step: build prel to look like this
-  //   // {
-  //   //   456: [2,5,8],
-  //   //   789: [8,5,1],
-  //   //   523: [7,3,2]
-  //   // }
+    // First step: build prel to have a data structure like this
+    // {
+    //   456: [2,5,8],
+    //   789: [8,5,1],
+    //   523: [7,3,2]
+    // }
 
     const prel = {}
     for (let i = 0; i < finishedPolls.length; i++) {
-      console.log('loop running', i)
       finishedPolls[i].voting.forEach(obj => {
-        const {optionId, objectionsPoints} = obj
-        if (prel[optionId]) {
-          prel[optionId].push(objectionsPoints)
+        const {pollOptionId, objectionsPoints} = obj
+        if (prel[pollOptionId]) {
+          prel[pollOptionId].push(objectionsPoints)
        } else {
-          prel[optionId] = [objectionsPoints]
+          prel[pollOptionId] = [objectionsPoints]
        }
       })
     };
-    
-    console.log(prel)
-  
-    // console.log(prel)
 
-    // Second step: build prelAsValuesArray to look like this
+    // Second step: build prelAsValuesArray to have a data structure like this
     // [ [456,[2,5,8]], [789, [8,5,1]], [523, [7,3,2]] ]
 
     const prelAsValuesArray = Object.entries(prel)
 
-     // Third step: build result to look like this
+    // Third step: build result to have a data structure like this
     // {
     //   456: 15,
     //   789: 14,
@@ -116,16 +108,15 @@ export const VotingResults= () => {
     prelAsValuesArray.map(item => {
      return result[item[0]] = item[1].reduce((a,b) => a + b)
     })
-    console.log(result)
 
-    // Fourth step: Build resultEntries to look like this
+    // Fourth step: Build resultEntries to have a data structure like this
     // [[456,12], [789,14], [523,12]]
 
     const resultEntries = Object.entries(result)
+
     resultEntries.sort((a,b) => {
       return a[1] - b[1]
     })
-    console.log(resultEntries)
 
     // In the return statement, map through all the options in the original poll.
     // At the same time, map through the item in resultEntries.
@@ -136,32 +127,31 @@ export const VotingResults= () => {
   
     return (
     <>
-    <ResultContainer>
-    <LinkBorderContainer>
-        <EachResult>
-          <p><b>OPTIONS</b></p> 
-          <div className='objectionPoints'>
-            <p><b>OBJECTION</b></p>
-            <p><b>POINTS</b></p>
-          </div>
-        </EachResult>
-        <br></br>
-        {resultEntries.map((pair, index) => {
-            return (
-              pollDetails.pollOptions?.map((option) => (
-                option._id === pair[0] &&
-                    <EachResult 
-                    true={index}>
-                    <p>{option.text}</p> 
-                    <p>{pair[1]}</p>
-                  </EachResult>
-                  
-              ))
-            )
-        })}
-    </LinkBorderContainer>  
-   </ResultContainer>
-   <Confettis />
+      <ResultContainer>
+      <LinkBorderContainer>
+          <EachResult>
+            <p><b>OPTIONS</b></p> 
+            <div className='objectionPoints'>
+              <p><b>OBJECTION</b></p>
+              <p><b>POINTS</b></p>
+            </div>
+          </EachResult>
+          <br></br>
+          {resultEntries.map((pair, index) => {
+              return (
+                pollDetails.pollOptions?.map((option) => (
+                  option._id === pair[0] &&
+                      <EachResult 
+                      true={index}>
+                      <p>{option.text}</p> 
+                      <p>{pair[1]}</p>
+                    </EachResult>
+                ))
+              )
+          })}
+      </LinkBorderContainer>  
+     </ResultContainer>
+     <Confettis />
    </>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-/* import { useSelector } from 'react-redux' */
+
 import { 
   SummaryContainer, 
   SummaryForm,
@@ -32,10 +32,16 @@ export const Summary = ({allOptions, pollTopic}) => {
         </VotingTextContainer>
       <SummaryForm>
         {allOptions.map((item) => (
-          <SummaryFormLabel>{item.text}
+          <SummaryFormLabel key={item.optionId}>
+            {item.text}
             <Select>
               {points.map((point) => (
-                <option value={point} disabled>{point}</option>
+                <option 
+                  value={point}
+                  key={point}
+                  disabled>
+                  {point}
+                </option>
               ))}
             </Select>
           </SummaryFormLabel>

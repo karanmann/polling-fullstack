@@ -11,8 +11,8 @@ import { Voting } from './pages/Voting'
 import { VotingResults } from './pages/VotingResults'
 import { Footer } from './components/Footer'
 import { About } from './pages/About'
+import { SystemicConsensing } from './pages/SystemicConsensing'
 import { poll } from './reducer/poll'
-import { voting } from './reducer/voting'
 
 import {VotingDummy} from './components/VotingDummy'
 import styled from 'styled-components/macro'
@@ -26,7 +26,6 @@ const AppContainer = styled.div`
 
 const reducer = combineReducers ({
   poll: poll.reducer, 
-  voting: voting.reducer
 })
 const store = configureStore ({ reducer })
 
@@ -54,6 +53,9 @@ const App = () => {
           </Route>
           <Route path='/about'> 
             <About />
+          </Route>
+          <Route path='/systemicconsensing'> 
+            <SystemicConsensing />
           </Route>
           {/* this next route only during development process for the voting dummy */}
           <Route path='/dummy'>

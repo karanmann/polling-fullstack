@@ -3,22 +3,9 @@ import { createSlice } from '@reduxjs/toolkit'
 export const poll = createSlice({
     name: 'poll',
     initialState: {
-        topic: 'Where to go on holiday?',
+        topic: '',
         pollId: null,
-        options: [
-        { 
-          text: 'Greece',
-          optionId: 1
-        },
-        { 
-          text: 'Thailand', 
-          optionId: 2,
-        },
-        { 
-          text: 'India',
-          optionId: 3,
-        },
-      ]
+        options: []
     },
     reducers: {
       addTopic: (store, action) => {
@@ -43,7 +30,6 @@ export const poll = createSlice({
         currentOption.text = updatedOption.text
       },
       setPollId: (store, action) => {
-        console.log(action.payload)
         const newId = action.payload
         store.pollId = newId
       },

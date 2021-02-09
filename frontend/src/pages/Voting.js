@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import swal from 'sweetalert'
 
@@ -31,7 +30,7 @@ export const Voting= () => {
   // const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll`
   const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
   const FINISHED_POLL_URL = `http://localhost:9000/finishedpoll`
-  const points = [ "-", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  const points = ["-", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   const storePollId = () => {
     setState({
@@ -89,7 +88,6 @@ export const Voting= () => {
         history.push(`/voting/${id}/results`)
       })
       .catch((err) => handleFailedPost(err))
-      console.log(state)
     }
   }
 
@@ -101,7 +99,7 @@ const handleResults = () => {
     let itemIndex = null
 
     state.voting.map((item) => {
-      if (item.optionId === event.target.name) {
+      if (item.pollOptionId === event.target.name) {
         itemIndex = state.voting.indexOf(item)
       }
       return itemIndex
@@ -111,7 +109,7 @@ const handleResults = () => {
       setState({
         ...state,
         ...state.voting.push({
-          optionId: event.target.name,
+          pollOptionId: event.target.name,
           objectionsPoints: event.target.value
         })
       })
@@ -119,7 +117,7 @@ const handleResults = () => {
       setState({
         ...state,
         ...state.voting.splice(itemIndex, 1, {
-          optionId: event.target.name,
+          pollOptionId: event.target.name,
           objectionsPoints: event.target.value
         })
       })
@@ -154,9 +152,6 @@ const handleResults = () => {
     .catch((err) => handleFailedFetch(err))
   }, [POLLDETAILS_URL])
 
-  console.log('current poll id', id)
-  console.log("polldetails", pollDetails)
-
   return (
     <VotingContainer>
       <LinkBorderContainer>
@@ -177,13 +172,18 @@ const handleResults = () => {
         <NavLink to='/systemicconsensing' style={{ textDecoration: 'none' }}>Read more about the principle behind Systemic consensing.</NavLink>
         <VotingForm onSubmit={handleSubmit}>
           {pollDetails.pollOptions?.map((item) => (
-            <SummaryFormLabel>{item.text}
+            <SummaryFormLabel key={item._id}>
+              {item.text}
               <Select 
                 onChange={handleSelect} 
                 name={item._id}
               >
                 {points.map((point) => (
-                  <option value={point}>{point}</option>
+                  <option 
+                    value={point}
+                    key={point}>
+                    {point}
+                  </option>
                 ))}
               </Select>
             </SummaryFormLabel>
@@ -196,7 +196,6 @@ const handleResults = () => {
               style={{ margin: 10, maxWidth: 300 }}
               type='text'
               name='name'
-              value={state.example}
               onChange={handleNameInput} 
               placeholder='Enter your name ...'
               required>

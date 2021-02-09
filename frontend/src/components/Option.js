@@ -59,7 +59,7 @@ export const Option = ({ option }) => {
         <AddOption>
           <OptionText>
             <AddOptionInput
-            type="text"
+            type='text'
             value={changedOption}
             onChange={event => setChangedOption(event.target.value)}
           />

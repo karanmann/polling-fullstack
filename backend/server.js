@@ -11,22 +11,17 @@ const Poll = mongoose.model('Poll', {
   pollTopic: {type: String, required: true},
   pollOptions: [{
     text: {type: String, required: true},
-    optionId: {type: Number}
   }]
 }) 
 
 const FinishedPoll= mongoose.model('FinishedPoll', {
   name: {type: String, required: true},
-  pollId: {type: String, required: true },
+  pollId: {type: String, required: true},
   voting: [{
-    optionId: {type: String, required: true }, //We also get one from the backend
-    objectionsPoints: {
-      type: Number
-    }
+    pollOptionId: {type: String, required: true}, 
+    objectionsPoints: {type: Number, required: true}
   }]
 })
-
-// generating the same pollID and OptionID on both dBases
 
 const port = process.env.PORT || 9000
 const app = express()
@@ -58,11 +53,6 @@ app.get('/alldata', async (req,res) => {
   const alldata = await Poll.find().exec()
   res.json(alldata)
 })
-
-// app.get('/summary/:id', async(req, res) => {
-//   const summary = await Poll.findOne({pollId: req.params._id})
-//   res.json(summary)
-// })
 
 app.get('/poll/:id', async (req, res) => {
   try {
@@ -99,17 +89,6 @@ app.get('/finishedpoll/:pollId', async( req, res) => {
     res.status(404).json({ message: 'Sorry! We couldn\'t find the poll you were looking for!', error: err.errors })
   }
 })
-
-
-
-
-
-
-
-
-
-
-
 
 // Start the server
 app.listen(port, () => {
