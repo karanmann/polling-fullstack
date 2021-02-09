@@ -13,18 +13,20 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   background-color: white;
-  
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+
   .logo {
     padding: 20px 0;
   }
 `
+
 
 export const Navbar = () => {
   return (
     <Nav>
       <div className='logo'>
         <NavLink to='/' style={{ textDecoration: 'none' }}>
-          <h3>HOME</h3>
+          <h3>POLLIC - systemic consensing</h3>
         </NavLink>
       </div>
       <Burger />

@@ -72,6 +72,10 @@ export const Voting= () => {
     console.log(state)
   }
 
+const handleResults = () => {
+  history.push(`/voting/${id}/results`)
+}
+
   const handleSelect = (event) => {
     let itemIndex = null
 
@@ -179,9 +183,9 @@ export const Voting= () => {
           </YourName>
           <ButtonContainer>
             <NavigationInput type='submit' value='Submit and see Result'/>
-            {/* <NavigationButton>Only see results</NavigationButton> */}
           </ButtonContainer>
-        </VotingForm> 
+        </VotingForm>
+        <NavigationButton onClick={handleResults}>Only see results</NavigationButton> 
       </LinkBorderContainer>
     </VotingContainer>
   )

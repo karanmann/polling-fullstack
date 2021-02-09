@@ -59,6 +59,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  margin-top: 30px;
   /* max-height: 80vh; */
 
   @media (min-width: 1200px) {
@@ -80,7 +81,7 @@ export const InfoText = styled.div`
   width: 100%;
   background-color: #E5F6F1;
   text-align: center;
-  font-size: px;
+  margin-top: 10px;
 
 @media (min-width: 1200px) {
   width: 50%;
@@ -93,7 +94,7 @@ export const InfoText = styled.div`
 
 export const InfoTextH1 = styled.h1`
   margin: 20px 0;
-
+  word-wrap: break-word;
 `
 
 export const InfoTextP = styled.p`
@@ -132,6 +133,18 @@ export const NavigationButtonBack = styled.button `
   padding: 15px 25px;
   opacity: 0.8;
   font-size: 18px;
+  &:hover {
+      opacity: 1
+    }
+`
+
+export const AddInput = styled.input `
+  margin-top: 10px;
+  margin-bottom: 40px;
+  background-color: #fdd835;
+  border: none;
+  padding: 10px 10px;
+  opacity: 0.8;
   &:hover {
       opacity: 1
     }
@@ -423,10 +436,14 @@ export const EachResult = styled.div `
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 400px;
-  padding: 30px 0;
+  width: 80%;
+  padding: 30px 20px;
   font-size: 20px;
-  border: ${props => props.true === 0 ? 'solid green 2px' : ''}
+  background-color: ${props => props.true === 0 ? '#8db596' : ''};
+  border-radius: ${props => props.true === 0 ? '20px' : ''};
+  .objectionPoints {
+    text-align: center;
+  }
 `
 
 export const ResultContainer = styled.div `

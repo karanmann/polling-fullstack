@@ -16,7 +16,7 @@ import {
   NavigationButton, 
   NavigationButtonBack, 
   SummaryButtons,
-  NavigationInput,
+  AddInput,
   OptionButtons,
   CreatePollContainer,
   LinkBorderContainer,
@@ -150,7 +150,7 @@ useEffect(() => {
                   onChange={event => setNewOption(event.target.value)}
                   placeholder='Add new option...'
                 />
-                <NavigationInput type='submit' value='➕'/>
+                <AddInput type='submit' value='➕'/>
               </PollTopicInput>
               </Form>
               <OptionButtons>

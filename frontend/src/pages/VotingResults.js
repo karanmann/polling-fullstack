@@ -100,7 +100,10 @@ export const VotingResults= () => {
     <LinkBorderContainer>
         <EachResult>
           <p><b>OPTIONS</b></p> 
-          <p><b>TOTAL</b></p>
+          <div className='objectionPoints'>
+            <p><b>OBJECTION</b></p>
+            <p><b>POINTS</b></p>
+          </div>
         </EachResult>
         <br></br>
         {resultEntries.map((pair, index) => {
