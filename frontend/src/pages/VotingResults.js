@@ -10,10 +10,10 @@ import {
 
 export const VotingResults= () => {
   const { id } = useParams()
-  const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
-  const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
-  // const FINISHED_POLLS_URL = `http://localhost:9000/finishedpoll/${id}`
-  // const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
+/*   const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
+  const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}` */
+  const FINISHED_POLLS_URL = `http://localhost:9000/finishedpoll/${id}`
+  const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
   const [finishedPolls, setFinishedPolls] = useState([])
   const [pollDetails, setPollDetails] = useState ({})
 
@@ -100,7 +100,10 @@ export const VotingResults= () => {
     <LinkBorderContainer>
         <EachResult>
           <p><b>OPTIONS</b></p> 
-          <p><b>TOTAL</b></p>
+          <div className='objectionPoints'>
+            <p><b>OBJECTION</b></p>
+            <p><b>POINTS</b></p>
+          </div>
         </EachResult>
         <br></br>
         {resultEntries.map((pair, index) => {

@@ -6,23 +6,26 @@ import { Burger } from './Burger';
 
 const Nav = styled.nav`
   width: 100%;
-  height: 55px;
-  border-bottom: 2px solid #f1f1f1;
+  height: 60px;
+/*   border-bottom: 0.2px solid grey; */
+  /* box-shadow: 0 8px 6px -6px black; */
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
-  background-color: #8db8db;
+  box-shadow: 0 2px 3px 0 rgb(0 0 0 / 20%);
+
   .logo {
-    padding: 15px 0;
+    padding: 20px 0;
   }
 `
+
 
 export const Navbar = () => {
   return (
     <Nav>
       <div className='logo'>
         <NavLink to='/' style={{ textDecoration: 'none' }}>
-          <h3>HOME</h3>
+          <h3>POLLIC - systemic consensing</h3>
         </NavLink>
       </div>
       <Burger />
