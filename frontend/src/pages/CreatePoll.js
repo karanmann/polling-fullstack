@@ -17,7 +17,7 @@ import {
   NavigationButton, 
   NavigationButtonBack, 
   SummaryButtons,
-  NavigationInput,
+  AddInput,
   OptionButtons,
   CreatePollContainer,
   LinkBorderContainer,
@@ -27,6 +27,7 @@ export const CreatePoll= () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const pollId = useSelector((store) => store.poll.pollId)
+
   // const POLL_URL = 'https://systemic-poll-app.herokuapp.com/poll'
   const POLL_URL = 'http://localhost:9000/poll'
 
@@ -120,7 +121,7 @@ useEffect(() => {
           <HeaderPoll>Create poll</HeaderPoll>
           <Form onSubmit={handleShowOptions}>
             <PollTopicInput>
-              Topic of your poll:
+              Poll Topic:
               <TextField
                 variant='filled'
                 color='primary'
@@ -154,7 +155,7 @@ useEffect(() => {
                   onChange={event => setNewOption(event.target.value)}
                   placeholder='Add new option...'
                 />
-                <NavigationInput type='submit' value='➕'/>
+                <AddInput type='submit' value='➕'/>
               </PollTopicInput>
               </Form>
               <OptionButtons>
@@ -177,7 +178,8 @@ useEffect(() => {
           <HeaderPoll>Summary</HeaderPoll>
           <Summary 
             allOptions={allOptions}
-            pollTopic={newTopic}/>
+            pollTopic={newTopic}
+            />
           <SummaryButtons>
             <NavigationButtonBack onClick={handleBackToOptions}>Back</NavigationButtonBack>
             <Link to='/pollinglink'>

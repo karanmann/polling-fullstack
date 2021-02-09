@@ -16,14 +16,18 @@ export const LandingPage= () => {
   return (
       <Container>
        <InfoText>
-          <InfoTextH1>Welcome</InfoTextH1>
-          <InfoTextP>Making decisions in a group should be easy.. With systemic consensing your decisions will be... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </InfoTextP>
+          <InfoTextH1>Decisions for everyone</InfoTextH1>
+          <InfoTextP>Making decisions in a group should not be about making just a few persons happy…             
+            The principle behind Systemic consensing is to find a solution that fits all participants. 
+            The proposal with the least objection is most easily accepted by all together and generates the least conflict potential.
+            Create a poll and try it out!
+          </InfoTextP>
           <Link to='/createpoll'>
             <NavigationButton>Create new poll</NavigationButton>
           </Link>
         </InfoText>
         <InfoImage>
-        <Image src={schedule} alt='hands'/>
+        <Image src={schedule} alt='schedule'/>
        </InfoImage>  
       </Container>   
   )
