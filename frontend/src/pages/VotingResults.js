@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import swal from 'sweetalert'
 
-import { Confettis} from '../components/Confettis'
+import { Confettis } from '../components/Confettis'
 import { 
   LinkBorderContainer, 
   EachResult,
@@ -12,8 +12,8 @@ import {
 export const VotingResults= () => {
   const { id } = useParams()
 
-  // const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
-  // const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
+/*   const FINISHED_POLLS_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll/${id}`
+  const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}` */
   const FINISHED_POLLS_URL = `http://localhost:9000/finishedpoll/${id}`
   const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
   const [finishedPolls, setFinishedPolls] = useState([])
@@ -122,13 +122,11 @@ export const VotingResults= () => {
     // At the same time, map through the item in resultEntries.
     // If you find a matching option / result-entry, display the option text and the second part (the points) of the result entry.
 
-   
-  
-  
     return (
     <>
       <ResultContainer>
       <LinkBorderContainer>
+        <h2>{pollDetails.pollTopic}</h2>
           <EachResult>
             <p><b>OPTIONS</b></p> 
             <div className='objectionPoints'>
@@ -137,13 +135,14 @@ export const VotingResults= () => {
             </div>
           </EachResult>
           <br></br>
+          <p className='winnerText'><i>This option currently has least objections</i></p>
           {resultEntries.map((pair, index) => {
               return (
                 pollDetails.pollOptions?.map((option) => (
                   option._id === pair[0] &&
                       <EachResult 
                       true={index}>
-                      <p>{option.text}</p> 
+                      <p className='result-text'>{option.text}</p> 
                       <p>{pair[1]}</p>
                     </EachResult>
                 ))

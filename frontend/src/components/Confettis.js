@@ -3,8 +3,8 @@ import Confetti from 'react-confetti'
 import styled from 'styled-components/macro'
 
 const Div = styled.div `
-width: auto;
-height: 3000px;
+  width: auto;
+  height: 3000px;
 `
 
 export const Confettis = () => {
@@ -18,16 +18,9 @@ export const Confettis = () => {
     setWidth(confettiRef.current.clientWidth);
   }, [])
 
-
-/*  const handleShow = toggle => {
-    setShow(toggle);
-  } 
- */
   return (
     <>
       <Div
-/*         onMouseEnter={() => handleShow(true)}
-        onMouseLeave={() => handleShow(false)} */
         ref={confettiRef}>
           <Confetti
             recycle={show}

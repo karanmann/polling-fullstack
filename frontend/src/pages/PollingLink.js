@@ -28,8 +28,8 @@ export const PollingLink= () => {
   const dispatch = useDispatch()
   const pollId = useSelector((store) => store.poll.pollId) // change if we solve the nesting problem
 
-  const url = `https://romantic-tesla.netlify.app/voting/${pollId}`
-  // const url = `http://localhost:3000/voting/${pollId}`
+/*   const url = `https://romantic-tesla.netlify.app/voting/${pollId}` */
+  const url = `http://localhost:3000/voting/${pollId}`
 
   const resetState = () => {
     dispatch(poll.actions.setPollTopic({ topic: ''}))

@@ -33,17 +33,19 @@ export const Summary = ({allOptions, pollTopic}) => {
       <SummaryForm>
         {allOptions.map((item) => (
           <SummaryFormLabel key={item.optionId}>
-            {item.text}
-            <Select>
-              {points.map((point) => (
-                <option 
-                  value={point}
-                  key={point}
-                  disabled>
-                  {point}
-                </option>
-              ))}
-            </Select>
+            <>
+              <p className='summary-text'>{item.text}</p>
+              <Select>
+                {points.map((point) => (
+                  <option 
+                    value={point}
+                    key={point}
+                    disabled>
+                    {point}
+                  </option>
+                ))}
+              </Select>
+            </>
           </SummaryFormLabel>
         ))}
       </SummaryForm>

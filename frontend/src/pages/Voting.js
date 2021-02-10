@@ -26,10 +26,10 @@ export const Voting= () => {
   const [ state, setState ] = useState({ voting: [] })
 
 
-  const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
-  const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll`
-  // const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
-  // const FINISHED_POLL_URL = `http://localhost:9000/finishedpoll`
+/*   const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
+  const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll` */
+  const POLLDETAILS_URL = `http://localhost:9000/poll/${id}`
+  const FINISHED_POLL_URL = `http://localhost:9000/finishedpoll`
   const points = ["-", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   const storePollId = () => {
@@ -161,11 +161,14 @@ const handleResults = () => {
             <i><b>This is how you vote:</b></i>
           </p>
           <ul>
-            <p>
-              <li>You will vote for every option in the list. "0" means absolutely no resistance — "I have no objection, I support this proposal strongly."</li>
+          <p>
+              <li className='bullet'>You will vote for every option in the list.</li>
             </p>
             <p>
-              <li>"10" means maximum resistance — "I have huge objections, I refuse this proposal heavily."</li>
+              <li className='bullet'>"0" means absolutely no resistance — "I have no objection, I support this proposal strongly."</li>
+            </p>
+            <p>
+              <li className='bullet'>"10" means maximum resistance — "I have huge objections, I refuse this proposal heavily."</li>
             </p>
           </ul>
         </VotingTextContainer>

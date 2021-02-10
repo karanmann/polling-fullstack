@@ -1,6 +1,9 @@
 import styled from 'styled-components/macro'
+import { NavLink } from 'react-router-dom'
 
 // NAVBAR
+
+
 
 export const NavContainer = styled.div`
   display: flex;
@@ -24,8 +27,12 @@ export const LogoImage = styled.img`
 `
 
 export const Logo = styled.h1`
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
+
+  @media (min-width: 750px) {
+    font-size: 25px;
+  }
 `
 
 export const NavText = styled.h2`
@@ -52,6 +59,64 @@ export const LinkButton = styled.div`
     text-decoration: underline;
   }
 `
+
+export const Ul = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-size: 20px;
+  justify-content: space-evenly;
+  li {
+    padding: 10px 40px;
+  }
+  @media (max-width: 750px) {
+    flex-flow: column nowrap;
+    background-color: #364177;
+    position: fixed;
+    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
+    top: 0;
+    right: 0;
+    height: 25vh;
+    width: 100vw;
+    padding-top: 2.5rem;
+    transition: transform 0.3s ease-in-out;
+    li {
+      color: #fff;
+    };
+  }
+`
+export const activeClassName = 'nav-item-active'
+
+export const StyledLink = styled(NavLink).attrs({ activeClassName })`
+  &.${activeClassName} {
+    color: red;
+  }
+`;
+
+export const Nav = styled.nav`
+  width: 100%;
+  height: 60px;
+/*   border-bottom: 0.2px solid grey; */
+  /* box-shadow: 0 8px 6px -6px black; */
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 2px 3px 0 rgb(0 0 0 / 20%);
+
+  .logo {
+    padding: 20px 0;
+  }
+
+`
+
+export const LogoStyledLink = styled(NavLink).attrs({ activeClassName })`
+  &.${activeClassName} {
+    color: black;
+  }
+`
+
+
 //LANDING PAGE
 
 export const Container = styled.div`
@@ -98,7 +163,8 @@ export const InfoTextH1 = styled.h1`
 
 export const InfoTextP = styled.p`
   margin-bottom: 20px;
-  padding: 0px 10%
+  padding: 0px 10%;
+  line-height: 150%;
 `
 
 export const Image = styled.img`
@@ -237,7 +303,8 @@ export const SummaryContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  height:fit
+  height:fit;
+  width: 80%;
 `
 
 export const SummaryForm = styled.form`
@@ -311,7 +378,8 @@ export const AddOption = styled.div`
   justify-content: space-evenly;
   align-items: center;
   padding: 0 20px;
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  overflow-wrap: break-word;
 `
 export const AddOptionInput = styled.input`
   border: none;
@@ -360,10 +428,38 @@ export const LinkBorderContainer = styled.div `
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 40px;
 
+  .about-text {
+  line-height: 150%;
+  margin-bottom: 20px
+  }
+
+  .about-text ul li {
+    list-style-type: none;
+    text-align: center;
+    margin-top: 10px
+  }
+
+  .about-text ul li a{
+    text-decoration: none;
+  }
+
+  .heading {
+    margin-bottom: 20px;
+  }
+
+  .heading2 {
+    margin-bottom: 15px;
+  }
+
+  .winnerText {
+    margin-bottom: 5px;
+  }
+   
   @media (min-width: 750px) {
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-    width: 40%;
+    width: 80%;
     background-color: whitesmoke;
     margin: 50px;
     padding: 40px;
@@ -371,7 +467,7 @@ export const LinkBorderContainer = styled.div `
   
   @media (min-width: 1200px) {
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-    width: 30%;
+    width: 50%;
     background-color: whitesmoke;
     margin: 50px;
     padding-right: 80px;
@@ -403,7 +499,11 @@ export const VotingTextContainer = styled.div`
   align-items: center;
   justify-content: center;
   line-height: 1.5;
-  font-size: 14px
+  font-size: 14px;
+
+  .bullet {
+    margin-bottom: 10px;
+  }
 `
 
 export const VotingP = styled.p`
@@ -456,6 +556,10 @@ export const EachResult = styled.div `
   border-radius: ${props => props.true === 0 ? '20px' : ''};
   .objectionPoints {
     text-align: center;
+  }
+  .result-text {
+    overflow-wrap: break-word;
+    margin-right: 20px
   }
 `
 

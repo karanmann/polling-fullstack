@@ -28,8 +28,8 @@ export const CreatePoll= () => {
   const history = useHistory()
   const pollId = useSelector((store) => store.poll.pollId)
 
-  const POLL_URL = 'https://systemic-poll-app.herokuapp.com/poll'
-  // const POLL_URL = 'http://localhost:9000/poll'
+/*   const POLL_URL = 'https://systemic-poll-app.herokuapp.com/poll' */
+  const POLL_URL = 'http://localhost:9000/poll'
 
   // States to handle conditional rendering
   const [showTopic, setShowTopic] = useState(true)
@@ -121,7 +121,7 @@ useEffect(() => {
           <HeaderPoll>Create poll</HeaderPoll>
           <Form onSubmit={handleShowOptions}>
             <PollTopicInput>
-              Poll Topic:
+              <i>What should your poll be about?</i>
               <TextField
                 variant='filled'
                 color='primary'
@@ -145,6 +145,7 @@ useEffect(() => {
               <HeaderPoll>Add options</HeaderPoll>
               <Form onSubmit={onAddOption}>
               <PollTopicInput>
+                <i>What are the different alternatives?</i>
                 <TextField 
                   variant='filled'
                   color='primary'
@@ -167,7 +168,7 @@ useEffect(() => {
               </OptionButtons>
               <SummaryButtons>
                 <NavigationButtonBack onClick={handleBackToTopic}>Back</NavigationButtonBack>
-                <NavigationButton onClick={handleShowSummary}>Create poll</NavigationButton>
+                <NavigationButton onClick={handleShowSummary}>Next step</NavigationButton>
               </SummaryButtons>
           </CreatePollContainer>
         </LinkBorderContainer>
@@ -183,7 +184,7 @@ useEffect(() => {
           <SummaryButtons>
             <NavigationButtonBack onClick={handleBackToOptions}>Back</NavigationButtonBack>
             <Link to='/pollinglink'>
-              <NavigationButton onClick={handleFinishPoll}>Finish and create link</NavigationButton>
+              <NavigationButton onClick={handleFinishPoll}>Create poll</NavigationButton>
             </Link>
           </SummaryButtons>
         </LinkBorderContainer>
