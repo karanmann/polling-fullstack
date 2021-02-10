@@ -72,7 +72,6 @@ export const VotingResults= () => {
 
   }, [FINISHED_POLLS_URL, POLLDETAILS_URL])
 
-  
     // First step: build prel to have a data structure like this
     // {
     //   456: [2,5,8],
@@ -113,7 +112,6 @@ export const VotingResults= () => {
     // [[456,12], [789,14], [523,12]]
 
     const resultEntries = Object.entries(result)
-
     resultEntries.sort((a,b) => {
       return a[1] - b[1]
     })
@@ -128,20 +126,26 @@ export const VotingResults= () => {
       <LinkBorderContainer>
         <h2>{pollDetails.pollTopic}</h2>
           <EachResult>
-            <p><b>OPTIONS</b></p> 
+            <p>
+              <b>OPTIONS</b>
+            </p> 
             <div className='objectionPoints'>
-              <p><b>OBJECTION</b></p>
-              <p><b>POINTS</b></p>
+              <p>
+                <b>OBJECTION</b>
+              </p>
+              <p>
+                <b>POINTS</b>
+              </p>
             </div>
           </EachResult>
-          <br></br>
-          <p className='winnerText'><i>This option currently has least objections</i></p>
+          <p className='winnerText'>
+            <i>This option currently has least objections</i>
+          </p>
           {resultEntries.map((pair, index) => {
               return (
                 pollDetails.pollOptions?.map((option) => (
                   option._id === pair[0] &&
-                      <EachResult 
-                      true={index}>
+                    <EachResult true={index}>
                       <p className='result-text'>{option.text}</p> 
                       <p className='result-number'>{pair[1]}</p>
                     </EachResult>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React from 'react'
 
 import { 
   LinkBorderContainer,
@@ -28,7 +28,6 @@ export const About= () => {
           </p>
           <p className='about-text'>
             If you want to know more about us, visit us here:
-            {/* Insert Links to our portfolios here */}
             <ul>
               <li>
                 <a href='https://ingelalofgren-portfolio.netlify.app/'>Ingela Löfgren</a>

@@ -1,21 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Confetti from 'react-confetti'
-import styled from 'styled-components/macro'
-
-const Div = styled.div `
-  width: auto;
-  height: 3000px;
-`
+import { Div } from '../lib/Styling'
 
 export const Confettis = () => {
-  const [height, setHeight] = useState(null);
-  const [width, setWidth] = useState(null);
-  const [show, setShow] = useState(false);
-  const confettiRef = useRef(null);
+  const [height, setHeight] = useState(null)
+  const [width, setWidth] = useState(null)
+  const [show] = useState(false)
+  const confettiRef = useRef(null)
 
   useEffect(() => {
-    setHeight(confettiRef.current.clientHeight);
-    setWidth(confettiRef.current.clientWidth);
+    setHeight(confettiRef.current.clientHeight)
+    setWidth(confettiRef.current.clientWidth)
   }, [])
 
   return (
@@ -26,9 +21,8 @@ export const Confettis = () => {
             recycle={show}
             numberOfPieces={800}
             width={width}
-            height={height}
-        />
+            height={height}/>
       </Div>
     </>
-  );
+  )
 }

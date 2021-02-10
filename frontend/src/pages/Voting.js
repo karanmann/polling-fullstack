@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import swal from 'sweetalert'
-
-
 import { TextField } from '@material-ui/core'
+
 import { 
   VotingContainer, 
   VotingForm, 
@@ -18,13 +17,11 @@ import {
   ButtonContainer,
   VotingTextContainer} from '../lib/Styling'
 
-
 export const Voting= () => {
   const history = useHistory()
   const { id } = useParams()
   const [ pollDetails, setPollDetails ] = useState({})
   const [ state, setState ] = useState({ voting: [] })
-
 
 /*   const POLLDETAILS_URL = `https://systemic-poll-app.herokuapp.com/poll/${id}`
   const FINISHED_POLL_URL = `https://systemic-poll-app.herokuapp.com/finishedpoll` */
@@ -68,7 +65,6 @@ export const Voting= () => {
         closeOnClickOutside: 'false',
       })
     } else {
-
       fetch(FINISHED_POLL_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
@@ -91,9 +87,9 @@ export const Voting= () => {
     }
   }
 
-const handleResults = () => {
-  history.push(`/voting/${id}/results`)
-}
+  const handleResults = () => {
+    history.push(`/voting/${id}/results`)
+  }
 
   const handleSelect = (event) => {
     let itemIndex = null
@@ -122,8 +118,6 @@ const handleResults = () => {
         })
       })
     }
-
-    
   }
 
   const handleNameInput = (event) => {
@@ -155,11 +149,15 @@ const handleResults = () => {
   return (
     <VotingContainer>
       <LinkBorderContainer>
-        <VotingP><b>{pollDetails.pollTopic}</b></VotingP>
+        <VotingP>
+          <b>{pollDetails.pollTopic}</b>
+        </VotingP>
         <VotingTextContainer>
           <div className='voting-text-top'>
             <p>
-              <i><b>This is how you vote:</b></i>
+              <i>
+                <b>This is how you vote:</b>
+              </i>
             </p>
             <ul >
               <p>
@@ -173,7 +171,6 @@ const handleResults = () => {
               </p>
             </ul>
           </div>
-          
         </VotingTextContainer>
         <NavLink to='/systemicconsensing' style={{ textDecoration: 'none' }}>Read more about Systemic consensing.</NavLink>
         <VotingForm onSubmit={handleSubmit}>
@@ -184,8 +181,7 @@ const handleResults = () => {
               </p>
               <Select 
                 onChange={handleSelect} 
-                name={item._id}
-              >
+                name={item._id}>
                 {points.map((point) => (
                   <option 
                     value={point}

@@ -1,9 +1,14 @@
 import styled from 'styled-components/macro'
 import { NavLink } from 'react-router-dom'
 
+export const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh;
+`
+
 // NAVBAR
-
-
 
 export const NavContainer = styled.div`
   display: flex;
@@ -92,7 +97,7 @@ export const StyledLink = styled(NavLink).attrs({ activeClassName })`
   &.${activeClassName} {
     color: red;
   }
-`;
+`
 
 export const Nav = styled.nav`
   width: 100%;
@@ -107,7 +112,6 @@ export const Nav = styled.nav`
   .logo {
     padding: 20px 0;
   }
-
 `
 
 export const LogoStyledLink = styled(NavLink).attrs({ activeClassName })`
@@ -116,6 +120,40 @@ export const LogoStyledLink = styled(NavLink).attrs({ activeClassName })`
   }
 `
 
+export const StyledBurger = styled.div`
+  width: 2rem;
+  height: 2rem;
+ /*  position: fixed; */
+  top: 15px;
+  right: 20px;
+  z-index: 20;
+  display: none;
+  margin-top: 12px;
+  margin-right: 12px;
+  @media (max-width: 750px) {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+  }
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: ${({ open }) => open ? '#ccc' : '#364177'};
+    border-radius: 10px;
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+    &:nth-child(1) {
+      transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
+    }
+    &:nth-child(2) {
+      transform: ${({ open }) => open ? 'translateX(100%)' : 'translateX(0)'};
+      opacity: ${({ open }) => open ? 0 : 1};
+    }
+    &:nth-child(3) {
+      transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+    }
+  }
+`;
 
 //LANDING PAGE
 
@@ -186,8 +224,8 @@ export const NavigationButton = styled.button `
   opacity: 0.8;
   font-size: 18px;
   &:hover {
-      opacity: 1
-    }
+    opacity: 1
+  }
 `
 
 export const NavigationButtonBack = styled.button `
@@ -199,8 +237,8 @@ export const NavigationButtonBack = styled.button `
   opacity: 0.8;
   font-size: 18px;
   &:hover {
-      opacity: 1
-    }
+    opacity: 1
+  }
 `
 
 export const AddInput = styled.input `
@@ -211,8 +249,8 @@ export const AddInput = styled.input `
   padding: 10px 10px;
   opacity: 0.8;
   &:hover {
-      opacity: 1
-    }
+    opacity: 1
+  }
 `
 
 //CREATE POLL
@@ -289,13 +327,12 @@ export const NavigationInput = styled.input `
   /* height: 35px; */
   word-wrap: break-word;
   &:hover {
-      opacity: 1
-    }
+    opacity: 1
+  }
 `
 
 export const OptionButtons = styled.div`
   margin: 0 50px;
-
 `
 
 // SUMMARY
@@ -376,7 +413,7 @@ export const Select = styled.select`
   border-color: grey;
   outline: 0;
 }
-  `
+`
 
 // component OPTION
 export const OptionsContainer = styled.div`
@@ -385,6 +422,7 @@ export const OptionsContainer = styled.div`
   justify-content: center;
   align-items: center;
 `
+
 export const AddOption = styled.div`
   display: flex;
   flex-direction:row;
@@ -394,6 +432,7 @@ export const AddOption = styled.div`
   margin-bottom: 10px;
   overflow-wrap: break-word;
 `
+
 export const AddOptionInput = styled.input`
   border: none;
   margin-right: 20px;
@@ -401,6 +440,7 @@ export const AddOptionInput = styled.input`
   padding: 10px 15px;
   font-size: 12px
 `
+
 export const OptionText = styled.div`
   width: 200px;
   align-items: justify;
@@ -423,6 +463,7 @@ export const LinkContainer = styled.div`
   height: 550px;
   margin-top: 40px;
 `
+
 export const LinkInput = styled.input`
   background-color: #E5F6F1;
   width: 80%;
@@ -433,11 +474,13 @@ export const LinkInput = styled.input`
     background-color: whitesmoke;
   }
 `
+
 export const LinkButtonContainer = styled.div`
   margin-top: 30px;
   display: flex;
   flex-direction: column;
 `
+
 export const LinkBorderContainer = styled.div `
   width: 90%;
   display: flex;
@@ -502,6 +545,7 @@ export const VotingContainer = styled.div`
   padding-bottom: 60px;
   margin-top: 40px;
 `
+
 export const VotingForm = styled.form`
 display: flex;
 flex-direction: column;
@@ -551,8 +595,8 @@ export const VotingButton = styled.input `
   font-size: 18px;
   width: auto;
   &:hover {
-      opacity: 1
-    }
+    opacity: 1
+  }
 `
 
 export const ButtonContainer = styled.div `
@@ -597,7 +641,6 @@ export const ResultContainer = styled.div `
   width: 100%
 `
 
-
 //FOOTER
 
 export const FooterContainer = styled.footer`
@@ -616,6 +659,8 @@ export const FooterContainer = styled.footer`
   height: 2.5rem;
   font-size: 10px
 `
+
+// LIBRARIES STYLING
 
 export const IconImage = styled.img`
   height: 30px;
@@ -642,4 +687,9 @@ export const SocialLinks = styled.div`
   align-items: center;
   justify-content: space-evenly;
   padding-bottom: 25px
+`
+
+export const Div = styled.div `
+  width: auto;
+  height: 3000px;
 `

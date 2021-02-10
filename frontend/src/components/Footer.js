@@ -4,7 +4,11 @@ import { FooterContainer } from '../lib/Styling'
 export const Footer= () => {
   return (
     <FooterContainer>
-      <p>🦊 © Made by Karan Mann, Ingela Löfgren, Henrike Wiemker 🦊</p>
+      <p>
+        <span>🦊 </span>
+        © Made by Karan Mann, Ingela Löfgren, Henrike Wiemker 
+        <span>🦊 </span>
+      </p>
     </FooterContainer>
   )
 }

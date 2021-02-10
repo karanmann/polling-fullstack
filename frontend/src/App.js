@@ -13,16 +13,8 @@ import { Footer } from './components/Footer'
 import { About } from './pages/About'
 import { SystemicConsensing } from './pages/SystemicConsensing'
 import { poll } from './reducer/poll'
+import { AppContainer } from './lib/Styling'
 
-import {VotingDummy} from './components/VotingDummy'
-import styled from 'styled-components/macro'
-
-const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  min-height: 100vh;
-`
 
 const reducer = combineReducers ({
   poll: poll.reducer, 
@@ -56,10 +48,6 @@ const App = () => {
           </Route>
           <Route path='/systemicconsensing'> 
             <SystemicConsensing />
-          </Route>
-          {/* this next route only during development process for the voting dummy */}
-          <Route path='/dummy'>
-            <VotingDummy />
           </Route>
         </Switch>
         <Footer />

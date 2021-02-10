@@ -9,8 +9,6 @@ import { Summary } from '../components/Summary'
 import { poll } from '../reducer/poll'
 import { 
   Form, 
-  // InputTopic, 
-  // InputOptions, 
   HeaderPoll, 
   PollContainer, 
   PollTopicInput,
@@ -97,11 +95,11 @@ export const CreatePoll= () => {
         }
         return res.json()
           .then((res) => {
-            throw new Error(res.message) // Why does res.error not work? How can we access the mongoose error-object?
+            throw new Error(res.message)
           })
         })
       .then((json) => {
-        dispatch(poll.actions.setPollId(json.pollId))     
+        dispatch(poll.actions.setPollId(json.pollId))
       })
       .catch((err) => handleFail(err))
   }
@@ -114,83 +112,80 @@ useEffect(() => {
 
   return (
     <>
-    <PollContainer>
-      { showTopic && 
-        <CreatePollContainer>
-        <LinkBorderContainer>
-          <HeaderPoll>Create poll</HeaderPoll>
-          <Form onSubmit={handleShowOptions}>
-            <PollTopicInput>
-              <i>What should your poll be about?</i>
-              <TextField
-                variant='filled'
-                color='primary'
-                style={{ margin: 10, maxWidth: 300 }}
-                type='text'
-                name='topic'
-                value={newTopic}
-                onChange={event => setNewTopic(event.target.value)}
-                placeholder='Enter the topic...'
-                required='required'
-              />
-            </PollTopicInput>
-            <NavigationButton onClick={handleShowOptions}>Next step</NavigationButton>
-          </Form>
-        </LinkBorderContainer>
-        </CreatePollContainer>
-      }
-      { showOptions && 
-        <LinkBorderContainer>
+      <PollContainer>
+        { showTopic && 
           <CreatePollContainer>
-              <HeaderPoll>Add options</HeaderPoll>
-              <Form onSubmit={onAddOption}>
+          <LinkBorderContainer>
+            <HeaderPoll>Create poll</HeaderPoll>
+            <Form onSubmit={handleShowOptions}>
               <PollTopicInput>
-                <i>What are the different alternatives?</i>
-                <TextField 
+                <i>What should your poll be about?</i>
+                <TextField
                   variant='filled'
                   color='primary'
                   style={{ margin: 10, maxWidth: 300 }}
                   type='text'
-                  name='options'
-                  value={newOption}
-                  onChange={event => setNewOption(event.target.value)}
-                  placeholder='Add new option...'
-                />
-                <AddInput type='submit' value='➕'/>
+                  name='topic'
+                  value={newTopic}
+                  onChange={event => setNewTopic(event.target.value)}
+                  placeholder='Enter the topic...'
+                  required/>
               </PollTopicInput>
-              </Form>
-              <OptionButtons>
-                {allOptions.map((item) => (
-                    <Option 
-                      key={item.optionId}
-                      option={item} />
-                  ))}
-              </OptionButtons>
-              <SummaryButtons>
-                <NavigationButtonBack onClick={handleBackToTopic}>Back</NavigationButtonBack>
-                <NavigationButton onClick={handleShowSummary}>Next step</NavigationButton>
-              </SummaryButtons>
+              <NavigationButton onClick={handleShowOptions}>Next step</NavigationButton>
+            </Form>
+          </LinkBorderContainer>
           </CreatePollContainer>
-        </LinkBorderContainer>
-      }
-      { showSummary && 
-        <CreatePollContainer>
-        <LinkBorderContainer>
-          <HeaderPoll>Summary</HeaderPoll>
-          <Summary 
-            allOptions={allOptions}
-            pollTopic={newTopic}
-            />
-          <SummaryButtons>
-            <NavigationButtonBack onClick={handleBackToOptions}>Back</NavigationButtonBack>
-            <Link to='/pollinglink'>
-              <NavigationButton onClick={handleFinishPoll}>Create poll</NavigationButton>
-            </Link>
-          </SummaryButtons>
-        </LinkBorderContainer>
-        </CreatePollContainer>
-      }
-    </PollContainer>
+        }
+        { showOptions && 
+          <LinkBorderContainer>
+            <CreatePollContainer>
+                <HeaderPoll>Add options</HeaderPoll>
+                <Form onSubmit={onAddOption}>
+                <PollTopicInput>
+                  <i>What are the different alternatives?</i>
+                  <TextField 
+                    variant='filled'
+                    color='primary'
+                    style={{ margin: 10, maxWidth: 300 }}
+                    type='text'
+                    name='options'
+                    value={newOption}
+                    onChange={event => setNewOption(event.target.value)}
+                    placeholder='Add new option...'/>
+                  <AddInput type='submit' value='➕'/>
+                </PollTopicInput>
+                </Form>
+                <OptionButtons>
+                  {allOptions.map((item) => (
+                      <Option 
+                        key={item.optionId}
+                        option={item}/>
+                    ))}
+                </OptionButtons>
+                <SummaryButtons>
+                  <NavigationButtonBack onClick={handleBackToTopic}>Back</NavigationButtonBack>
+                  <NavigationButton onClick={handleShowSummary}>Next step</NavigationButton>
+                </SummaryButtons>
+            </CreatePollContainer>
+          </LinkBorderContainer>
+        }
+        { showSummary && 
+          <CreatePollContainer>
+          <LinkBorderContainer>
+            <HeaderPoll>Summary</HeaderPoll>
+            <Summary 
+              allOptions={allOptions}
+              pollTopic={newTopic}/>
+            <SummaryButtons>
+              <NavigationButtonBack onClick={handleBackToOptions}>Back</NavigationButtonBack>
+              <Link to='/pollinglink'>
+                <NavigationButton onClick={handleFinishPoll}>Create poll</NavigationButton>
+              </Link>
+            </SummaryButtons>
+          </LinkBorderContainer>
+          </CreatePollContainer>
+        }
+      </PollContainer>
     </>
   )
 }

@@ -21,7 +21,7 @@ export const SystemicConsensing = () => {
           </p>
           <h2 className='heading2'>How it works</h2>
           <p className='about-text'>
-            Instead of choosing a favourite option, everyone in the group can give between 0 and 10 "objection points"
+            Instead of choosing a favorite option, everyone in the group can give between 0 and 10 "objection points"
             to all alternatives. 0 means absolutely no resistance, i.e. complete agreement with the solution or proposal. 
             — "I have no objection, I support this proposal strongly." 10 means maximum resistance, i.e. total objection. 
             — "I have huge objections, I refuse this proposal heavily." In the end, you sum up the objection points for each 
@@ -30,11 +30,11 @@ export const SystemicConsensing = () => {
           <h2 className='heading2'>Example</h2>
           <p className='about-text'>
             Imagine, Ann, Bob and Cecilia want to have dinner together and are discussing which restaurant to go to. 
-            Ann proposes a steak house, because steak is her favourite food. Bob likes pizza and suggests an Italian place. 
+            Ann proposes a steak house, because steak is her favorite food. Bob likes pizza and suggests an Italian place. 
             Cecilia doesn't eat meat and proposes a vegan restaurant. 
           </p>
           <p className='about-text'>
-            Ann votes 0 objection points for the steak house, as it was her own suggestion. But she is sceptical towards the vegan
+            Ann votes 0 objection points for the steak house, as it was her own suggestion. But she is skeptical towards the vegan
             food and gives it 8 points. Pizza is somewhere in between, 4 points. 
           </p>
           <p className='about-text'>
@@ -65,7 +65,7 @@ export const SystemicConsensing = () => {
               <li>
                 <a href='https://systemicconsensus.blogspot.com/2012/11/white-paper-systemic-consensing-first.html'>A more detailed blog article</a>
               </li>
-              </ul>
+            </ul>
           </p>
         </LinkBorderContainer>
       </Container>

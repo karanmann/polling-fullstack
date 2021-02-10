@@ -15,14 +15,20 @@ export const Summary = ({allOptions, pollTopic}) => {
 
   return (
     <SummaryContainer>
-      <VotingPI><i>This is what your poll will look like :</i></VotingPI>
-      <VotingP><b>{pollTopic}</b></VotingP>
+      <VotingPI>
+        <i>This is what your poll will look like:</i>
+      </VotingPI>
+      <VotingP>
+        <b>{pollTopic}</b>
+      </VotingP>
       <VotingTextContainer>
           <p>
-            <i><b>This is how you vote:</b></i>
+            <i>
+              <b>This is how you vote:</b>
+            </i>
           </p>
           <ul>
-          <p>
+            <p>
               <li className='bullet'>You will vote for every option in the list.</li>
             </p>
             <p>

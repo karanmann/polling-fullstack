@@ -11,7 +11,6 @@ import {
   IconButton,
   AddOptionInput
   } from '../lib/Styling'
-
   import editicon from '../assets/pencil.svg'
   import deleteicon from '../assets/delete.svg'
   import confirmicon from '../assets/check.svg'
@@ -50,7 +49,7 @@ export const Option = ({ option }) => {
               <IconImage src={editicon} alt='edit'/>
             </IconButton>
             <IconButton onClick={onOptionDelete}>
-              <IconImage src={deleteicon} alt='edit'/>
+              <IconImage src={deleteicon} alt='delete'/>
             </IconButton>
           </OptionButton>
         </AddOption>
@@ -66,10 +65,10 @@ export const Option = ({ option }) => {
           </OptionText>
           <OptionButton>
             <IconButton onClick={onOptionChange}>
-              <IconImage src={confirmicon} alt='edit'/>
+              <IconImage src={confirmicon} alt='confirm'/>
             </IconButton>
             <IconButton onClick={onOptionDelete}>
-              <IconImage src={deleteicon} alt='edit'/>
+              <IconImage src={deleteicon} alt='delete'/>
             </IconButton>
           </OptionButton>
         </AddOption>
