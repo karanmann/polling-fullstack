@@ -361,7 +361,7 @@ export const LinkBorderContainer = styled.div `
   flex-direction: column;
   align-items: center;
 
-  @media (min-width: 667px) {
+  @media (min-width: 750px) {
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     width: 40%;
     background-color: whitesmoke;
@@ -498,6 +498,14 @@ export const IconButton = styled.button`
   border: none;
   margin: 0 10px;
   background-color: #E5F6F1;
+
+  @media (min-width: 750px) {
+    background-color: whitesmoke;
+  };
+  
+  @media (min-width: 1200px) {
+    background-color: whitesmoke;
+  }
 `
 
 export const SocialLinks = styled.div`
