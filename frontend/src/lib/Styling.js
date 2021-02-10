@@ -30,7 +30,7 @@ export const Logo = styled.h1`
   font-size: 18px;
   text-decoration: none;
 
-  @media (min-width: 750px) {
+  @media (min-width: 1200px) {
     font-size: 25px;
   }
 `
@@ -112,7 +112,7 @@ export const Nav = styled.nav`
 
 export const LogoStyledLink = styled(NavLink).attrs({ activeClassName })`
   &.${activeClassName} {
-    color: black;
+    color: #364177;
   }
 `
 
@@ -311,12 +311,24 @@ export const SummaryForm = styled.form`
   display: flex;
   flex-direction: column;
   margin: 0 10px;
+
+  .summary-text {
+    text-align: justify;
+    margin-right: 50px;
+  }
 `
+
+
 
 export const SummaryFormLabel = styled.label`
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  padding: 0 20px;
+  .summary-form-label-text {
+    margin-right: 50px;
+    text-align: justify;
+  }
 `
 
 export const Select = styled.select`
@@ -325,6 +337,7 @@ export const Select = styled.select`
   width: 80px;
   border: none;
   line-height: 1.5em;
+  max-height: 35px;
   padding: 0.5em 3.5em 0.5em 1em;
   margin: 0;      
   -webkit-box-sizing: border-box;
@@ -390,6 +403,8 @@ export const AddOptionInput = styled.input`
 `
 export const OptionText = styled.div`
   width: 200px;
+  align-items: justify;
+  margin-right: 30px
 `
 
 export const OptionButton = styled.div`
@@ -468,8 +483,8 @@ export const LinkBorderContainer = styled.div `
   @media (min-width: 1200px) {
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     width: 50%;
-    background-color: whitesmoke;
     margin: 50px;
+    background-color: whitesmoke;
     padding-right: 80px;
     padding-left: 80px;
     padding-bottom: 20px;
@@ -500,6 +515,9 @@ export const VotingTextContainer = styled.div`
   justify-content: center;
   line-height: 1.5;
   font-size: 14px;
+  .voting-text-top {
+    padding: 30px; 
+  }
 
   .bullet {
     margin-bottom: 10px;
@@ -556,10 +574,16 @@ export const EachResult = styled.div `
   border-radius: ${props => props.true === 0 ? '20px' : ''};
   .objectionPoints {
     text-align: center;
+    margin-left: 50px;
   }
   .result-text {
     overflow-wrap: break-word;
-    margin-right: 20px
+    margin-right: 50px;
+    margin-left: 20px;
+    text-align: justify;
+  }
+  .result-number {
+    margin-right:40px
   }
 `
 
@@ -567,9 +591,9 @@ export const ResultContainer = styled.div `
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #E5F6F1;
   align-items: center;
   padding: 20px 0;
-  background-color: #E5F6F1;
   width: 100%
 `
 

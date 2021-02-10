@@ -143,7 +143,7 @@ export const VotingResults= () => {
                       <EachResult 
                       true={index}>
                       <p className='result-text'>{option.text}</p> 
-                      <p>{pair[1]}</p>
+                      <p className='result-number'>{pair[1]}</p>
                     </EachResult>
                 ))
               )

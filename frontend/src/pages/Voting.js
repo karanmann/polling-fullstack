@@ -157,26 +157,31 @@ const handleResults = () => {
       <LinkBorderContainer>
         <VotingP><b>{pollDetails.pollTopic}</b></VotingP>
         <VotingTextContainer>
-          <p>
-            <i><b>This is how you vote:</b></i>
-          </p>
-          <ul>
-          <p>
-              <li className='bullet'>You will vote for every option in the list.</li>
-            </p>
+          <div className='voting-text-top'>
             <p>
-              <li className='bullet'>"0" means absolutely no resistance — "I have no objection, I support this proposal strongly."</li>
+              <i><b>This is how you vote:</b></i>
             </p>
-            <p>
-              <li className='bullet'>"10" means maximum resistance — "I have huge objections, I refuse this proposal heavily."</li>
-            </p>
-          </ul>
+            <ul >
+              <p>
+                <li className='bullet'>You will vote for every option in the list.</li>
+              </p>
+              <p>
+                <li className='bullet'>"0" means absolutely no resistance — "I have no objection, I support this proposal strongly."</li>
+              </p>
+              <p>
+                <li className='bullet'>"10" means maximum resistance — "I have huge objections, I refuse this proposal heavily."</li>
+              </p>
+            </ul>
+          </div>
+          
         </VotingTextContainer>
-        <NavLink to='/systemicconsensing' style={{ textDecoration: 'none' }}>Read more about the principle behind Systemic consensing.</NavLink>
+        <NavLink to='/systemicconsensing' style={{ textDecoration: 'none' }}>Read more about Systemic consensing.</NavLink>
         <VotingForm onSubmit={handleSubmit}>
           {pollDetails.pollOptions?.map((item) => (
             <SummaryFormLabel key={item._id}>
-              {item.text}
+              <p className='summary-form-label-text'>
+                {item.text}
+              </p>
               <Select 
                 onChange={handleSelect} 
                 name={item._id}

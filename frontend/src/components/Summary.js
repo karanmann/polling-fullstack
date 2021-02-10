@@ -22,11 +22,14 @@ export const Summary = ({allOptions, pollTopic}) => {
             <i><b>This is how you vote:</b></i>
           </p>
           <ul>
-            <p>
-              <li>You will vote for every option in the list. "0" means absolutely no resistance — "I have no objection, I support this proposal strongly."</li>
+          <p>
+              <li className='bullet'>You will vote for every option in the list.</li>
             </p>
             <p>
-              <li>"10" means maximum resistance — "I have huge objections, I refuse this proposal heavily."</li>
+              <li className='bullet'>"0" means absolutely no resistance — "I have no objection, I support this proposal strongly."</li>
+            </p>
+            <p>
+              <li className='bullet'>"10" means maximum resistance — "I have huge objections, I refuse this proposal heavily."</li>
             </p>
           </ul>
         </VotingTextContainer>
