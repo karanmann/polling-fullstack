@@ -27,7 +27,7 @@ export const PollingLink= () => {
   const dispatch = useDispatch()
   const pollId = useSelector((store) => store.poll.pollId)
 
-  const url = `https://romantic-tesla.netlify.app/voting/${pollId}`
+  const url = `https://pollic.netlify.app/voting/${pollId}`
   // const url = `http://localhost:3000/voting/${pollId}`
 
   const resetState = () => {
