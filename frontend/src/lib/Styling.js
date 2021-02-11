@@ -589,7 +589,7 @@ export const IconButton = styled.button`
 
 export const ConfettiDiv = styled.div `
   width: auto;
-  height: 800px;
+  height: 1200px;
 `
 
 // FOOTER
