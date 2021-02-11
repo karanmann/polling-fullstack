@@ -26,8 +26,8 @@ export const CreatePoll= () => {
   const history = useHistory()
   const pollId = useSelector((store) => store.poll.pollId)
 
-/*   const POLL_URL = 'https://systemic-poll-app.herokuapp.com/poll' */
-  const POLL_URL = 'http://localhost:9000/poll'
+  const POLL_URL = 'https://systemic-poll-app.herokuapp.com/poll'
+  // const POLL_URL = 'http://localhost:9000/poll'
 
   // States to handle conditional rendering
   const [showTopic, setShowTopic] = useState(true)
@@ -151,7 +151,8 @@ useEffect(() => {
                     name='options'
                     value={newOption}
                     onChange={event => setNewOption(event.target.value)}
-                    placeholder='Add new option...'/>
+                    placeholder='Add new option...'
+                    required/>
                   <AddInput type='submit' value='➕'/>
                 </PollTopicInput>
                 </Form>

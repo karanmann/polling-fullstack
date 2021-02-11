@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Confetti from 'react-confetti'
-import { Div } from '../lib/Styling'
+import { ConfettiDiv } from '../lib/Styling'
 
 export const Confettis = () => {
   const [height, setHeight] = useState(null)
@@ -15,14 +15,14 @@ export const Confettis = () => {
 
   return (
     <>
-      <Div
+      <ConfettiDiv
         ref={confettiRef}>
           <Confetti
             recycle={show}
             numberOfPieces={800}
             width={width}
             height={height}/>
-      </Div>
+      </ConfettiDiv>
     </>
   )
 }

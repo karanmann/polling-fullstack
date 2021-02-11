@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro'
 import { NavLink } from 'react-router-dom'
 
+// COMMON STYLING
+
 export const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,28 +10,86 @@ export const AppContainer = styled.div`
   min-height: 100vh;
 `
 
-// NAVBAR
-
-export const NavContainer = styled.div`
+export const LinkBorderContainer = styled.div `
+  width: 90%;
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+    .about-text {
+  line-height: 150%;
+  margin-bottom: 20px
+  }
+
+  .about-text ul li {
+    list-style-type: none;
+    text-align: center;
+    margin-top: 10px
+  }
+
+  .about-text ul li a{
+    text-decoration: none;
+  }
+
+  .heading {
+    margin-bottom: 20px;
+  }
+
+  .heading2 {
+    margin-bottom: 15px;
+  }
+
+  .winnerText {
+    margin-bottom: 5px;
+  }
+   
+  @media (min-width: 750px) {
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    width: 80%;
+    background-color: whitesmoke;
+    margin: 50px;
+    padding: 40px;
+  }
+  
+  @media (min-width: 1200px) {
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    width: 50%;
+    margin: 50px;
+    background-color: whitesmoke;
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-bottom: 20px;
+  }
+`
+
+export const NavigationButton = styled.button `
   margin-top: 10px;
-  margin:0;
+  margin-bottom: 40px;
+  background-color: #fdd835;
+  border: none;
+  padding: 15px 25px;
+  opacity: 0.8;
+  font-size: 18px;
+  &:hover {
+    opacity: 1
+  }
 `
 
-export const LogoContainer = styled.div `
-  display: flex;
-  align-content: left;
-  justify-content: center;
-  width: 10%
+export const NavigationButtonBack = styled.button `
+  margin-top: 10px;
+  margin-bottom: 40px;
+  background-color: #e91e63;
+  border: none;
+  padding: 15px 25px;
+  opacity: 0.8;
+  font-size: 18px;
+  &:hover {
+    opacity: 1
+  }
 `
 
-export const LogoImage = styled.img`
-  height: 60px;
-  width: 60px;
-  margin-top: 30px
-`
+
+// NAVBAR
 
 export const Logo = styled.h1`
   font-size: 18px;
@@ -46,22 +106,6 @@ export const NavText = styled.h2`
 
   @media (min-width: 1200px) {
     font-size: 20px;
-  }
-`
-
-export const NavbarLinks = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items:center;
-  justify-content: space-around;
-  width: 50%;
-`
-
-export const LinkButton = styled.div`
-  padding: 5px 15px;
-  border-radius: 30px;
-  &:hover {
-    text-decoration: underline;
   }
 `
 
@@ -102,8 +146,6 @@ export const StyledLink = styled(NavLink).attrs({ activeClassName })`
 export const Nav = styled.nav`
   width: 100%;
   height: 60px;
-/*   border-bottom: 0.2px solid grey; */
-  /* box-shadow: 0 8px 6px -6px black; */
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
@@ -123,7 +165,6 @@ export const LogoStyledLink = styled(NavLink).attrs({ activeClassName })`
 export const StyledBurger = styled.div`
   width: 2rem;
   height: 2rem;
- /*  position: fixed; */
   top: 15px;
   right: 20px;
   z-index: 20;
@@ -153,9 +194,10 @@ export const StyledBurger = styled.div`
       transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
     }
   }
-`;
+`
 
-//LANDING PAGE
+
+// LANDING PAGE
 
 export const Container = styled.div`
   display: flex;
@@ -179,6 +221,7 @@ export const InfoImage = styled.div`
     width: 40%;
   }
   `
+
 export const InfoText = styled.div`
   width: 100%;
   background-color: #E5F6F1;
@@ -215,31 +258,8 @@ export const Image = styled.img`
   }
 `
 
-export const NavigationButton = styled.button `
-  margin-top: 10px;
-  margin-bottom: 40px;
-  background-color: #fdd835;
-  border: none;
-  padding: 15px 25px;
-  opacity: 0.8;
-  font-size: 18px;
-  &:hover {
-    opacity: 1
-  }
-`
+// CREATE POLL
 
-export const NavigationButtonBack = styled.button `
-  margin-top: 10px;
-  margin-bottom: 40px;
-  background-color: #e91e63;
-  border: none;
-  padding: 15px 25px;
-  opacity: 0.8;
-  font-size: 18px;
-  &:hover {
-    opacity: 1
-  }
-`
 
 export const AddInput = styled.input `
   margin-top: 10px;
@@ -253,8 +273,6 @@ export const AddInput = styled.input `
   }
 `
 
-//CREATE POLL
-
 export const HeaderPoll = styled.h1`
   text-align: center;
   padding: 30px;
@@ -265,25 +283,6 @@ export const Form = styled.form`
   flex-direction: column;
   text-align: center;
 `
-
-/* export const InputTopic = styled.input`
-   margin-bottom: 60px;
-   margin-top: 10px;
-   display: block;
-   padding: 10px 15px;
-` */
-
-export const AddButton = styled.button`
-  display: inline-block;
-  margin-left: 10px;
-`
-
-/* export const InputOptions = styled.input`
-  margin-bottom: 60px;
-  margin-right: 20px;
-  width: 50%;
-  padding: 10px 15px;
-` */
 
 export const PollContainer = styled(Container)`
   background-color: #E5F6F1;
@@ -302,13 +301,13 @@ export const PollTopicInput = styled.label`
 `
 
 export const CreatePollContainer = styled.section`
-  /* padding: 2.5rem; */
   width: 100%;
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;   
 `
+
 export const SummaryButtons = styled.div`
   margin-top: 50px;
   display: flex;
@@ -316,26 +315,49 @@ export const SummaryButtons = styled.div`
   justify-content: center
 `
 
-export const NavigationInput = styled.input `
-  margin-bottom: 30px;
-  background-color: #fdd835;
-  border: none;
-  opacity: 0.8;
-  font-size: 18px;
-  margin: 5px 10px;
-  padding: 15px 15px;
-  /* height: 35px; */
-  word-wrap: break-word;
-  &:hover {
-    opacity: 1
-  }
-`
-
 export const OptionButtons = styled.div`
   margin: 0 50px;
 `
 
-// SUMMARY
+// POLLING LINK
+
+export const LinkInput = styled.input`
+  background-color: #E5F6F1;
+  width: 80%;
+  border: none;
+  text-align: center;
+  font-size: 20px;
+  @media (min-width: 1200px) {
+    background-color: whitesmoke;
+  }
+`
+
+export const LinkContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #E5F6F1;
+  height: 550px;
+  margin-top: 40px;
+`
+
+export const LinkButtonContainer = styled.div`
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+`
+
+export const SocialLinks = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-bottom: 25px
+`
+
+// SUMMARY 
+
 export const SummaryContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -354,8 +376,6 @@ export const SummaryForm = styled.form`
     margin-right: 50px;
   }
 `
-
-
 
 export const SummaryFormLabel = styled.label`
   display: flex;
@@ -415,7 +435,102 @@ export const Select = styled.select`
 }
 `
 
-// component OPTION
+export const VotingPI = styled.p`
+  font-size: 14px
+`
+
+//VOTING
+
+export const VotingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #E5F6F1;
+  padding-bottom: 60px;
+  margin-top: 40px;
+`
+
+export const VotingTextContainer = styled.div`
+  margin: 30px;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5;
+  font-size: 14px;
+  .voting-text-top {
+    padding: 30px; 
+  }
+
+  .bullet {
+    margin-bottom: 10px;
+  }
+`
+
+export const VotingForm = styled.form`
+display: flex;
+flex-direction: column;
+margin-top: 30px
+`
+
+export const YourName = styled.label`
+  display: flex;
+  flex-direction: row;
+  margin: 30px;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 16px
+`
+
+export const VotingP = styled.p`
+  margin-top : 20px;
+  font-size: 20px;
+`
+
+export const ButtonContainer = styled.div `
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height:
+`
+
+//VOTING RESULTS
+
+export const EachResult = styled.div `
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  padding: 30px 20px;
+  font-size: 20px;
+  background-color: ${props => props.true === 0 ? '#8db596' : ''};
+  border-radius: ${props => props.true === 0 ? '20px' : ''};
+  .objectionPoints {
+    text-align: center;
+    margin-left: 50px;
+  }
+  .result-text {
+    overflow-wrap: break-word;
+    margin-right: 50px;
+    margin-left: 20px;
+    text-align: justify;
+  }
+  .result-number {
+    margin-right:40px
+  }
+`
+
+export const ResultContainer = styled.div `
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #E5F6F1;
+  align-items: center;
+  padding: 20px 0;
+  width: 100%
+`
+
+// OPTIONS
 export const OptionsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -453,215 +568,6 @@ export const OptionButton = styled.div`
   justify-content: space-evenly
 `
 
-//LINK PAGE
-export const LinkContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #E5F6F1;
-  height: 550px;
-  margin-top: 40px;
-`
-
-export const LinkInput = styled.input`
-  background-color: #E5F6F1;
-  width: 80%;
-  border: none;
-  text-align: center;
-  font-size: 20px;
-  @media (min-width: 1200px) {
-    background-color: whitesmoke;
-  }
-`
-
-export const LinkButtonContainer = styled.div`
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-`
-
-export const LinkBorderContainer = styled.div `
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
-
-  .about-text {
-  line-height: 150%;
-  margin-bottom: 20px
-  }
-
-  .about-text ul li {
-    list-style-type: none;
-    text-align: center;
-    margin-top: 10px
-  }
-
-  .about-text ul li a{
-    text-decoration: none;
-  }
-
-  .heading {
-    margin-bottom: 20px;
-  }
-
-  .heading2 {
-    margin-bottom: 15px;
-  }
-
-  .winnerText {
-    margin-bottom: 5px;
-  }
-   
-  @media (min-width: 750px) {
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-    width: 80%;
-    background-color: whitesmoke;
-    margin: 50px;
-    padding: 40px;
-  }
-  
-  @media (min-width: 1200px) {
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-    width: 50%;
-    margin: 50px;
-    background-color: whitesmoke;
-    padding-right: 80px;
-    padding-left: 80px;
-    padding-bottom: 20px;
-  }
-`
-
-//VOTING CONTAINER
-
-export const VotingContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: #E5F6F1;
-  padding-bottom: 60px;
-  margin-top: 40px;
-`
-
-export const VotingForm = styled.form`
-display: flex;
-flex-direction: column;
-margin-top: 30px
-`
-
-export const VotingTextContainer = styled.div`
-  margin: 30px;
-  text-align: left;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.5;
-  font-size: 14px;
-  .voting-text-top {
-    padding: 30px; 
-  }
-
-  .bullet {
-    margin-bottom: 10px;
-  }
-`
-
-export const VotingP = styled.p`
-  margin-top : 20px;
-  font-size: 20px;
-`
-export const VotingPI = styled.p`
-  font-size: 14px
-`
-
-export const YourName = styled.label`
-  display: flex;
-  flex-direction: row;
-  margin: 30px;
-  justify-content: space-evenly;
-  align-items: center;
-  font-size: 16px
-`
-
-export const VotingButton = styled.input `
-  margin-top: 10px;
-  margin-bottom: 40px;
-  background-color: #fdd835;
-  border: none;
-  padding: 15px 25px;
-  opacity: 0.8;
-  font-size: 18px;
-  width: auto;
-  &:hover {
-    opacity: 1
-  }
-`
-
-export const ButtonContainer = styled.div `
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-//VOTING RESULTS 
-
-export const EachResult = styled.div `
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 80%;
-  padding: 30px 20px;
-  font-size: 20px;
-  background-color: ${props => props.true === 0 ? '#8db596' : ''};
-  border-radius: ${props => props.true === 0 ? '20px' : ''};
-  .objectionPoints {
-    text-align: center;
-    margin-left: 50px;
-  }
-  .result-text {
-    overflow-wrap: break-word;
-    margin-right: 50px;
-    margin-left: 20px;
-    text-align: justify;
-  }
-  .result-number {
-    margin-right:40px
-  }
-`
-
-export const ResultContainer = styled.div `
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #E5F6F1;
-  align-items: center;
-  padding: 20px 0;
-  width: 100%
-`
-
-//FOOTER
-
-export const FooterContainer = styled.footer`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #364177;
-  color: white;
-  width: 100%;
-  height: 60px;
-  padding: 10px 0;
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-  font-size: 10px
-`
-
-// LIBRARIES STYLING
-
 export const IconImage = styled.img`
   height: 30px;
   width: 30px,
@@ -681,15 +587,43 @@ export const IconButton = styled.button`
   }
 `
 
-export const SocialLinks = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  padding-bottom: 25px
-`
-
-export const Div = styled.div `
+export const ConfettiDiv = styled.div `
   width: auto;
   height: 3000px;
+`
+
+// FOOTER
+
+export const FooterContainer = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #364177;
+  color: white;
+  width: 100%;
+  height: 60px;
+  padding: 10px 0;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  font-size: 12px
+`
+
+//CODE TO CHECK
+
+export const NavigationInput = styled.input `
+  margin-bottom: 30px;
+  background-color: #fdd835;
+  border: none;
+  opacity: 0.8;
+  font-size: 18px;
+  margin: 5px 10px;
+  padding: 15px 15px;
+  height: 51px;
+  word-wrap: break-word;
+  &:hover {
+    opacity: 1
+  } 
 `

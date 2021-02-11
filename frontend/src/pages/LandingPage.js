@@ -20,7 +20,7 @@ export const LandingPage= () => {
           <InfoTextP>Making decisions in a group should not be about making just a few persons happy…
             The principle behind Systemic consensing is to find a solution that fits all participants. 
             The proposal with the least objection is most easily accepted by all together and generates 
-            the least conflict potential.Create a poll and try it out!
+            the least conflict potential. Create a poll and try it out!
           </InfoTextP>
           <Link to='/createpoll'>
             <NavigationButton>Create new poll</NavigationButton>
