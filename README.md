@@ -30,8 +30,7 @@ In the backend we have created two mongoose models. One model ('Poll') is used w
 
 ### Frontend
  
-The frontend is built with seven routes: Landing page, Create poll, Polling Link, Voting, Voting results, About and Systemic consensing.
-The Create poll route has all the steps to create the poll and each step is conditionally rendered, 3 views in total. The rest of the routers only have one view per router.
+The frontend is built with seven routes: Landing page, Create poll, Polling Link, Voting, Voting results, About and Systemic consensing. The Create poll route has all the steps to create the poll and each step is conditionally rendered, 3 views in total. The rest of the routes only have one view per route.
  
 We are using redux to store a created poll before it is sent to the backend. However, when a person is voting we use the internal state before we send the votes to the backend since redux wasn't really needed.
  
@@ -57,9 +56,8 @@ The voting results was one of the hardest parts of the project since we had to r
 - #### Backend: 
   https://systemic-poll-app.herokuapp.com/
 
-## Contributors :-
+## Contributors
 
  ### Henrike Wiemker - https://github.com/HenrikeW
-
  ### Ingela Löfgren - https://github.com/IngelaL
  ### Karan Mann - https://github.com/karanmann
