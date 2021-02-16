@@ -16,21 +16,22 @@ In the backend we have created two mongoose models. One model ('Poll') is used w
 ### Endpoints:
  
 - #### POST /poll 
-  When a person creates a poll and adds a topic and options to vote for. Each poll gets a pollId that is used to identify that poll.
+  When a person creates a poll and adds a topic and options to vote for. Each poll gets a \_id that is used to identify that poll. Also unique id is generated  for every option in the poll. 
  
 - #### GET /poll/:id
-  Shows the topic and the options to vote for of a specific poll (through its pollId). 
+  Shows the topic and the options to vote for of a specific poll (through its \_id). 
  
 - #### POST /finishedPoll
-  When a user votes on the options by giving them objections points. The pollId is sent to the backend to identify it. A unique id is generated for every option in the poll (pollOptionId) which is connected to the pollOptions in the Poll-model.
+  When a user votes on the options by giving them objections points.  The poll's \_id is sent to the FinishedPoll to connect it to the poll it belongs to. There, the property is called pollId. The same is happening for each option's \_id. It's called pollOptionId in the FinishedPoll-model.
+
  
 - #### GET /finishedpoll/:pollId
   Shows the results from a specific poll.
 
 ### Frontend
  
-The frontend is built with seven routers: Landing page, Create poll, Polling Link, Voting, Voting results, About and Systemic consensing.
-The Create poll router has all the steps to create the poll and each step is conditionally rendered, 3 views in total. The rest of the routers only have one view per router.
+The frontend is built with seven routes: Landing page, Create poll, Polling Link, Voting, Voting results, About and Systemic consensing.
+The Create poll route has all the steps to create the poll and each step is conditionally rendered, 3 views in total. The rest of the routers only have one view per router.
  
 We are using redux to store a created poll before it is sent to the backend. However, when a person is voting we use the internal state before we send the votes to the backend since redux wasn't really needed.
  
@@ -50,12 +51,11 @@ The voting results was one of the hardest parts of the project since we had to r
 
 ### View it live
  
-- Check out and try our project here! 
-- https://pollic.netlify.app/
+- #### Check out and try our project here! 
+  https://pollic.netlify.app/
 
-
-- Backend: 
-- https://systemic-poll-app.herokuapp.com/
+- #### Backend: 
+  https://systemic-poll-app.herokuapp.com/
 
 ## Contributors :-
 
