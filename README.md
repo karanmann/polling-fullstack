@@ -35,6 +35,15 @@ The frontend is built with seven routes: Landing page, Create poll, Polling Link
 We are using redux to store a created poll before it is sent to the backend. However, when a person is voting we use the internal state before we send the votes to the backend since redux wasn't really needed.
  
 The voting results was one of the hardest parts of the project since we had to rebuild the data structure a couple of steps in order to sum up the results from every option and eventually create an array with arrays that we could map through. The result page then shows the options with the total sum of objections points for each option.
+
+### Limitations
+
+This project was developed and built during the limited timeframe of four weeks. Thus, we had to limit the features included to what was doable during that time. Some additional features that we would have liked to include are:
+- a login for users that makes it possible to review old polls
+- the option to set a deadline for a poll after which it isn't possible to answer the poll
+- the option for the user creating the poll to choose the range of objection points that can be given to each option (instead of having a default range of 0-10)
+- the option to view the individual poll results of every person who has answered a poll. The user creating a poll could have the option to choose whether to make a poll anonymous or not. For this feature, we already included a name propertiy into the FinishedPoll-model that we didn't use in the end. We still left it there so that we can add the feature in the future.
+- some layout improvements for the desktop, tablet or mobile view respectively
  
 ### Tech used
  
