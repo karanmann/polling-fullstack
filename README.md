@@ -15,16 +15,16 @@ In the backend we have created two mongoose models. One model ('Poll') is used w
  
 ### Endpoints:
  
-- POST /poll 
+- #### POST /poll 
   When a person creates a poll and adds a topic and options to vote for. Each poll gets a pollId that is used to identify that poll.
  
-- GET /poll/:id
+- #### GET /poll/:id
   Shows the topic and the options to vote for of a specific poll (through its pollId). 
  
-- POST /finishedPoll
+- #### POST /finishedPoll
   When a user votes on the options by giving them objections points. The pollId is sent to the backend to identify it. A unique id is generated for every option in the poll (pollOptionId) which is connected to the pollOptions in the Poll-model.
  
-- GET /finishedpoll/:pollId
+- #### GET /finishedpoll/:pollId
   Shows the results from a specific poll.
 
 ### Frontend
